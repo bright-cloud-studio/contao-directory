@@ -1,20 +1,20 @@
 <?php
 
 /**
- * Rep Finder - Location Plugin for Contao
+ * Locations - Location Plugin for Contao
  *
- * Copyright (C) 2021 Bright Cloud Studio
+ * Copyright (C) 2018 Andrew Stevens
  *
- * @package    bright-cloud-studio/rep-finder
- * @link       https://www.brightcloudstudio.com/
+ * @package    asconsulting/locations
+ * @link       http://andrewstevens.consulting
  * @license    http://opensource.org/licenses/lgpl-3.0.html
  */
 
  
-namespace Bcs\Backend;
+namespace Asc\Backend;
 
 use Contao\DataContainer;
-use Bcs\Model\Location;
+use Asc\Model\Location;
 
 class Locations extends \Backend
 {
@@ -210,4 +210,24 @@ class Locations extends \Backend
 				'YT' => 'Yukon')
 			);
 	}
+	
+	public function getCategories() { 
+		$cats = array();
+		$this->import('Database');
+		$result = $this->Database->prepare("SELECT * FROM tl_category WHERE published=1")->execute();
+		while($result->next())
+		{
+			$cats = $cats + array($result->id => $result->name);
+		}
+		return $cats;
+		
+		
+		#return array(
+		#	'1' => 'Onee',
+		#	'2' => 'Twoo',
+		#	'3' => 'Threee',
+		#	'4' => 'Fourr'
+		#);
+	}
+	
 }
