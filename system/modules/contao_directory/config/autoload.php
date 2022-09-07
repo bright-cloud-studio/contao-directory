@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Rep Finder - Location Plugin for Contao
+ * Contao Directory - Users can make submissions to a directory with a module to display and filter the results.
  *
- * Copyright (C) 2021 Bright Cloud Studio
+ * Copyright (C) 2022 Bright Cloud Studio
  *
- * @package    bright-cloud-studio/rep-finder
+ * @package    bright-cloud-studio/contao-directory
  * @link       https://www.brightcloudstudio.com/
  * @license    http://opensource.org/licenses/lgpl-3.0.html
  */
@@ -13,15 +13,14 @@
 /* Register the classes */
 ClassLoader::addClasses(array
 (
-    'Bcs\Module\LocationsList' 		=> 'system/modules/rep_finder/library/Bcs/Module/LocationsList.php',
-	'Bcs\Backend\Locations' 		=> 'system/modules/rep_finder/library/Bcs/Backend/Locations.php',
-	'Bcs\Model\Location' 			=> 'system/modules/rep_finder/library/Bcs/Model/Location.php',
-	'Bcs\Locations'		 		=> 'system/modules/rep_finder/library/Bcs/Locations.php'
+    'Bcs\Module\DirectoryList' 		=> 'system/modules/contao_directory/library/Bcs/Module/DirectoryList.php',
+	'Bcs\Backend\Locations' 		=> 'system/modules/contao_directory/library/Bcs/Backend/DirectoryListBackend.php',
+	'Bcs\Model\Location' 			=> 'system/modules/contao_directory/library/Bcs/Model/ContactDirectory.php'
 ));
 
 /* Register the templates */
 TemplateLoader::addFiles(array
 (
-   	'mod_locations_list' 		=> 'system/modules/rep_finder/templates/modules',
-	'item_location' 		=> 'system/modules/rep_finder/templates/items',
+   	'mod_directory_list' 		=> 'system/modules/contao_directory/templates/modules',
+	'item_listing' 		            => 'system/modules/contao_directory/templates/items',
 ));
