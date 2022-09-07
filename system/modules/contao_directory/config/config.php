@@ -11,14 +11,14 @@
  */
 
 /* Back end modules */
-$GLOBALS['BE_MOD']['content']['locations'] = array(
-	'tables' => array('tl_location'),
-	'icon'   => 'system/modules/rep_finder/assets/icons/location.png',
-	'exportLocations' => array('Bcs\Backend\Locations', 'exportLocations')
+$GLOBALS['BE_MOD']['content']['contao_directory'] = array(
+	'tables' => array('tl_listing'),
+	'icon'   => 'system/modules/contao_directory/assets/icons/location.png',
+	'exportLocations' => array('Bcs\Backend\ContaoDirectoryBackend', 'exportLocations')
 );
 
 /* Front end modules */
-$GLOBALS['FE_MOD']['rep_finder']['locations_list'] 	= 'Bcs\Module\LocationsList';
+$GLOBALS['FE_MOD']['contao_directory']['directory_listing'] 	= 'Bcs\Module\LocationsList';
 
 /* Models */
-$GLOBALS['TL_MODELS']['tl_location'] = 'Bcs\Model\Location';
+$GLOBALS['TL_MODELS']['contao_directory'] = 'Bcs\Model\Listing';
