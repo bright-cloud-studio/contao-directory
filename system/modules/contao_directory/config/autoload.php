@@ -13,9 +13,10 @@
 /* Register the classes */
 ClassLoader::addClasses(array
 (
-    'Bcs\Module\DirectoryList' 		=> 'system/modules/contao_directory/library/Bcs/Module/DirectoryList.php',
-	'Bcs\Backend\Locations' 		=> 'system/modules/contao_directory/library/Bcs/Backend/DirectoryListBackend.php',
-	'Bcs\Model\Location' 			=> 'system/modules/contao_directory/library/Bcs/Model/ContactDirectory.php'
+    'Asc\Module\LocationsList' 	=> 'system/modules/locations/library/Asc/Module/LocationsList.php',
+	'Asc\Backend\Locations' 	=> 'system/modules/locations/library/Asc/Backend/Locations.php',
+	'Asc\Model\Location' 		=> 'system/modules/locations/library/Asc/Model/Location.php',
+	'Asc\Locations'		 		=> 'system/modules/locations/library/Asc/Locations.php'
 ));
 
 /* Register the templates */
