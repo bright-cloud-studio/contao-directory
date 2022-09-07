@@ -1,28 +1,29 @@
 <?php
 
 /**
- * Bright Cloud Studio's Modal Gallery
+ * Locations - Location Plugin for Contao
  *
- * Copyright (C) 2021 Bright Cloud Studio
+ * Copyright (C) 2018 Andrew Stevens
  *
- * @package    bright-cloud-studio/modal-gallery
- * @link       https://www.brightcloudstudio.com/
+ * @package    asconsulting/locations
+ * @link       http://andrewstevens.consulting
  * @license    http://opensource.org/licenses/lgpl-3.0.html
-**/
+ */
 
   
-namespace Bcs\Module;
+namespace Asc\Module;
  
-use Bcs\Model\ModalGallery;
+use Asc\Model\Location;
+use Asc\Locations; 
  
-class ModalGalleryModule extends \Contao\Module
+class LocationsList extends \Contao\Module
 {
  
     /**
      * Template
      * @var string
      */
-    protected $strTemplate = 'modal_gallery_module';
+    protected $strTemplate = 'mod_locations_list';
  
 	protected $arrStates = array();
  
@@ -35,7 +36,7 @@ class ModalGalleryModule extends \Contao\Module
 	public function __construct($objModule, $strColumn='main')
 	{
 		parent::__construct($objModule, $strColumn);
-		//$this->arrStates = Locations::getStates();
+		$this->arrStates = Locations::getStates();
 	}
 	
     /**
@@ -66,15 +67,6 @@ class ModalGalleryModule extends \Contao\Module
      */
     protected function compile()
     {
-
-	    // add our css
-	     if (!in_array('system/modules/modal_gallery/assets/css/modal_gallery.css', $GLOBALS['TL_CSS'])) { 
-			$GLOBALS['TL_CSS'][] = 'system/modules/modal_gallery/assets/css/modal_gallery.css';
-		}
-	    // add our js
-	    $GLOBALS['TL_BODY'][] = '<script src="system/modules/modal_gallery/assets/js/modal_gallery.js"></script>';
-	    
-	    /*
 		$objLocation = Location::findBy('published', '1');
 		
 		if (!in_array('system/modules/locations/assets/js/locations.js', $GLOBALS['TL_JAVASCRIPT'])) { 
@@ -87,6 +79,7 @@ class ModalGalleryModule extends \Contao\Module
 			$this->Template->empty = 'No Locations Found';
 			return;
 		}
+
 		$arrStates = array();
 		
 		// Generate List
@@ -138,11 +131,13 @@ class ModalGalleryModule extends \Contao\Module
 			$arrLocation['country'] 		= $objLocation->country;
 			$arrLocation['phone'] 			= $objLocation->phone;
 			$arrLocation['url'] 			= $objLocation->url;
+
 			$strItemTemplate = ($this->locations_customItemTpl != '' ? $this->locations_customItemTpl : 'item_location');
 			$objTemplate = new \FrontendTemplate($strItemTemplate);
 			$objTemplate->setData($arrLocation);
 			$arrStates[$strStateKey]['locations'][] = $objTemplate->parse();
 		}
+
 		$arrTemp = $arrStates;
 		unset($arrTemp['CAN']);
 		uasort($arrTemp, array($this,'sortByState'));
@@ -151,7 +146,7 @@ class ModalGalleryModule extends \Contao\Module
 		
 		$this->Template->stateOptions = $this->generateSelectOptions();
 		$this->Template->states = $arrStates;
-		*/
+		
 	}
 
 	public function generateSelectOptions($blank = TRUE) {
