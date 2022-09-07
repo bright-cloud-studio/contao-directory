@@ -1,24 +1,24 @@
 <?php
 
 /**
- * Bright Cloud Studio's Modal Gallery
+ * Contao Directory - Users can make submissions to a directory with a module to display and filter the results.
  *
- * Copyright (C) 2021 Bright Cloud Studio
+ * Copyright (C) 2022 Bright Cloud Studio
  *
- * @package    bright-cloud-studio/modal-gallery
+ * @package    bright-cloud-studio/contao-directory
  * @link       https://www.brightcloudstudio.com/
  * @license    http://opensource.org/licenses/lgpl-3.0.html
-**/
+ */
 
 /* Add a palette to tl_module */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['modal_gallery_module'] 		= '{title_legend},name,headline,type;{select_gallery_legend},selectedGallery;{template_legend:hide},customTpl;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['directory_list'] 		= '{title_legend},name,headline,type;{template_legend:hide},customTpl,locations_customItemTpl;{expert_legend:hide},guests,cssID,space';
 
-// Sort Fields
-$GLOBALS['TL_DCA']['tl_module']['fields']['selectedGallery'] = array
+$GLOBALS['TL_DCA']['tl_module']['fields']['directory_listing'] = array
 (
-	'label' 			=> &$GLOBALS['TL_LANG']['tl_module']['selectedGallery'],
-	'inputType' 			=> 'select',
-	'options_callback'		  => array('Bcs\Backend\ModalGalleryBackend', 'getGalleries'),
-	'eval' 				=> array('tl_class'=>'clr w50'),
-	'sql' 				=> "varchar(255) NOT NULL default ''"
+	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['directory_listing'],
+	'exclude'                 => true,
+	'inputType'               => 'select',
+	'options_callback'        => array('Asc\Backend\Locations', 'getListingTemplates'),
+	'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
+	'sql'                     => "varchar(64) NOT NULL default ''"
 );
