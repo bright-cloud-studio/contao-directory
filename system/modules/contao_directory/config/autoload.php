@@ -16,7 +16,7 @@ ClassLoader::addClasses(array
     // This is the front end module
     'Bcs\Module\DirectoryList' 	=> 'system/modules/contao_directory/library/Bcs/Module/DirectoryList.php',
     // The Listings section in the back end
-	'Bcs\Backend\Listing' 	    => 'system/modules/contao_directory/library/Bcs/Backend/ListingBackend.php',
+	'Bcs\Backend\Listings' 	    => 'system/modules/contao_directory/library/Bcs/Backend/ListingsBackend.php',
     // The individual listings themselves
 	'Bcs\Model\Listing' 		=> 'system/modules/contao_directory/library/Bcs/Model/Listing.php'
 ));
