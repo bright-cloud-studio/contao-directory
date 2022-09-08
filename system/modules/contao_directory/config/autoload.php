@@ -13,14 +13,19 @@
 /* Register the classes */
 ClassLoader::addClasses(array
 (
+    // This is the front end module
     'Bcs\Module\DirectoryList' 	=> 'system/modules/contao_directory/library/Bcs/Module/DirectoryList.php',
+    // The Listings section in the back end
 	'Bcs\Backend\Listing' 	    => 'system/modules/contao_directory/library/Bcs/Backend/ListingBackend.php',
+    // The individual listings themselves
 	'Bcs\Model\Listing' 		=> 'system/modules/contao_directory/library/Bcs/Model/Listing.php'
 ));
 
 /* Register the templates */
 TemplateLoader::addFiles(array
 (
+    // Template for front end module
    	'mod_directory_list' 		    => 'system/modules/contao_directory/templates/modules',
+    // Template for items in the front end module
 	'item_listing' 		            => 'system/modules/contao_directory/templates/items',
 ));
