@@ -23,6 +23,9 @@ class DirectoryList extends \Contao\Module
      * @var string
      */
     protected $strTemplate = 'mod_directory_list';
+    
+    // contains our listings
+    protected $arrListings = array();
  
 	/**
 	 * Initialize the object
@@ -71,6 +74,9 @@ class DirectoryList extends \Contao\Module
 			$this->Template->empty = 'No Listings Found';
 			return;
 		}
+        
+        $arrListings = array();
+        
 		
 		// Generate List
 		//while ($objListing->next())
@@ -95,8 +101,10 @@ class DirectoryList extends \Contao\Module
 			$strItemTemplate = ($this->listings_customItemTpl != '' ? $this->listings_customItemTpl : 'item_listing');
 			$objTemplate = new \FrontendTemplate($strItemTemplate);
 			$objTemplate->setData($arrListing);
-			$objTemplate->parse();
+            $arrListings[$objListing->name][] = $objTemplate->parse();
 		}
+        
+        $this->Template->listings = $arrListings;
 
 	}
 
