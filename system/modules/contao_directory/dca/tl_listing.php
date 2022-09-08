@@ -42,7 +42,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         ),
         'label' => array
         (
-            'fields'                  => array('name', 'contact_name', 'phone'),
+            'fields'                  => array('name', 'city', 'state'),
             'format'                  => '%s (%s, %s)'
         ),
         'global_operations' => array
@@ -50,8 +50,8 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'export' => array
             (
                 'label'               => 'Export Listings CSV',
-                'href'                => 'key=exportLocations',
-                'icon'                => 'system/modules/rep_finder/assets/icons/file-export-icon-16.png'
+                'href'                => 'key=exportListings',
+                'icon'                => 'system/modules/contao_directory/assets/icons/file-export-icon-16.png'
             ),
             'all' => array
             (
@@ -66,34 +66,34 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         (
             'edit' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_location']['edit'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_listing']['edit'],
                 'href'                => 'act=edit',
                 'icon'                => 'edit.gif'
             ),
 			
             'copy' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_location']['copy'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_listing']['copy'],
                 'href'                => 'act=copy',
                 'icon'                => 'copy.gif'
             ),
             'delete' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_location']['delete'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_listing']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.gif',
                 'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
             ),
             'toggle' => array
 		(
-			'label'               => &$GLOBALS['TL_LANG']['tl_location']['toggle'],
+			'label'               => &$GLOBALS['TL_LANG']['tl_listing']['toggle'],
 			'icon'                => 'visible.gif',
 			'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
-			'button_callback'     => array('Bcs\Backend\Locations', 'toggleIcon')
+			'button_callback'     => array('Bcs\Backend\Listings', 'toggleIcon')
 		),
             'show' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_location']['show'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_listing']['show'],
                 'href'                => 'act=show',
                 'icon'                => 'show.gif'
             )
@@ -103,7 +103,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{location_legend},name,alias,contact_name;{address_legend},phone,url;{website_legend},territory_notes,zip;{publish_legend},published;'
+        'default'                     => '{listing_legend},name;{address_legend},city,state,country;{publish_legend},published;'
     ),
  
     // Fields
@@ -111,43 +111,69 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
     (
         'id' => array
         (
-            'sql'                     => "int(10) unsigned NOT NULL auto_increment"
+            'sql'                       => "int(10) unsigned NOT NULL auto_increment"
         ),
         'tstamp' => array
         (
-            'sql'                     		=> "int(10) unsigned NOT NULL default '0'"
+            'sql'                       => "int(10) unsigned NOT NULL default '0'"
         ),
 		'sorting' => array
 		(
-			'sql'                     => "int(10) unsigned NOT NULL default '0'"
+            'sql'                       => "int(10) unsigned NOT NULL default '0'"
 		),
 		'alias' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_location']['alias'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['alias'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
 			'search'                  => true,
 			'eval'                    => array('unique'=>true, 'rgxp'=>'alias', 'doNotCopy'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
 			'save_callback' => array
 			(
-				array('Bcs\Backend\Locations', 'generateAlias')
+                array('Bcs\Backend\Listings', 'generateAlias')
 			),
 			'sql'                     => "varchar(128) COLLATE utf8_bin NOT NULL default ''"
-
 		),
 		'name' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_location']['name'],
-			'inputType'               => 'text',
-			'default'		  => '',
-			'search'                  => true,
-			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
-			'sql'                     => "varchar(255) NOT NULL default ''"
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['name'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
+		),
+        'city' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['name'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
+		),
+        'state' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['name'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
+		),
+        'country' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['name'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
 		'published' => array
 		(
 			'exclude'                 => true,
-			'label'                   => &$GLOBALS['TL_LANG']['tl_location']['published'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['published'],
 			'inputType'               => 'checkbox',
 			'eval'                    => array('submitOnChange'=>true, 'doNotCopy'=>true),
 			'sql'                     => "char(1) NOT NULL default ''"
