@@ -1,3 +1,13 @@
-<div class="mod_directory_list">
-  Hello World! Directory List Module
+<div class="<?= $this->class ?>" <?= $this->cssID ?>>
+  
+	<?php if (empty($this->listings)): ?>
+		<p class="empty">No Listings Found!</p>
+	<?php else: ?>
+
+		<?php foreach($this->listings as $listing): ?>
+			<?= implode('', $listing['listings']) ?>
+		<?php endforeach; ?>
+
+	<?php endif; ?>
+	
 </div>
