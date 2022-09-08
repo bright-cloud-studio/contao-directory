@@ -79,7 +79,7 @@ class DirectoryList extends \Contao\Module
 		
 		// Generate List
 		//while ($objListing->next())
-        foreach ($objListing as $objListing){
+        foreach ($objListing as $objListing)
 		{
 			$strStateKey = $objListing->state;
 			$strStateName = ($this->arrStates["United States"][$objListing->state] != '' ? $this->arrStates["United States"][$objListing->state] : $this->arrStates["Canada"][$objListing->state]);
