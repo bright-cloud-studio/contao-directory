@@ -11,7 +11,7 @@
  */
 
 /* Back end modules */
-$GLOBALS['TL_LANG']['MOD']['directory_list']    = array('Directory List', 'Displays Listings and the filters to customize them');
+$GLOBALS['TL_LANG']['MOD']['listings']          = array('Listings', 'Listings for the Directory');
 
 /* Front end modules */
-$GLOBALS['TL_LANG']['FMD']['listings']          = array('Listings', 'Listings for the Directory');
+$GLOBALS['TL_LANG']['FMD']['directory_list']    = array('Directory List', 'Displays Listings and the filters to customize them');
