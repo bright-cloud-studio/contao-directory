@@ -1,29 +1,29 @@
 <?php
 
 /**
- * Locations - Location Plugin for Contao
+ * Contao Directory - Users can make submissions to a directory with a module to display and filter the results.
  *
- * Copyright (C) 2018 Andrew Stevens
+ * Copyright (C) 2022 Bright Cloud Studio
  *
- * @package    asconsulting/locations
- * @link       http://andrewstevens.consulting
+ * @package    bright-cloud-studio/contao-directory
+ * @link       https://www.brightcloudstudio.com/
  * @license    http://opensource.org/licenses/lgpl-3.0.html
  */
 
   
-namespace Asc\Module;
+namespace Bcs\Module;
  
-use Asc\Model\Location;
-use Asc\Locations; 
+use Bcs\Model\Listing;
+use Bcs\Listings; 
  
-class LocationsList extends \Contao\Module
+class DirectoryList extends \Contao\Module
 {
  
     /**
      * Template
      * @var string
      */
-    protected $strTemplate = 'mod_locations_list';
+    protected $strTemplate = 'mod_directory_list';
  
 	protected $arrStates = array();
  
@@ -36,7 +36,7 @@ class LocationsList extends \Contao\Module
 	public function __construct($objModule, $strColumn='main')
 	{
 		parent::__construct($objModule, $strColumn);
-		$this->arrStates = Locations::getStates();
+		$this->arrStates = Listings::getStates();
 	}
 	
     /**
@@ -49,7 +49,7 @@ class LocationsList extends \Contao\Module
         {
             $objTemplate = new \BackendTemplate('be_wildcard');
  
-            $objTemplate->wildcard = '### ' . utf8_strtoupper($GLOBALS['TL_LANG']['FMD']['locations_list'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . utf8_strtoupper($GLOBALS['TL_LANG']['FMD']['directory_list'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
@@ -67,26 +67,26 @@ class LocationsList extends \Contao\Module
      */
     protected function compile()
     {
-		$objLocation = Location::findBy('published', '1');
+		$objListing = Listing::findBy('published', '1');
 		
-		if (!in_array('system/modules/locations/assets/js/locations.js', $GLOBALS['TL_JAVASCRIPT'])) { 
-			$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/locations/assets/js/locations.js';
-		}
+		//if (!in_array('system/modules/locations/assets/js/locations.js', $GLOBALS['TL_JAVASCRIPT'])) { 
+		//	$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/locations/assets/js/locations.js';
+		//}
 		
 		// Return if no pending items were found
-		if (!$objLocation)
+		if (!$objListing)
 		{
-			$this->Template->empty = 'No Locations Found';
+			$this->Template->empty = 'No Listings Found';
 			return;
 		}
 
 		$arrStates = array();
 		
 		// Generate List
-		while ($objLocation->next())
+		while ($objListing->next())
 		{
-			$strStateKey = $objLocation->state;
-			$strStateName = ($this->arrStates["United States"][$objLocation->state] != '' ? $this->arrStates["United States"][$objLocation->state] : $this->arrStates["Canada"][$objLocation->state]);
+			$strStateKey = $objListing->state;
+			$strStateName = ($this->arrStates["United States"][$objListing->state] != '' ? $this->arrStates["United States"][$objListing->state] : $this->arrStates["Canada"][$objListing->state]);
 			if (in_array($objLocation->state, array('AB','BC','MB','NB','NL','NS','NT','NU','ON','PE','QC','SK','YT'))) {
 				$strStateKey = 'CAN';
 				$strStateName = 'Canada - All Provinces';
@@ -95,47 +95,38 @@ class LocationsList extends \Contao\Module
 			if (!array_key_exists($strStateKey, $arrStates)) {
 				$arrStates[$strStateKey] = array(
 					"name" 			=> $strStateName,
-					'pid'			=> $objLocation->pid,
+					'pid'			=> $objListing->pid,
 					"abbr"			=> $strStateKey,
-					"locations"		=> array()
+					"listings"		=> array()
 				);
 			}
 			
-			$arrLocation = array(
-				'id'		=> $objLocation->id,
-				'pid'		=> $objLocation->pid,
-				'alias'		=> $objLocation->alias,
-				'tstamp'	=> $objLocation->tstamp,
-				'timetamp'	=> \Date::parse(\Config::get('datimFormat'), $objLocation->tstamp),
-				'published' => $objLocation->published
+			$objListing = array(
+				'id'		=> $objListing->id,
+				'pid'		=> $objListing->pid,
+				'alias'		=> $objListing->alias,
+				'tstamp'	=> $objListing->tstamp,
+				'timetamp'	=> \Date::parse(\Config::get('datimFormat'), $objListing->tstamp),
+				'published' => $objListing->published
 			);
 			
 			if ($this->jumpTo) {
 				$objTarget = $this->objModel->getRelated('jumpTo');
-				$arrLocation['link'] = $this->generateFrontendUrl($objTarget->row()) .'?alias=' .$objLocation->alias;
+				$arrListing['link'] = $this->generateFrontendUrl($objTarget->row()) .'?alias=' .$objListing->alias;
 			}
 			
 			//$this->Template->categories = \StringUtil::deserialize(YOUR_VARIABLE_HERE);
 			
-			$arrLocation['pid'] 			= \StringUtil::deserialize($objLocation->pid);
-			$arrLocation['name'] 			= $objLocation->name;
-			$arrLocation['contact_name']		= $objLocation->contact_name;
-			$arrLocation['contact_name_2']		= $objLocation->contact_name_2;
-			$arrLocation['contact_name_3']		= $objLocation->contact_name_3;
-			$arrLocation['address']	 		= $objLocation->address;
-			$arrLocation['address_2']	 	= $objLocation->address_2;
-			$arrLocation['city'] 			= $objLocation->city;
-			$arrLocation['state'] 			= $objLocation->state;
-			$arrLocation['zip'] 			= $objLocation->zip;
-			$arrLocation['listing_zip']		= $objLocation->listing_zip;
-			$arrLocation['country'] 		= $objLocation->country;
-			$arrLocation['phone'] 			= $objLocation->phone;
-			$arrLocation['url'] 			= $objLocation->url;
+			$arrListing['pid']                 = \StringUtil::deserialize($objListing->pid);
+			$arrListing['name']                = $objListing->name;
+			$arrListing['city']                = $objListing->city;
+			$arrListing['state']               = $objListing->state;
+			$arrListing['country']             = $objListing->country;
 
-			$strItemTemplate = ($this->locations_customItemTpl != '' ? $this->locations_customItemTpl : 'item_location');
+			$strItemTemplate = ($this->listings_customItemTpl != '' ? $this->listings_customItemTpl : 'item_listing');
 			$objTemplate = new \FrontendTemplate($strItemTemplate);
-			$objTemplate->setData($arrLocation);
-			$arrStates[$strStateKey]['locations'][] = $objTemplate->parse();
+			$objTemplate->setData($arrListing);
+			$arrStates[$strStateKey]['listings'][] = $objTemplate->parse();
 		}
 
 		$arrTemp = $arrStates;
@@ -153,7 +144,7 @@ class LocationsList extends \Contao\Module
 		$strUnitedStates = '<optgroup label="United States">';
 		$strCanada = '<optgroup label="Canada"><option value="CAN">All Provinces</option></optgroup>';
 		foreach ($this->arrStates['United States'] as $abbr => $state) {
-			if (!in_array($objLocation->state, array('AB','BC','MB','NB','NL','NS','NT','NU','ON','PE','QC','SK','YT'))) {
+			if (!in_array($objListing->state, array('AB','BC','MB','NB','NL','NS','NT','NU','ON','PE','QC','SK','YT'))) {
 				$strUnitedStates .= '<option value="' .$abbr .'">' .$state .'</option>';
 			}
 		}
