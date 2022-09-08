@@ -11,14 +11,14 @@
  */
 
 /* Add a palette to tl_module */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['directory_list'] 		= '{title_legend},name,headline,type;{template_legend:hide},customTpl,locations_customItemTpl;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['directory_list'] 		= '{title_legend},name,headline,type;{template_legend:hide},customTpl,listings_customItemTpl;{expert_legend:hide},guests,cssID,space';
 
-$GLOBALS['TL_DCA']['tl_module']['fields']['directory_listing'] = array
+$GLOBALS['TL_DCA']['tl_module']['fields']['listings_customItemTpl'] = array
 (
-	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['directory_listing'],
-	'exclude'                 => true,
-	'inputType'               => 'select',
-	'options_callback'        => array('Asc\Backend\Locations', 'getListingTemplates'),
-	'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
-	'sql'                     => "varchar(64) NOT NULL default ''"
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['customItemTpl'],
+    'exclude'                 => true,
+    'inputType'               => 'select',
+    'options_callback'        => array('Asc\Backend\ListingsBackend', 'getListingTemplates'),
+    'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
+    'sql'                     => "varchar(64) NOT NULL default ''"
 );
