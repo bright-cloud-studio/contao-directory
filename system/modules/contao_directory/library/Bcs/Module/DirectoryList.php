@@ -80,28 +80,37 @@ class DirectoryList extends \Contao\Module
 		
 		// Generate List
 		//while ($objListing->next())
-        foreach ($objListing as $objListing)
+        foreach ($objListing as $listing)
 		{
-			
+		    $strListingKey = $listing->name;
+		    
+		    if (!array_key_exists($strListingKey, $arrListings)) {
+				$arrListings[$strListingKey] = array(
+					"name" 			=> $listing->name,
+					"abbr"			=> 'tst',
+					"listings"		=> array()
+				);
+			}
+		    	
 			$objListing = array(
-				'id'		=> $objListing->id,
-				'pid'		=> $objListing->pid,
-				'alias'		=> $objListing->alias,
-				'tstamp'	=> $objListing->tstamp,
-				'timetamp'	=> \Date::parse(\Config::get('datimFormat'), $objListing->tstamp),
-				'published' => $objListing->published
+				'id'		=> $listing->id,
+				'pid'		=> $listing->pid,
+				'alias'		=> $listing->alias,
+				'tstamp'	=> $listing->tstamp,
+				'timetamp'	=> \Date::parse(\Config::get('datimFormat'), $listing->tstamp),
+				'published' => $listing->published
 			);
 			
-			$arrListing['pid']                 = \StringUtil::deserialize($objListing->pid);
-			$arrListing['name']                = $objListing->name;
-			$arrListing['city']                = $objListing->city;
-			$arrListing['state']               = $objListing->state;
-			$arrListing['country']             = $objListing->country;
+			$arrListing['pid']                 = \StringUtil::deserialize($listing->pid);
+			$arrListing['name']                = $listing->name;
+			$arrListing['city']                = $listing->city;
+			$arrListing['state']               = $listing->state;
+			$arrListing['country']             = $listing->state;
 
 			$strItemTemplate = ($this->listings_customItemTpl != '' ? $this->listings_customItemTpl : 'item_listing');
 			$objTemplate = new \FrontendTemplate($strItemTemplate);
 			$objTemplate->setData($arrListing);
-            $arrListings[$objListing->name][] = $objTemplate->parse();
+            $arrListings[$strListingKey]['listings'][] = $objTemplate->parse();
 		}
         
         $this->Template->listings = $arrListings;
