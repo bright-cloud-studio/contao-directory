@@ -1,30 +1,29 @@
 <?php
 
 /**
- * Locations - Location Plugin for Contao
+ * Contao Directory - Users can make submissions to a directory with a module to display and filter the results.
  *
- * Copyright (C) 2018 Andrew Stevens
+ * Copyright (C) 2022 Bright Cloud Studio
  *
- * @package    asconsulting/locations
- * @link       http://andrewstevens.consulting
+ * @package    bright-cloud-studio/contao-directory
+ * @link       https://www.brightcloudstudio.com/
  * @license    http://opensource.org/licenses/lgpl-3.0.html
  */
 
  
-namespace Asc\Backend;
+namespace Bcs\Backend;
 
 use Contao\DataContainer;
-use Asc\Model\Location;
+use Bcs\Model\Listing;
 
-class Locations extends \Backend
+class Listings extends \Backend
 {
 
 	public function getItemTemplates()
 	{
-		return $this->getTemplateGroup('item_location');
+		return $this->getTemplateGroup('item_listing');
 	}
 
-	
 	public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
 	{
 		if (strlen(\Input::get('tid')))
@@ -47,9 +46,9 @@ class Locations extends \Backend
 	public function toggleVisibility($intId, $blnVisible, DataContainer $dc=null)
 	{
 		// Trigger the save_callback
-		if (is_array($GLOBALS['TL_DCA']['tl_location']['fields']['published']['save_callback']))
+		if (is_array($GLOBALS['TL_DCA']['tl_listing']['fields']['published']['save_callback']))
 		{
-			foreach ($GLOBALS['TL_DCA']['tl_location']['fields']['published']['save_callback'] as $callback)
+			foreach ($GLOBALS['TL_DCA']['tl_listing']['fields']['published']['save_callback'] as $callback)
 			{
 				if (is_array($callback))
 				{
@@ -64,24 +63,22 @@ class Locations extends \Backend
 		}
 
 		// Update the database
-		$this->Database->prepare("UPDATE tl_location SET tstamp=". time() .", published='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
-					   ->execute($intId);
-
-		$this->log('A new version of record "tl_location.id='.$intId.'" has been created'.$this->getParentEntries('tl_location', $intId), __METHOD__, TL_GENERAL);
+		$this->Database->prepare("UPDATE tl_listing SET tstamp=". time() .", published='" . ($blnVisible ? 1 : '') . "' WHERE id=?")->execute($intId);
+		$this->log('A new version of record "tl_listing.id='.$intId.'" has been created'.$this->getParentEntries('tl_listing', $intId), __METHOD__, TL_GENERAL);
 	}
 	
-	public function exportLocations()
+	public function exportListings()
 	{
-		$objLocation = Location::findAll();
+		$objListing = Listing::findAll();
 		$strDelimiter = ',';
 	
-		if ($objLocation) {
-			$strFilename = "locations_" .(date('Y-m-d_Hi')) ."csv";
+		if ($objListing) {
+			$strFilename = "listings_" .(date('Y-m-d_Hi')) ."csv";
 			$tmpFile = fopen('php://memory', 'w');
 			
 			$count = 0;
-			while($objLocation->next()) {
-				$row = $objLocation->row();
+			while($objListing->next()) {
+				$row = $objListing->row();
 				if ($count == 0) {
 					$arrColumns = array();
 					foreach ($row as $key => $value) {
@@ -115,8 +112,7 @@ class Locations extends \Backend
 			$varValue = standardize(\StringUtil::restoreBasicEntities($dc->activeRecord->name));
 		}
 
-		$objAlias = $this->Database->prepare("SELECT id FROM tl_location WHERE id=? OR alias=?")
-								   ->execute($dc->id, $varValue);
+		$objAlias = $this->Database->prepare("SELECT id FROM tl_listing WHERE id=? OR alias=?")->execute($dc->id, $varValue);
 
 		// Check whether the page alias exists
 		if ($objAlias->numRows > 1)
@@ -209,25 +205,5 @@ class Locations extends \Backend
 				'SK' => 'Saskatchewan',
 				'YT' => 'Yukon')
 			);
-	}
-	
-	public function getCategories() { 
-		$cats = array();
-		$this->import('Database');
-		$result = $this->Database->prepare("SELECT * FROM tl_category WHERE published=1")->execute();
-		while($result->next())
-		{
-			$cats = $cats + array($result->id => $result->name);
-		}
-		return $cats;
-		
-		
-		#return array(
-		#	'1' => 'Onee',
-		#	'2' => 'Twoo',
-		#	'3' => 'Threee',
-		#	'4' => 'Fourr'
-		#);
-	}
-	
+	}	
 }
