@@ -78,34 +78,29 @@ class DirectoryList extends \Contao\Module
         $arrListings = array();
         
 		
-		// Generate List
-		//while ($objListing->next())
         foreach ($objListing as $listing)
 		{
-		    $strListingKey = $listing->name;
 		    
+		    // initialize
+		    $strListingKey = $listing->name;
 		    if (!array_key_exists($strListingKey, $arrListings)) {
 				$arrListings[$strListingKey] = array(
 					"name" 			=> $listing->name,
-					"abbr"			=> 'tst',
+					'id'		    => \StringUtil::deserialize($listing->id),
+    				'alias'		    => $listing->alias,
+    				'tstamp'	    => $listing->tstamp,
+    				'timetamp'	    => \Date::parse(\Config::get('datimFormat'), $listing->tstamp),
+    				'published'     => $listing->published,
 					"listings"		=> array()
 				);
 			}
-		    	
-			$objListing = array(
-				'id'		=> $listing->id,
-				'pid'		=> $listing->pid,
-				'alias'		=> $listing->alias,
-				'tstamp'	=> $listing->tstamp,
-				'timetamp'	=> \Date::parse(\Config::get('datimFormat'), $listing->tstamp),
-				'published' => $listing->published
-			);
-			
-			$arrListing['pid']                 = \StringUtil::deserialize($listing->pid);
-			$arrListing['name']                = $listing->name;
-			$arrListing['city']                = $listing->city;
-			$arrListing['state']               = $listing->state;
-			$arrListing['country']             = $listing->state;
+
+            // Set values for template
+			$arrListing['id']                   = $listing->id;
+			$arrListing['name']                 = $listing->name;
+			$arrListing['city']                 = $listing->city;
+			$arrListing['state']                = $listing->state;
+			$arrListing['country']              = $listing->country;
 
 			$strItemTemplate = ($this->listings_customItemTpl != '' ? $this->listings_customItemTpl : 'item_listing');
 			$objTemplate = new \FrontendTemplate($strItemTemplate);
