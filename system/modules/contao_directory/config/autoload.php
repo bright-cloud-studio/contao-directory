@@ -14,13 +14,13 @@
 ClassLoader::addClasses(array
 (
     // This is the front end module
-    'Bcs\Module\DirectoryList' 	=> 'system/modules/contao_directory/library/Bcs/Module/DirectoryList.php',
+    'Bcs\Module\DirectoryList'          => 'system/modules/contao_directory/library/Bcs/Module/DirectoryList.php',
     // The Listings section in the back end
-	'Bcs\Backend\Listings' 	    => 'system/modules/contao_directory/library/Bcs/Backend/ListingsBackend.php',
+	'Bcs\Backend\ListingsBackend' 	    => 'system/modules/contao_directory/library/Bcs/Backend/ListingsBackend.php',
     // The individual listings themselves
-	'Bcs\Model\Listing' 		=> 'system/modules/contao_directory/library/Bcs/Model/Listing.php',
+	'Bcs\Model\Listing'                 => 'system/modules/contao_directory/library/Bcs/Model/Listing.php',
     // contains functions for Listings class - possibly obsolete
-    'Bcs\Listings'		 		=> 'system/modules/contao_directory/library/Bcs/Listings.php'
+    'Bcs\Listings'                      => 'system/modules/contao_directory/library/Bcs/Listings.php'
 ));
 
 /* Register the templates */
