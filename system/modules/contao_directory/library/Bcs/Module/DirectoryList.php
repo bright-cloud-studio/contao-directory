@@ -111,5 +111,4 @@ class DirectoryList extends \Contao\Module
         $this->Template->listings = $arrListings;
 
 	}
-
 } 
