@@ -35,7 +35,7 @@ class DirectoryList extends \Contao\Module
 	public function __construct($objModule, $strColumn='main')
 	{
 		parent::__construct($objModule, $strColumn);
-		$this->arrStates = getStates();
+		$this->arrStates = $this->getStates();
 	}
 	
     /**
