@@ -68,10 +68,6 @@ class DirectoryList extends \Contao\Module
     {
 		$objListing = Listing::findBy('published', '1');
 		
-		//if (!in_array('system/modules/locations/assets/js/locations.js', $GLOBALS['TL_JAVASCRIPT'])) { 
-		//	$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/locations/assets/js/locations.js';
-		//}
-		
 		// Return if no pending items were found
 		if (!$objListing)
 		{
