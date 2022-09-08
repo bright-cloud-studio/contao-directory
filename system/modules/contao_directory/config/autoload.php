@@ -18,9 +18,7 @@ ClassLoader::addClasses(array
     // The Listings section in the back end
 	'Bcs\Backend\ListingsBackend' 	    => 'system/modules/contao_directory/library/Bcs/Backend/ListingsBackend.php',
     // The individual listings themselves
-	'Bcs\Model\Listing'                 => 'system/modules/contao_directory/library/Bcs/Model/Listing.php',
-    // contains functions for Listings class - possibly obsolete
-    'Bcs\Listings'                      => 'system/modules/contao_directory/library/Bcs/Listings.php'
+	'Bcs\Model\Listing'                 => 'system/modules/contao_directory/library/Bcs/Model/Listing.php'
 ));
 
 /* Register the templates */
