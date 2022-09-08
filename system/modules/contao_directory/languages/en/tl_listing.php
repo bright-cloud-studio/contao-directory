@@ -14,27 +14,24 @@
 /**
  * Legends
  */
-$GLOBALS['TL_LANG']['tl_location']['location_legend'] 	= 'Rep Name Fields';
-$GLOBALS['TL_LANG']['tl_location']['address_legend'] 	= 'Red Address Fields';
-$GLOBALS['TL_LANG']['tl_location']['website_legend'] 	= 'Rep Website Details';
-$GLOBALS['TL_LANG']['tl_location']['publish_legend'] 	= 'Publish';
+$GLOBALS['TL_LANG']['tl_listing']['listing_legend']             = 'Listing Main Fields';
+$GLOBALS['TL_LANG']['tl_listing']['address_legend']             = 'Listing Address Fields';
+$GLOBALS['TL_LANG']['tl_listing']['publish_legend']             = 'Publish';
 
 /* System Fields */
-$GLOBALS['TL_LANG']['tl_location']['alias'] 			           = array('Alias', 'Auto-generated alias.');
-$GLOBALS['TL_LANG']['tl_location']['published'] 		        = array('Published', 'Show this record on the front end.');
+$GLOBALS['TL_LANG']['tl_listing']['alias']                      = array('Alias', 'Auto-generated alias.');
+$GLOBALS['TL_LANG']['tl_listing']['published']                  = array('Published', 'Show this record on the front end.');
 
 /* Lamvin Unique Fields */
-$GLOBALS['TL_LANG']['tl_location']['name'] 			           	= array('Rep Name', 'Enter the "REP NAME" table field here');
-$GLOBALS['TL_LANG']['tl_location']['contact_name'] 	     	= array('Contact Name', 'Enter the "CONTACT NAME" table field here');
-$GLOBALS['TL_LANG']['tl_location']['phone']        		    	= array('Phone', 'Enter the "PHONE" table field here');
-$GLOBALS['TL_LANG']['tl_location']['url'] 			            	= array('Website', 'Enter the "WEBSITE" table field here');
-$GLOBALS['TL_LANG']['tl_location']['territory_notes'] 				= array('Territory Notes', 'Enter the "TERRITORY NOTES" table field here');
-$GLOBALS['TL_LANG']['tl_location']['zip'] 	              	= array('ZIP Codes', 'Enter the "ZIP CODES" table field here');
+$GLOBALS['TL_LANG']['tl_listing']['name']                       = array('Listing Name', 'Enter the name of the listing');
+$GLOBALS['TL_LANG']['tl_listing']['city']                       = array('Listing City', 'Enter the city of the listing');
+$GLOBALS['TL_LANG']['tl_listing']['state']                      = array('Listing State', 'Enter the state of the listing');
+$GLOBALS['TL_LANG']['tl_listing']['country']                    = array('Listing Countru', 'Enter the country of the listing');
 
  /* Buttons */
-$GLOBALS['TL_LANG']['tl_location']['new']   		 	= array('New record', 'Add a new record');
-$GLOBALS['TL_LANG']['tl_location']['show']  		 	= array('Record details', 'Show the details of record ID %s');
-$GLOBALS['TL_LANG']['tl_location']['edit']  		 	= array('Edit record', 'Edit record ID %s');
-$GLOBALS['TL_LANG']['tl_location']['copy']  		 	= array('Copy record', 'Copy record ID %s');
-$GLOBALS['TL_LANG']['tl_location']['delete'] 			= array('Delete record', 'Delete record ID %s');
-$GLOBALS['TL_LANG']['tl_location']['toggle'] 			= array('Toggle record', 'Toggle record ID %s');
+$GLOBALS['TL_LANG']['tl_listing']['new']                        = array('New record', 'Add a new record');
+$GLOBALS['TL_LANG']['tl_listing']['show']                       = array('Record details', 'Show the details of record ID %s');
+$GLOBALS['TL_LANG']['tl_listing']['edit']                       = array('Edit record', 'Edit record ID %s');
+$GLOBALS['TL_LANG']['tl_listing']['copy']                       = array('Copy record', 'Copy record ID %s');
+$GLOBALS['TL_LANG']['tl_listing']['delete']                     = array('Delete record', 'Delete record ID %s');
+$GLOBALS['TL_LANG']['tl_listing']['toggle']                     = array('Toggle record', 'Toggle record ID %s');
