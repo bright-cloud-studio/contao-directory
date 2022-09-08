@@ -145,7 +145,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 		),
         'city' => array
 		(
-			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['name'],
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['city'],
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
@@ -154,7 +154,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 		),
         'state' => array
 		(
-			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['name'],
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['state'],
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
@@ -163,7 +163,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 		),
         'country' => array
 		(
-			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['name'],
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['country'],
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
