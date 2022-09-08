@@ -18,7 +18,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['listings_customItemTpl'] = array
     'label'                   => &$GLOBALS['TL_LANG']['tl_module']['customItemTpl'],
     'exclude'                 => true,
     'inputType'               => 'select',
-    'options_callback'        => array('Bcs\Backend\ListingsBackend', 'getListingTemplates'),
+    'options_callback'        => array('Bcs\Backend\ListingsBackend', 'getItemTemplates'),
     'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
     'sql'                     => "varchar(64) NOT NULL default ''"
 );
