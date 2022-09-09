@@ -25,7 +25,7 @@ $GLOBALS['TL_LANG']['tl_listing']['alias']                      = array('Alias',
 $GLOBALS['TL_LANG']['tl_listing']['published']                  = array('Published', 'Show this record on the front end.');
 
 /* Approved Details */
-$GLOBALS['TL_LANG']['tl_listing']['internal_legend']            = 'Approved Status';
+$GLOBALS['TL_LANG']['tl_listing']['approved_legend']            = 'Approved Status';
 $GLOBALS['TL_LANG']['tl_listing']['approved']                   = array('Approved', 'Select if this listing is Approved and live on the site');
 
 /* Main Details */
