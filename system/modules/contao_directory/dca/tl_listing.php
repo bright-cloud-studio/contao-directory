@@ -136,6 +136,8 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
                 )
         ),
         
+        
+        
         'approved' => array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['approved'],
@@ -144,6 +146,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''"
         ),
+        
         
         
 		'first_name' => array
@@ -161,7 +164,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50 clr'),
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         'photo' => array
@@ -171,7 +174,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'default'                   => '',
             'search'                    => true,
             'eval'                      => [
-                                            'tl_class' => 'long',
+                                            'tl_class' => 'long clr',
                                             'fieldType' => 'radio', 
                                             'filesOnly' => true
                                         ],
@@ -196,7 +199,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50 clr'),
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         'country' => array
@@ -205,7 +208,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50 clr'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         
