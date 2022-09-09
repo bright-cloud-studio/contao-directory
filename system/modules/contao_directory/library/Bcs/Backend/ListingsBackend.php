@@ -128,9 +128,9 @@ class ListingsBackend extends \Backend
 		return $varValue;
 	}
 	
-	public function getProfessions() {
-		return array(
-			'psy_adult' => 'Psychiatrist, adult',
+    public function getProfessions() {
+        return array(
+            'psy_adult' => 'Psychiatrist, adult',
             'psy_child' => 'Psychiatrist, child and adolescent',
             'psy_nurse' => 'Psychiatric, Nurse Practitioner',
             'psy' => 'Psychologist',
@@ -150,7 +150,17 @@ class ListingsBackend extends \Backend
             'n_p' => 'Peer Support Specialist',
             'n_p' => 'Food Addiction Specialist',
             'n_p' => 'Obesity Medicine Specialist'
-            
-			);
-	}	
+        );
+    }
+    
+    public function getDateCreated() {
+       $todaysDate = date("Y/m/d");
+        return $todaysDate;
+    }
+    
+    public function getDateApproved() {
+        $todaysDate = date("Y/m/d");
+        return $todaysDate;
+    }
+    
 }
