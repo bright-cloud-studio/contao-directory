@@ -233,6 +233,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 		),
         'remote_consultations' => array
 		(
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['remote_consultation'],
             'inputType'                 => 'radio',
             'options'                   => array('yes' => 'Yes', 'no' => 'No'),
             'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
@@ -241,7 +242,8 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         'training_program' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['training_program'],
-			'options'                   => array('yes' => 'Yes', 'no' => 'No'),
+			'inputType'                 => 'radio',
+            'options'                   => array('yes' => 'Yes', 'no' => 'No'),
             'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''"
 		),
@@ -309,14 +311,16 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         'provide_mms' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['provide_mms'],
-			'options'                   => array('yes' => 'Yes', 'no' => 'No'),
+			'inputType'                 => 'radio',
+            'options'                   => array('yes' => 'Yes', 'no' => 'No'),
             'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''"
 		),
         'provide_cas' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['provide_cas'],
-			'options'                   => array('yes' => 'Yes', 'no' => 'No'),
+			'inputType'                 => 'radio',
+            'options'                   => array('yes' => 'Yes', 'no' => 'No'),
             'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''"
 		),
