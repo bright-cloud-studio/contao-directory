@@ -36,14 +36,15 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         'sorting' => array
         (
             'mode'                    => 1,
-            'fields'                  => array('last_name', 'first_name'),
-            'flag'                    => 1,
-            'panelLayout'             => 'filter;search,limit'
+            'panelLayout'             => 'filter;search,limit,sort',
+            'fields'                  => array('reviewed','country'),
+            'flag'                    => 12,
+            
         ),
         'label' => array
         (
-            'fields'                  => array('country', 'first_name', 'last_name'),
-            'format'                  => '%s (%s %s)'
+            'fields'                  => array('reviewed', 'country', 'state', 'first_name', 'last_name'),
+            'format'                  => '<span class="%s"><span style="font-weight: bold;">Country: %s</span> <span style="font-weight: bold;">State: %s</span> <span style="font-weight: bold;">Name: %s %s</span></span>'
         ),
         'global_operations' => array
         (
@@ -103,7 +104,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                       => '{listing_legend},first_name,last_name;{address_legend},city,state,country;{details_legend},credentials,profession;{publish_legend},published;'
+        'default'                       => '{listing_legend},first_name,last_name,photo;{address_legend},city,state,country;{details_legend},credentials,profession,remote_consultations,training_program,describe_practice,specific_services;{specialties_legend},specialties_1,specialties_2,specialties_3,specialties_4;{provide_legend},provide_mms,provide_cas;{contact_legend},how_to_contact,contact_details;{internal_legend},internal_notes,date_created,date_approved,approved;{publish_legend},published;'
     ),
  
     // Fields
@@ -369,11 +370,24 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             ),
             'sql'                       => "varchar(128) COLLATE utf8_bin NOT NULL default ''"
 		),
-        'reviewed' => array
+        'date_approved' => array
+		(
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['date_approved'],
+            'exclude'                   => true,
+            'inputType'                 => 'text',
+            'search'                    => true,
+            'eval'                      => array('unique'=>true, 'rgxp'=>'date', 'doNotCopy'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
+            'save_callback' => array
+            (
+                array('Bcs\Backend\ListingsBackend', 'getDateApproved')
+            ),
+            'sql'                       => "varchar(128) COLLATE utf8_bin NOT NULL default ''"
+		),
+        'approved' => array
         (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['reviewed'],
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['approved'],
             'inputType'                 => 'select',
-            'options'                   => array('reviewed' => 'Reviewed', 'unreviewed' => 'Unreviewed'),
+            'options'                   => array('approved' => 'Approved', 'unapproved' => 'Unapproved'),
             'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''"
         ),
