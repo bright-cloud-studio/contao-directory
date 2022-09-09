@@ -190,12 +190,10 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         'profession' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['profession'],
-			'inputType'                 => 'text',
-			'default'                   => '',
+			'inputType'                 => 'checkbox',
             'options_callback'          => array('Bcs\Backend\ListingsBackend', 'getProfessions'),
-			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
-			'sql'                       => "varchar(255) NOT NULL default ''"
+			'eval'                      => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'w50'),
+			'sql'                       => ['type' => 'blob']
 		),
 		'published' => array
 		(
