@@ -134,6 +134,10 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			),
 			'sql'                     => "varchar(128) COLLATE utf8_bin NOT NULL default ''"
 		),
+        
+        
+        
+        
 		'first_name' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['first_name'],
@@ -152,6 +156,10 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
+        
+        
+        
+        
         'city' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['city'],
@@ -179,9 +187,13 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
+        
+        
+        
+        
         'credentials' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_quote_request']['credentials'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['credentials'],
             'inputType'               => 'select',
             'options'                 => array('md' => 'MD', 'rd' => 'RD', 'np' => 'NP', 'rn' => 'RN', 'licsw' => 'LICSW'),
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
@@ -195,13 +207,187 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'eval'                      => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'w50'),
 			'sql'                       => ['type' => 'blob']
 		),
+        'remote_consultations' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['remote_consultations'],
+			'inputType'                 => 'checkbox',
+			'eval'                      => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'w50'),
+			'sql'                       => ['type' => 'boolean', 'default' => false],
+		),
+        'training_program' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['training_program'],
+			'inputType'                 => 'checkbox',
+			'eval'                      => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'w50'),
+			'sql'                       => ['type' => 'boolean', 'default' => false],
+		),
+        
+        
+        
+        
+        'specialties_1' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['specialties_1'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
+		),
+        'specialties_2' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['specialties_2'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
+		),
+        'specialties_3' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['specialties_3'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
+		),
+        'specialties_4' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['specialties_4'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
+		),
+        
+        
+        
+        
+        'describe_practice' => array
+        (
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['describe_practice'],
+            'inputType'                 => 'textarea',
+            'default'                   => '',
+            'search'                    => true,
+            'eval'                      => array('tl_class'=>'clr'),
+            'sql'                       => "varchar(255) NOT NULL default ''"
+        ),
+        
+        
+        
+        
+        'provide_mms' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['provide_mms'],
+			'inputType'                 => 'checkbox',
+			'eval'                      => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'w50'),
+			'sql'                       => ['type' => 'boolean', 'default' => false],
+		),
+        'provide_cas' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['provide_cas'],
+			'inputType'                 => 'checkbox',
+			'eval'                      => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'w50'),
+			'sql'                       => ['type' => 'boolean', 'default' => false],
+		),
+        
+        
+        
+        
+        'how_to_contact' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['how_to_contact'],
+            'inputType'               => 'select',
+            'options'                 => array('o_a' => 'Office Address',  'ph' => 'Phone',  'em' => 'Email',  'ws' => 'Website'),
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''"
+        ),
+        'contact_details' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['contact_details'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
+		),
+        
+        
+        
+        
+        'specific_services' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['specific_services'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
+		),
+        
+        
+        
+        
+        'photo' => array
+		(
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['photo'],
+            'inputType'                 => 'fileTree',
+            'default'                   => '',
+            'search'                    => true,
+            'eval'                      => [
+                                            'tl_class' => 'long',
+                                            'fieldType' => 'radio', 
+                                            'filesOnly' => true
+                                        ],
+            'sql'                       => ['type' => 'binary', 'length' => 16, 'notnull' => false, 'fixed' => true]
+		),
+        
+        
+        
+        
+        'internal_notes' => array
+        (
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['internal_notes'],
+            'inputType'                 => 'textarea',
+            'default'                   => '',
+            'search'                    => true,
+            'eval'                      => array('tl_class'=>'clr'),
+            'sql'                       => "varchar(255) NOT NULL default ''"
+        ),
+        'date_created' => array
+		(
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['date_created'],
+            'exclude'                   => true,
+            'inputType'                 => 'text',
+            'search'                    => true,
+            'eval'                      => array('unique'=>true, 'rgxp'=>'date', 'doNotCopy'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
+            'save_callback' => array
+            (
+                array('Bcs\Backend\ListingsBackend', 'getDateCreated')
+            ),
+            'sql'                       => "varchar(128) COLLATE utf8_bin NOT NULL default ''"
+		),
+        'reviewed' => array
+        (
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['reviewed'],
+            'inputType'                 => 'select',
+            'options'                   => array('reviewed' => 'Reviewed', 'unreviewed' => 'Unreviewed'),
+            'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                       => "varchar(32) NOT NULL default ''"
+        ),
+
+        
+        
+        
 		'published' => array
 		(
-			'exclude'                 => true,
-			'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['published'],
-			'inputType'               => 'checkbox',
-			'eval'                    => array('submitOnChange'=>true, 'doNotCopy'=>true),
-			'sql'                     => "char(1) NOT NULL default ''"
+			'exclude'                   => true,
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['published'],
+			'inputType'                 => 'checkbox',
+			'eval'                      => array('submitOnChange'=>true, 'doNotCopy'=>true),
+			'sql'                       => "char(1) NOT NULL default ''"
 		)		
     )
 );
