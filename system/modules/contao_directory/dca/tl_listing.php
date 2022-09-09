@@ -154,8 +154,21 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50 clr'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
+		),
+        'photo' => array
+		(
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['photo'],
+            'inputType'                 => 'fileTree',
+            'default'                   => '',
+            'search'                    => true,
+            'eval'                      => [
+                                            'tl_class' => 'long',
+                                            'fieldType' => 'radio', 
+                                            'filesOnly' => true
+                                        ],
+            'sql'                       => ['type' => 'binary', 'length' => 16, 'notnull' => false, 'fixed' => true]
 		),
         
         
@@ -176,7 +189,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50 clr'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         'country' => array
@@ -327,25 +340,6 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
-        
-        
-        
-        
-        'photo' => array
-		(
-            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['photo'],
-            'inputType'                 => 'fileTree',
-            'default'                   => '',
-            'search'                    => true,
-            'eval'                      => [
-                                            'tl_class' => 'long',
-                                            'fieldType' => 'radio', 
-                                            'filesOnly' => true
-                                        ],
-            'sql'                       => ['type' => 'binary', 'length' => 16, 'notnull' => false, 'fixed' => true]
-		),
-        
-        
         
         
         'internal_notes' => array
