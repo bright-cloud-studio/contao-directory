@@ -233,17 +233,35 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 		),
         'remote_consultations' => array
 		(
-			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['remote_consultations'],
-			'inputType'                 => 'checkbox',
-			'eval'                      => array('mandatory'=>true, 'multiple'=>false, 'tl_class'=>'w50'),
-			'sql'                       => ['type' => 'boolean', 'default' => false],
+            'inputType'                 => 'radio',
+            'options'                   => array('yes' => 'Yes', 'no' => 'No'),
+            'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                       => "varchar(32) NOT NULL default ''"
 		),
         'training_program' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['training_program'],
-			'inputType'                 => 'checkbox',
-			'eval'                      => array('mandatory'=>true, 'multiple'=>false, 'tl_class'=>'w50'),
-			'sql'                       => ['type' => 'boolean', 'default' => false],
+			'options'                   => array('yes' => 'Yes', 'no' => 'No'),
+            'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                       => "varchar(32) NOT NULL default ''"
+		),
+        'describe_practice' => array
+        (
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['describe_practice'],
+            'inputType'                 => 'textarea',
+            'default'                   => '',
+            'search'                    => true,
+            'eval'                      => array('tl_class'=>'clr'),
+            'sql'                       => "varchar(255) NOT NULL default ''"
+        ),
+        'specific_services' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['specific_services'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         
         
@@ -288,33 +306,19 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         
         
         
-        
-        'describe_practice' => array
-        (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['describe_practice'],
-            'inputType'                 => 'textarea',
-            'default'                   => '',
-            'search'                    => true,
-            'eval'                      => array('tl_class'=>'clr'),
-            'sql'                       => "varchar(255) NOT NULL default ''"
-        ),
-        
-        
-        
-        
         'provide_mms' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['provide_mms'],
-			'inputType'                 => 'checkbox',
-			'eval'                      => array('mandatory'=>true, 'multiple'=>false, 'tl_class'=>'w50'),
-			'sql'                       => ['type' => 'boolean', 'default' => false],
+			'options'                   => array('yes' => 'Yes', 'no' => 'No'),
+            'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                       => "varchar(32) NOT NULL default ''"
 		),
         'provide_cas' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['provide_cas'],
-			'inputType'                 => 'checkbox',
-			'eval'                      => array('mandatory'=>true, 'multiple'=>false, 'tl_class'=>'w50'),
-			'sql'                       => ['type' => 'boolean', 'default' => false],
+			'options'                   => array('yes' => 'Yes', 'no' => 'No'),
+            'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                       => "varchar(32) NOT NULL default ''"
 		),
         
         
@@ -339,17 +343,6 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 		),
         
         
-        
-        
-        'specific_services' => array
-		(
-			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['specific_services'],
-			'inputType'                 => 'text',
-			'default'                   => '',
-			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
-			'sql'                       => "varchar(255) NOT NULL default ''"
-		),
         
         
         'internal_notes' => array
