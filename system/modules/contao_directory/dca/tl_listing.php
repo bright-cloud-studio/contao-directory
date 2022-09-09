@@ -44,7 +44,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         'label' => array
         (
             'fields'                  => array('approved', 'country', 'state', 'first_name', 'last_name'),
-            'format'                  => '<span class="%s"><span style="font-weight: bold;">Country: %s</span> <span style="font-weight: bold;">State: %s</span> <span style="font-weight: bold;">Name: %s %s</span></span>'
+            'format'                  => '<span class="%s"><span style="font-weight: bold;">Country: </span>%s <span style="font-weight: bold;">State: </span>%s <span style="font-weight: bold;">Name: </span>%s %s</span>'
         ),
         'global_operations' => array
         (
