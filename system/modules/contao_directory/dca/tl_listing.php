@@ -134,15 +134,32 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			),
 			'sql'                     => "varchar(128) COLLATE utf8_bin NOT NULL default ''"
 		),
-		'name' => array
+		'first_name' => array
 		(
-			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['name'],
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['first_name'],
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
 			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
+        'last_name' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['last_name'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
+		),
+        'credentials' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_quote_request']['credentials'],
+            'inputType'               => 'select',
+            'options'                 => array('md' => 'MD', 'rd' => 'RD', 'np' => 'NP', 'rn' => 'RN', 'licsw' => 'LICSW'),
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''"
+        ),
         'city' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['city'],
@@ -166,6 +183,16 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['country'],
 			'inputType'                 => 'text',
 			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
+		),
+        'profession' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['profession'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+            'options_callback'          => array('Bcs\Backend\ListingsBackend', 'getProfessions'),
 			'search'                    => true,
 			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
