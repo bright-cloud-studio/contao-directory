@@ -103,7 +103,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{listing_legend},first_name,last_name;{address_legend},city,state,country;{details_legend},credentials,profession;{publish_legend},published;'
+        'default'                       => '{listing_legend},first_name,last_name;{address_legend},city,state,country;{details_legend},credentials,profession;{publish_legend},published;'
     ),
  
     // Fields
@@ -113,27 +113,27 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         (
             'sql'                       => "int(10) unsigned NOT NULL auto_increment"
         ),
-        'tstamp' => array
+            'tstamp' => array
         (
             'sql'                       => "int(10) unsigned NOT NULL default '0'"
         ),
-		'sorting' => array
-		(
+            'sorting' => array
+        (
             'sql'                       => "int(10) unsigned NOT NULL default '0'"
-		),
-		'alias' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['alias'],
-			'exclude'                 => true,
-			'inputType'               => 'text',
-			'search'                  => true,
-			'eval'                    => array('unique'=>true, 'rgxp'=>'alias', 'doNotCopy'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
-			'save_callback' => array
-			(
-                array('Bcs\Backend\ListingsBackend', 'generateAlias')
-			),
-			'sql'                     => "varchar(128) COLLATE utf8_bin NOT NULL default ''"
-		),
+        ),
+            'alias' => array
+        (
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['alias'],
+            'exclude'                   => true,
+            'inputType'                 => 'text',
+            'search'                    => true,
+            'eval'                      => array('unique'=>true, 'rgxp'=>'alias', 'doNotCopy'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
+            'sql'                       => "varchar(128) COLLATE utf8_bin NOT NULL default ''",
+            'save_callback' => array
+                (
+                    array('Bcs\Backend\ListingsBackend', 'generateAlias')
+                )
+        ),
         
         
         
