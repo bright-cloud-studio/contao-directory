@@ -36,14 +36,14 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         'sorting' => array
         (
             'mode'                    => 1,
-            'fields'                  => array('name'),
+            'fields'                  => array('last_name', 'first_name'),
             'flag'                    => 1,
             'panelLayout'             => 'filter;search,limit'
         ),
         'label' => array
         (
-            'fields'                  => array('name', 'city', 'state'),
-            'format'                  => '%s (%s, %s)'
+            'fields'                  => array('country', 'first_name', 'last_name'),
+            'format'                  => '%s (%s %s)'
         ),
         'global_operations' => array
         (
@@ -85,12 +85,12 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
                 'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
             ),
             'toggle' => array
-		(
-			'label'               => &$GLOBALS['TL_LANG']['tl_listing']['toggle'],
-			'icon'                => 'visible.gif',
-			'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
-			'button_callback'     => array('Bcs\Backend\ListingsBackend', 'toggleIcon')
-		),
+            (
+                'label'               => &$GLOBALS['TL_LANG']['tl_listing']['toggle'],
+                'icon'                => 'visible.gif',
+                'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
+                'button_callback'     => array('Bcs\Backend\ListingsBackend', 'toggleIcon')
+            ),
             'show' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_listing']['show'],
@@ -103,7 +103,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{listing_legend},name;{address_legend},city,state,country;{publish_legend},published;'
+        'default'                     => '{listing_legend},first_name,last_name;{address_legend},city,state,country;{details_legend},credentials,profession;{publish_legend},published;'
     ),
  
     // Fields
@@ -152,14 +152,6 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
-        'credentials' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_quote_request']['credentials'],
-            'inputType'               => 'select',
-            'options'                 => array('md' => 'MD', 'rd' => 'RD', 'np' => 'NP', 'rn' => 'RN', 'licsw' => 'LICSW'),
-            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(32) NOT NULL default ''"
-        ),
         'city' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['city'],
@@ -187,6 +179,14 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
+        'credentials' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_quote_request']['credentials'],
+            'inputType'               => 'select',
+            'options'                 => array('md' => 'MD', 'rd' => 'RD', 'np' => 'NP', 'rn' => 'RN', 'licsw' => 'LICSW'),
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''"
+        ),
         'profession' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['profession'],
