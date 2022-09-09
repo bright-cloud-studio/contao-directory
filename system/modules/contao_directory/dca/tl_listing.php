@@ -235,14 +235,14 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['remote_consultations'],
 			'inputType'                 => 'checkbox',
-			'eval'                      => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>true, 'multiple'=>false, 'tl_class'=>'w50'),
 			'sql'                       => ['type' => 'boolean', 'default' => false],
 		),
         'training_program' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['training_program'],
 			'inputType'                 => 'checkbox',
-			'eval'                      => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>true, 'multiple'=>false, 'tl_class'=>'w50'),
 			'sql'                       => ['type' => 'boolean', 'default' => false],
 		),
         
@@ -306,14 +306,14 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['provide_mms'],
 			'inputType'                 => 'checkbox',
-			'eval'                      => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>true, 'multiple'=>false, 'tl_class'=>'w50'),
 			'sql'                       => ['type' => 'boolean', 'default' => false],
 		),
         'provide_cas' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['provide_cas'],
 			'inputType'                 => 'checkbox',
-			'eval'                      => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>true, 'multiple'=>false, 'tl_class'=>'w50'),
 			'sql'                       => ['type' => 'boolean', 'default' => false],
 		),
         
