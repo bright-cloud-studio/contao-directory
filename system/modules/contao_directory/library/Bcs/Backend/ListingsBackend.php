@@ -141,7 +141,16 @@ class ListingsBackend extends \Backend
             'm_n_p' => 'Medical Nurse Practitioner',
             'f_p' => 'Family Physician',
             'i_m_p' => 'Internal Medicine Physician',
-            'n_p' => 'Naturopathic Physician'
+            'n_p' => 'Naturopathic Physician',
+            'n_p' => 'Physician Assistant',
+            'n_p' => 'Registered Nurse',
+            'n_p' => 'Registered Dietitian',
+            'n_p' => 'Nutrition Therapist',
+            'n_p' => 'Neurologist',
+            'n_p' => 'Peer Support Specialist',
+            'n_p' => 'Food Addiction Specialist',
+            'n_p' => 'Obesity Medicine Specialist'
+            
 			);
 	}	
 }
