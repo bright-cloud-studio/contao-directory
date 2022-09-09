@@ -37,13 +37,13 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         (
             'mode'                    => 1,
             'panelLayout'             => 'filter;search,limit,sort',
-            'fields'                  => array('reviewed','country'),
+            'fields'                  => array('approved','country'),
             'flag'                    => 12,
             
         ),
         'label' => array
         (
-            'fields'                  => array('reviewed', 'country', 'state', 'first_name', 'last_name'),
+            'fields'                  => array('approved', 'country', 'state', 'first_name', 'last_name'),
             'format'                  => '<span class="%s"><span style="font-weight: bold;">Country: %s</span> <span style="font-weight: bold;">State: %s</span> <span style="font-weight: bold;">Name: %s %s</span></span>'
         ),
         'global_operations' => array
