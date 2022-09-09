@@ -104,7 +104,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                       => '{listing_legend},first_name,last_name,photo;{address_legend},city,state,country;{details_legend},credentials,profession,remote_consultations,training_program,describe_practice,specific_services;{specialties_legend},specialties_1,specialties_2,specialties_3,specialties_4;{provide_legend},provide_mms,provide_cas;{contact_legend},how_to_contact,contact_details;{internal_legend},internal_notes,date_created,date_approved,approved;{publish_legend},published;'
+        'default'                       => '{approved_legend},approved;{listing_legend},first_name,last_name,photo;{address_legend},city,state,country;{details_legend},credentials,profession,remote_consultations,training_program,describe_practice,specific_services;{specialties_legend},specialties_1,specialties_2,specialties_3,specialties_4;{provide_legend},provide_mms,provide_cas;{contact_legend},how_to_contact,contact_details;{internal_legend},internal_notes,date_created,date_approved;{publish_legend},published;'
     ),
  
     // Fields
@@ -136,7 +136,14 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
                 )
         ),
         
-        
+        'approved' => array
+        (
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['approved'],
+            'inputType'                 => 'select',
+            'options'                   => array('approved' => 'Approved', 'unapproved' => 'Unapproved'),
+            'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                       => "varchar(32) NOT NULL default ''"
+        ),
         
         
 		'first_name' => array
@@ -377,14 +384,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             ),
             'sql'                       => "varchar(128) COLLATE utf8_bin NOT NULL default ''"
 		),
-        'approved' => array
-        (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['approved'],
-            'inputType'                 => 'select',
-            'options'                   => array('approved' => 'Approved', 'unapproved' => 'Unapproved'),
-            'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
-            'sql'                       => "varchar(32) NOT NULL default ''"
-        ),
+        
 
         
         
