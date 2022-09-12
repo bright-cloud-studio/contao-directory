@@ -10,31 +10,37 @@ $(document).ready(function() {
     // Filter by Country
     $( ".filter_country" ).change(function() {
         console.log("Changed: Country");
+        filterListings();
     });
 
     // Filter by State
     $( ".filter_state" ).change(function() {
         console.log("Changed: State");
+        filterListings();
     });
 
     // Filer by Professions
     $( ".filter_professions" ).change(function() {
         console.log("Changed: Professions");
+        filterListings();
     });
 
     // Filter by Remote Consultation
     $( ".filter_rc" ).change(function() {
         console.log("Changed: Remote Consultation");
+        filterListings();
     });
 
     // Filter by Medication Management
     $( ".filter_mm" ).change(function() {
         console.log("Changed: Medication Management");
+        filterListings();
     });
 
     // Filter by Child/Adolescence Services
     $( ".filter_cs" ).change(function() {
         console.log("Changed: Child/Adolescence Services");
+        filterListings();
     });
 
 });
