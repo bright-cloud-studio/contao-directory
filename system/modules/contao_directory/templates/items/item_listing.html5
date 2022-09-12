@@ -1,6 +1,40 @@
 <div class="item_listing listing_<?= $this->id ?>" id="item_listing listing_<?= $this->id ?>">
-	<p><strong>Name: </strong> <?= $this->name ?></p>
+	
+	<p><img src="<?= \FilesModel::findByUuid($this->photo)->path ?>"></p>
+	<p><strong>First Name: </strong> <?= $this->first_name ?></p>
+	<p><strong>Last Name: </strong> <?= $this->last_name ?></p>
 	<p><strong>City: </strong> <?= $this->city ?></p>
 	<p><strong>State: </strong> <?= $this->state ?></p>
 	<p><strong>Country: </strong> <?= $this->country ?></p>
+	<br>
+	<p><strong>Credentials: </strong> <?= $this->credentials ?></p>
+	<p><strong>TEST:</strong> 
+	<?php
+		$cleanArray = unserialize($this->profession);
+		foreach($cleanArray as $profession) {
+			echo $profession . ", ";
+		}
+	?>
+	
+	</p>
+	<p><strong>Remote Consultation: </strong> <?= $this->remote_consultations ?></p>
+	<p><strong>Training Program: </strong> <?= $this->training_program ?></p>
+	<p><strong>Describe Practice: </strong> <?= $this->describe_practice ?></p>
+	<p><strong>Specific Services: </strong> <?= $this->specific_services ?></p>
+	<br>
+	<p><strong>Specialties 1: </strong> <?= $this->specialties_1 ?></p>
+	<p><strong>Specialties 2: </strong> <?= $this->specialties_2 ?></p>
+	<p><strong>Specialties 3: </strong> <?= $this->specialties_3 ?></p>
+	<p><strong>Specialties 4: </strong> <?= $this->specialties_4 ?></p>
+	<br>
+	<p><strong>Provide MMS: </strong> <?= $this->provide_mms ?></p>
+	<p><strong>Provide CAS: </strong> <?= $this->provide_cas ?></p>
+	<br>
+	<p><strong>How to Contact: </strong> <?= $this->how_to_contact ?></p>
+	<p><strong>Contact Details: </strong> <?= $this->contact_details ?></p>
+	<br>
+	<p><strong>Internal Notes: </strong> <?= $this->internal_notes ?></p>
+	<p><strong>Date Created: </strong> <?= $this->date_created ?></p>
+	<p><strong>Date Approved: </strong> <?= $this->date_approved ?></p>
+	
 </div>
