@@ -9,26 +9,7 @@ $(document).ready(function() {
 
     // Filter by Country
     $( ".filter_country" ).change(function() {
-
-
         console.log("Changed: Country");
-
-        var desiredCountry = $(this).val();
-
-        // loop through listings
-        $('.listings_wrapper').find('div').each(function(){
-            console.log($(this).attr('data-country'));
-
-            var listingCountry = $(this).attr('data-country');
-
-            if(desiredCountry != listingCountry) {
-                $(this).hide();
-            } else {
-                $(this).show();
-            }
-
-        });
-
     });
 
     // Filter by State
@@ -57,3 +38,24 @@ $(document).ready(function() {
     });
 
 });
+
+
+function filterListings() {
+    
+    var desiredCountry = $(this).val();
+
+    // loop through listings
+    $('.listings_wrapper').find('div').each(function(){
+        console.log($(this).attr('data-country'));
+
+        var listingCountry = $(this).attr('data-country');
+
+        if(desiredCountry != listingCountry) {
+            $(this).hide();
+        } else {
+            $(this).show();
+        }
+
+    });
+    
+}
