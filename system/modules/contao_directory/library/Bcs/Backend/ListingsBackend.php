@@ -134,7 +134,7 @@ class ListingsBackend extends \Backend
             'Psychiatrist, child and adolescent' => 'Psychiatrist, child and adolescent',
             'Psychiatric, Nurse Practitioner' => 'Psychiatric, Nurse Practitioner',
             'Psychologist' => 'Psychologist',
-            'ocial Worker' => 'Social Worker',
+            'Social Worker' => 'Social Worker',
             'Counselor (LCPC, LMHC, etc.)' => 'Counselor (LCPC, LMHC, etc.)',
             'Marriage and Family Therapist' => 'Marriage and Family Therapist',
             'Health Coach' => 'Health Coach',
