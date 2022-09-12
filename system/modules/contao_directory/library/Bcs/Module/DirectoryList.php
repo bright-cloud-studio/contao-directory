@@ -66,6 +66,11 @@ class DirectoryList extends \Contao\Module
      */
     protected function compile()
     {
+        
+        // add js file for filter functions
+	    $GLOBALS['TL_BODY'][] = '<script src="system/modules/contao_directory/assets/js/directory_list.js"></script>';
+        
+        
 		$objListing = Listing::findBy('published', '1');
 		
 		// Return if no pending items were found
