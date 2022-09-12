@@ -130,26 +130,26 @@ class ListingsBackend extends \Backend
 	
     public function getProfessions() {
         return array(
-            'psy_adult' => 'Psychiatrist, adult',
-            'psy_child' => 'Psychiatrist, child and adolescent',
-            'psy_nurse' => 'Psychiatric, Nurse Practitioner',
-            'psy' => 'Psychologist',
-            's_w' => 'Social Worker',
-            'coun' => 'Counselor (LCPC, LMHC, etc.)',
-            'm_f_t' => 'Marriage and Family Therapist',
-            'h_c' => 'Health Coach',
-            'm_n_p' => 'Medical Nurse Practitioner',
-            'f_p' => 'Family Physician',
-            'i_m_p' => 'Internal Medicine Physician',
-            'n_p' => 'Naturopathic Physician',
-            'n_p' => 'Physician Assistant',
-            'n_p' => 'Registered Nurse',
-            'n_p' => 'Registered Dietitian',
-            'n_p' => 'Nutrition Therapist',
-            'n_p' => 'Neurologist',
-            'n_p' => 'Peer Support Specialist',
-            'n_p' => 'Food Addiction Specialist',
-            'n_p' => 'Obesity Medicine Specialist'
+            'Psychiatrist, adult' => 'Psychiatrist, adult',
+            'Psychiatrist, child and adolescent' => 'Psychiatrist, child and adolescent',
+            'Psychiatric, Nurse Practitioner' => 'Psychiatric, Nurse Practitioner',
+            'Psychologist' => 'Psychologist',
+            'ocial Worker' => 'Social Worker',
+            'Counselor (LCPC, LMHC, etc.)' => 'Counselor (LCPC, LMHC, etc.)',
+            'Marriage and Family Therapist' => 'Marriage and Family Therapist',
+            'Health Coach' => 'Health Coach',
+            'Medical Nurse Practitioner' => 'Medical Nurse Practitioner',
+            'Family Physician' => 'Family Physician',
+            'Internal Medicine Physician' => 'Internal Medicine Physician',
+            'Naturopathic Physician' => 'Naturopathic Physician',
+            'Physician Assistant' => 'Physician Assistant',
+            'Registered Nurse' => 'Registered Nurse',
+            'Registered Dietitian' => 'Registered Dietitian',
+            'Nutrition Therapist' => 'Nutrition Therapist',
+            'Neurologist' => 'Neurologist',
+            'Peer Support Specialist' => 'Peer Support Specialist',
+            'Food Addiction Specialist' => 'Food Addiction Specialist',
+            'Obesity Medicine Specialist' => 'Obesity Medicine Specialist'
         );
     }
     
