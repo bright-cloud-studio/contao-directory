@@ -96,11 +96,36 @@ class DirectoryList extends \Contao\Module
 			}
 
             // Set values for template
-			$arrListing['id']                   = $listing->id;
-			$arrListing['name']                 = $listing->name;
-			$arrListing['city']                 = $listing->city;
-			$arrListing['state']                = $listing->state;
-			$arrListing['country']              = $listing->country;
+			$arrListing['id']                       = $listing->id;
+			$arrListing['photo']                    = $listing->photo;
+			$arrListing['first_name']               = $listing->first_name;
+			$arrListing['last_name']                = $listing->last_name;
+			$arrListing['city']                     = $listing->city;
+			$arrListing['state']                    = $listing->state;
+			$arrListing['country']                  = $listing->country;
+			
+			$arrListing['credentials']              = $listing->credentials;
+			$arrListing['profession']               = $listing->profession;
+			$arrListing['remote_consultations']     = $listing->remote_consultations;
+			$arrListing['training_program']         = $listing->training_program;
+			$arrListing['describe_practice']        = $listing->describe_practice;
+			$arrListing['specific_services']        = $listing->specific_services;
+			
+			$arrListing['specialties_1']            = $listing->specialties_1;
+			$arrListing['specialties_2']            = $listing->specialties_2;
+			$arrListing['specialties_3']            = $listing->specialties_3;
+			$arrListing['specialties_4']            = $listing->specialties_4;
+			
+			$arrListing['provide_mms']              = $listing->provide_mms;
+			$arrListing['provide_cas']              = $listing->provide_cas;
+			
+			$arrListing['how_to_contact']           = $listing->how_to_contact;
+			$arrListing['contact_details']          = $listing->contact_details;
+			
+			$arrListing['internal_notes']           = $listing->internal_notes;
+			$arrListing['date_created']             = $listing->date_created;
+			$arrListing['date_approved']            = $listing->date_approved;
+
 
 			$strItemTemplate = ($this->listings_customItemTpl != '' ? $this->listings_customItemTpl : 'item_listing');
 			$objTemplate = new \FrontendTemplate($strItemTemplate);
