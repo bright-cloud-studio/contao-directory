@@ -1,13 +1,82 @@
 <div class="<?= $this->class ?>" <?= $this->cssID ?>>
-  
-	<?php if (empty($this->listings)): ?>
-		<p class="empty">No Listings Found!</p>
-	<?php else: ?>
 
-		<?php foreach($this->listings as $listing): ?>
-			<?= implode('', $listing['listings']) ?>
-		<?php endforeach; ?>
+	<form class="form_filters" id="form_filters">
+		<div class="filters_wrapper">
+			
+			<div class="option_country">
+				<label for="filter_country">Filter by Country</label>
+				<select class="filter_country" id="filter_country" name="country">
+					<option value="" disabled selected hidden> </option>
+					<option value="USA">United States</option>
+					<option value="Canada">Canada</option>
+				</select>
+			</div>
+			
+			<div class="option_state">
+				<label for="filter_state">Filter by State</label>
+				<select class="filter_state" id="filter_state" name="state">
+					<option value="" disabled selected hidden> </option>
+					<option value="Massachusetts">Massachusetts</option>
+					<option value="New Hampshire">New Hampshire</option>
+					<option value="Toronto">Toronto</option>
+				</select>
+			</div>
+			
+			<div class="option_professions">
+				<label for="filter_professions">Filter by Professions</label>
+				<select class="filter_professions" id="filter_professions" name="professions[]" multiple="professions">
+					<option value="AL">Psychiatrist, adult</option>
+					<option value="WY">Psychiatrist, child and adolescent</option>
+					<option value="WY">Psychiatric, Nurse Practitioner</option>
+					<option value="WY">Psychologist</option>
+					<option value="WY">Social Worker</option>
+					<option value="WY">Counselor (LCPC, LMHC, etc.)</option>
+					<option value="WY">Marriage and Family Therapist</option>
+					<option value="WY">Health Coach</option>
+					<option value="WY">Medical Nurse Practitioner</option>
+					<option value="WY">Family Physician</option>
+					<option value="WY">Internal Medicine Physician</option>
+					<option value="WY">Naturopathic Physician</option>
+					<option value="WY">Physician Assistant</option>
+					<option value="WY">Registered Nurse</option>
+					<option value="WY">Registered Dietitian</option>
+					<option value="WY">Nutrition Therapist</option>
+					<option value="WY">Neurologist</option>
+					<option value="WY">Peer Support Specialist</option>
+					<option value="WY">Food Addiction Specialist</option>
+					<option value="WY">Obesity Medicine Specialist</option>
+				</select>
+			</div>
+			
+			<div class="option_checkboxes">
+				<div class="remote_consultation">
+					<input type="checkbox" class="filter_rc" id="filter_rc" name="remote_consultation" value="remote_consultation">
+					<label for="filter_rc">Remote Consultation</label><br>
+				</div>
+				<div class="medication_management">
+					<input type="checkbox" class="filter_mm" id="filter_mm" name="medication_management" value="medication_management">
+					<label for="filter_mm">Medication Management</label><br>
+				</div>
+				<div class="child_services">
+					<input type="checkbox" class="filter_cs" id="filter_cs" name="child_services" value="child_services">
+					<label for="filter_cs"> Child/Adolescence Services</label><br>
+				</div>
+			</div>
+	
+		</div>
+	</form>
 
-	<?php endif; ?>
+
+	<div class="listings_wrapper">
+		<?php if (empty($this->listings)): ?>
+			<p class="empty">No Listings Found!</p>
+		<?php else: ?>
+	
+			<?php foreach($this->listings as $listing): ?>
+				<?= implode('', $listing['listings']) ?>
+			<?php endforeach; ?>
+	
+		<?php endif; ?>
+	</div>
 	
 </div>
