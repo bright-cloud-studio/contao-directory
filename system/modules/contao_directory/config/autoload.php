@@ -13,8 +13,10 @@
 /* Register the classes */
 ClassLoader::addClasses(array
 (
-    // This is the front end module
+    // This is the listing module
     'Bcs\Module\DirectoryList'          => 'system/modules/contao_directory/library/Bcs/Module/DirectoryList.php',
+    // this is the submission module
+    'Bcs\Module\SubmissionForm'          => 'system/modules/contao_directory/library/Bcs/Module/SubmissionForm.php',
     // The Listings section in the back end
 	'Bcs\Backend\ListingsBackend' 	    => 'system/modules/contao_directory/library/Bcs/Backend/ListingsBackend.php',
     // The individual listings themselves
