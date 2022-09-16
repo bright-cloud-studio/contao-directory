@@ -15,14 +15,14 @@ namespace Bcs\Module;
  
 use Bcs\Model\Listing;
  
-class DirectoryList extends \Contao\Module
+class SubmissionForm extends \Contao\Module
 {
  
     /**
      * Template
      * @var string
      */
-    protected $strTemplate = 'mod_directory_list';
+    protected $strTemplate = 'mod_submission_form';
     
     // contains our listings
     protected $arrListings = array();
@@ -48,7 +48,7 @@ class DirectoryList extends \Contao\Module
         {
             $objTemplate = new \BackendTemplate('be_wildcard');
  
-            $objTemplate->wildcard = '### ' . utf8_strtoupper($GLOBALS['TL_LANG']['FMD']['directory_list'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . utf8_strtoupper($GLOBALS['TL_LANG']['FMD']['submission_form'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
@@ -68,77 +68,7 @@ class DirectoryList extends \Contao\Module
     {
         
         // add js file for filter functions
-	    $GLOBALS['TL_BODY'][] = '<script src="system/modules/contao_directory/assets/js/directory_list.js"></script>';
+	    $GLOBALS['TL_BODY'][] = '<script src="system/modules/contao_directory/assets/js/submission_form.js"></script>';
         
-        
-		$objListing = Listing::findBy('published', '1');
-		
-		// Return if no pending items were found
-		if (!$objListing)
-		{
-			$this->Template->empty = 'No Listings Found';
-			return;
-		}
-        
-        $arrListings = array();
-        
-		
-        foreach ($objListing as $listing)
-		{
-		    
-		    // initialize
-		    $strListingKey = $listing->name;
-		    if (!array_key_exists($strListingKey, $arrListings)) {
-				$arrListings[$strListingKey] = array(
-					"name" 			=> $listing->name,
-					'id'		    => \StringUtil::deserialize($listing->id),
-    				'alias'		    => $listing->alias,
-    				'tstamp'	    => $listing->tstamp,
-    				'timetamp'	    => \Date::parse(\Config::get('datimFormat'), $listing->tstamp),
-    				'published'     => $listing->published,
-					"listings"		=> array()
-				);
-			}
-
-            // Set values for template
-			$arrListing['id']                       = $listing->id;
-			$arrListing['photo']                    = $listing->photo;
-			$arrListing['first_name']               = $listing->first_name;
-			$arrListing['last_name']                = $listing->last_name;
-			$arrListing['city']                     = $listing->city;
-			$arrListing['state']                    = $listing->state;
-			$arrListing['country']                  = $listing->country;
-			
-			$arrListing['credentials']              = $listing->credentials;
-			$arrListing['profession']               = $listing->profession;
-			$arrListing['remote_consultations']     = $listing->remote_consultations;
-			$arrListing['training_program']         = $listing->training_program;
-			$arrListing['describe_practice']        = $listing->describe_practice;
-			$arrListing['specific_services']        = $listing->specific_services;
-			
-			$arrListing['specialties_1']            = $listing->specialties_1;
-			$arrListing['specialties_2']            = $listing->specialties_2;
-			$arrListing['specialties_3']            = $listing->specialties_3;
-			$arrListing['specialties_4']            = $listing->specialties_4;
-			
-			$arrListing['provide_mms']              = $listing->provide_mms;
-			$arrListing['provide_cas']              = $listing->provide_cas;
-			
-			$arrListing['how_to_contact']           = $listing->how_to_contact;
-			$arrListing['contact_details']          = $listing->contact_details;
-			
-			$arrListing['internal_notes']           = $listing->internal_notes;
-			$arrListing['date_created']             = $listing->date_created;
-			$arrListing['date_approved']            = $listing->date_approved;
-
-
-			$strItemTemplate = ($this->listings_customItemTpl != '' ? $this->listings_customItemTpl : 'item_listing');
-			$objTemplate = new \FrontendTemplate($strItemTemplate);
-			$objTemplate->setData($arrListing);
-            $arrListings[$strListingKey]['listings'][] = $objTemplate->parse();
-		}
-        
-        $this->Template->listings = $arrListings;
-
 	}
 } 
