@@ -26,8 +26,9 @@ ClassLoader::addClasses(array
 /* Register the templates */
 TemplateLoader::addFiles(array
 (
-    // Template for front end module
+    // Template for front end modules
    	'mod_directory_list' 		    => 'system/modules/contao_directory/templates/modules',
+    'mod_submission_form' 		    => 'system/modules/contao_directory/templates/modules',
     // Template for items in the front end module
 	'item_listing' 		            => 'system/modules/contao_directory/templates/items',
 ));
