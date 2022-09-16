@@ -12,6 +12,7 @@
 
 /* Add a palette to tl_module */
 $GLOBALS['TL_DCA']['tl_module']['palettes']['directory_list'] 		= '{title_legend},name,headline,type;{template_legend:hide},customTpl,listings_customItemTpl;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['submission_form'] 		= '{title_legend},name,headline,type;{template_legend:hide},customTpl;{expert_legend:hide},guests,cssID,space';
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['listings_customItemTpl'] = array
 (
