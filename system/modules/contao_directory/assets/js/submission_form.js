@@ -1,35 +1,121 @@
+// When page is loaded
+$(document).ready(function() {
+
+    $(".s_country").change(function() { countryChanges(); });
+
+});
+
+// makes changes to Country, State, Providence and City based on selections
+function countryChanges() {
+    
+    var selectedCountry = $(".s_country").val();
+    $(".s_providence").val(null);
+    $(".s_state").val(null);
+    $("#s_city").val("");
+    
+    if(selectedCountry === "USA") {
+        $(".option_state_prov").hide();
+        $(".option_providence").hide();
+        $(".option_state").show();
+        $(".option_city").show();
+    } else if (selectedCountry === "Canada") {
+        $(".option_state_prov").hide();
+        $(".option_state").hide();
+        $(".option_city").hide();
+        $(".option_providence").show();
+    }
+
+}
+
 // this is the call to save to cart
 function submitListing(){
+    
 
     // store our quote request values
-    var user_first_name = $("#firstname").val();
-    var user_last_name = $("#lastname").val();
-    var user_email = $("#email").val();
-    var user_phone = $("#phone").val();
-    var user_address_1 = $("#address_1").val();
-    var user_address_2 = $("#address_2").val();
-    var user_state = $("#state").val();
-    var user_city = $("#city").val();
-    var user_zip = $("#zip").val();
-    var user_tell_us = $("#tell_us").val();
+    
+    var first_name = $("#s_first_name").val();
+    var last_name = $("#s_last_name").val();
+    var photo = $("#s_photo").val();
+    
+    var country = $("#s_country").val();
+    var state = 'none';
+    
+    // if country is usa get state, if canada get providence
+    if(country === "USA")
+        state = $("#s_state").val();
+    else if (country === "Canada")
+        state = $("#s_providence").val();
+    
+    
+    var credentials = $("#s_credentials").val();
+    
+    var professions = [];
+    $("input:checkbox[name=professions]:checked").each(function() {
+        professions.push($(this).val());
+    });
 
-	  
+    
+    var remote_consultation = $("input[name='rc']:checked").val();
+    var finished_training = $("input[name='tp']:checked").val();
+    
+    var desc_practice = $("#describe_practice").val();
+    var specific_services = $("#specific_services").val();
+    
+    var specialties_1 = $("#specialties_1").val();
+    var specialties_2 = $("#specialties_2").val();
+    var specialties_3 = $("#specialties_3").val();
+    var specialties_4 = $("#specialties_4").val();
+    
+    var medication_management = $("input[name='mm']:checked").val();
+    var child_services = $("input[name='cs']:checked").val();
+    
+    var contact_method = $("#contact_method").val();
+    var contact_details = $("#contact_details").val();
+    
+    
+    
+    // Testing Values to make sure we grabbed them correctly
+    /*
+    console.log("first_name: " + first_name);
+    console.log("last_name: " + last_name);
+    console.log("photo: " + photo);
+    console.log("country: " + country);
+    console.log("state: " + state);
+    console.log("credentials: " + credentials);
+    console.log("professions: " + professions);
+    console.log("remote_consultation: " + remote_consultation);
+    console.log("finished_training: " + finished_training);
+    console.log("desc_practice: " + desc_practice);
+    console.log("specific_services: " + specific_services);
+    console.log("specialties_1: " + specialties_1);
+    console.log("specialties_2: " + specialties_2);
+    console.log("specialties_3: " + specialties_3);
+    console.log("specialties_4: " + specialties_4);
+    console.log("medication_management: " + medication_management);
+    console.log("child_services: " + child_services);
+    console.log("contact_method: " + contact_method);
+    console.log("contact_details: " + contact_details);
+    */
+    
+
+    
     // trigger this function when our form runs
     $.ajax({
-        url:'/system/modules/panel_pricing_calculator/assets/php/action.send.email.php',
+        url:'/system/modules/contao_directory/assets/php/action.submit.listing.php',
         type:'POST',
-        data:"user_first_name="+user_first_name+"&user_last_name="+user_last_name+"&user_email="+user_email+"&user_phone="+user_phone+"&user_address_1="+user_address_1+"&user_address_2="+user_address_2+"&user_state="+user_state+"&user_city="+user_city+"&user_zip="+user_zip+"&user_tell_us="+user_tell_us+"",
+        data:"first_name="+first_name+"&last_name="+last_name+"&photo="+photo+"&country="+country+"&state="+state+"&credentials="+credentials+"&professions="+professions+"&remote_consultation="+remote_consultation+"&finished_training="+finished_training+"&desc_practice="+desc_practice+"&specific_services="+specific_services+"&specialties_1="+specialties_1+"&specialties_2="+specialties_2+"&specialties_3="+specialties_3+"&specialties_4="+specialties_4+"&medication_management="+medication_management+"&child_services="+child_services+"&contact_method="+contact_method+"&contact_details="+contact_details+"",
         success:function(result){
-        	//$("#send_email_notification").html(result);
-        	//$("#request_form").hide();
-        	
+            console.log("SUCCESS");
+            
         	// redirect us to the success page
-        	window.location.replace("https://ampersandart.com/custom-calculator-success-message");
-        	
+        	//window.location.replace("https://ampersandart.com/custom-calculator-success-message");
         },
         error:function(result){
-			$("#send_email_notification").html("SEND EMAIL FAIL");
+			console.log("ERROR");
         }
     });
+    
+    
+
 	
 }
