@@ -5,25 +5,25 @@
 	<form class="directory_submission" id="directory_submission">
 		
 		<div class="option_first_name">
-			<label for="first_name">First Name:</label><br>
-			<input type="text" id="first_name" name="first_name"><br>
+			<label for="s_first_name">First Name:</label><br>
+			<input type="text" id="s_first_name" name="s_first_name"><br>
 		</div>
 		
 		<div class="option_first_name">
-			<label for="last_name">Last Name:</label><br>
-			<input type="text" id="last_name" name="last_name"><br>
+			<label for="s_last_name">Last Name:</label><br>
+			<input type="text" id="s_last_name" name="s_last_name"><br>
 		</div>
 		
 		<div class="option_photo">
-			<label for="photo">Select a file:</label>
-			<input type="file" id="photo" name="photo">
+			<label for="s_photo">Select a file:</label>
+			<input type="file" id="s_photo" name="s_photo">
 		</div>
 		
 		<br><br><br>
 		
 		<div class="option_country">
-			<label for="submit_country">Select Your Country</label>
-			<select class="submit_country" id="submit_country" name="country">
+			<label for="s_country">Select Your Country</label>
+			<select class="s_country" id="s_country" name="s_country">
 				<option value="" disabled selected hidden> </option>
 				<option value="USA">United States</option>
 				<option value="Canada">Canada</option>
@@ -31,15 +31,15 @@
 		</div>
 		
 		<div class="option_state_prov">
-			<label for="submit_state_prov">Select Your State/Providence</label>
-			<select class="submit_state_prov" id="submit_state_prov" name="state_prov" disabled>
+			<label for="s_state_prov">Select Your State/Providence</label>
+			<select class="s_state_prov" id="s_state_prov" name="s_state_prov" disabled>
 				<option value="" disabled selected hidden> </option>
 			</select>
 		</div>
 		
 		<div class="option_state">
-			<label for="submit_state">Filter by State</label>
-			<select class="submitr_state" id="submit_state" name="state">
+			<label for="s_state">Filter by State</label>
+			<select class="s_state" id="s_state" name="s_state">
 				<option value="" disabled selected hidden> </option>
 				<option value="AL">Alabama</option>
 				<option value="AK">Alaska</option>
@@ -96,8 +96,8 @@
 		</div>
 		
 		<div class="option_providence">
-			<label for="submit_providence">Filter by Providence</label>
-			<select class="submit_providence" id="submit_providence" name="providence">
+			<label for="s_providence">Filter by Providence</label>
+			<select class="s_providence" id="s_providence" name="s_providence">
 				<option value="" disabled selected hidden> </option>
 					<option value="AB">Alberta</option>
 					<option value="BC">British Columbia</option>
@@ -114,13 +114,12 @@
 					<option value="YT">Yukon</option>
 			</select>
 		</div>
-		
-		
+	
 		<br><br><br>
 		
 		<div class="option_credentials">
-			<label for="submit_credentials">Select Your Credentials</label>
-			<select class="submit_credentials" id="submit_credentials" name="credentials">
+			<label for="s_credentials">Select Your Credentials</label>
+			<select class="s_credentials" id="s_credentials" name="s_credentials">
 				<option value="" disabled selected hidden> </option>
 				<option value="MD">MD</option>
 				<option value="RD">RD</option>
@@ -131,67 +130,67 @@
 		</div>
 		
 		<div class="option_profession">
-			<label for="submit_profession">Select Your Professions</label>
+			<label for="option_profession">Select Your Professions</label><br>
 
 			<input type="checkbox" id="opt_psy_adult" name="opt_psy_adult" value="Psychiatrist, adult">
 			<label for="opt_psy_adult">Psychiatrist, adult</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Psychiatrist, child and adolescent">
-			<label for="opt_">Psychiatrist, child and adolescent</label><br>
+			<input type="checkbox" id="opt_psy_child" name="opt_psy_child" value="Psychiatrist, child and adolescent">
+			<label for="opt_psy_child">Psychiatrist, child and adolescent</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Psychiatric, Nurse Practitioner">
-			<label for="opt_">Psychiatric, Nurse Practitioner</label><br>
+			<input type="checkbox" id="opt_psy_nurse" name="opt_psy_nurse" value="Psychiatric, Nurse Practitioner">
+			<label for="opt_psy_nurse">Psychiatric, Nurse Practitioner</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Psychologist">
-			<label for="opt_">Psychologist</label><br>
+			<input type="checkbox" id="opt_psy" name="opt_psy" value="Psychologist">
+			<label for="opt_psy">Psychologist</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Social Worker">
-			<label for="opt_">Social Worker</label><br>
+			<input type="checkbox" id="opt_social_worker" name="opt_social_worker" value="Social Worker">
+			<label for="opt_social_worker">Social Worker</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Counselor (LCPC, LMHC, etc.)">
-			<label for="opt_">Counselor (LCPC, LMHC, etc.)</label><br>
+			<input type="checkbox" id="opt_counselor" name="opt_counselor" value="Counselor (LCPC, LMHC, etc.)">
+			<label for="opt_counselor">Counselor (LCPC, LMHC, etc.)</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Marriage and Family Therapist">
-			<label for="opt_">Marriage and Family Therapist</label><br>
+			<input type="checkbox" id="opt_marrige_therapist" name="opt_marrige_therapist" value="Marriage and Family Therapist">
+			<label for="opt_marrige_therapist">Marriage and Family Therapist</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Health Coach">
-			<label for="opt_">Health Coach</label><br>
+			<input type="checkbox" id="opt_health_coach" name="opt_health_coach" value="Health Coach">
+			<label for="opt_health_coach">Health Coach</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Medical Nurse Practitioner">
-			<label for="opt_">Medical Nurse Practitioner</label><br>
+			<input type="checkbox" id="opt_medical_nurse" name="opt_medical_nurse" value="Medical Nurse Practitioner">
+			<label for="opt_medical_nurse">Medical Nurse Practitioner</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Family Physician">
-			<label for="opt_">Family Physician</label><br>
+			<input type="checkbox" id="opt_family_phy" name="opt_family_phy" value="Family Physician">
+			<label for="opt_family_phy">Family Physician</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Internal Medicine Physician">
-			<label for="opt_">Internal Medicine Physician</label><br>
+			<input type="checkbox" id="opt_internal_medicine" name="opt_internal_medicine" value="Internal Medicine Physician">
+			<label for="opt_internal_medicine">Internal Medicine Physician</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Naturopathic Physician">
-			<label for="opt_">Naturopathic Physician</label><br>
+			<input type="checkbox" id="opt_nat_phy" name="opt_nat_phy" value="Naturopathic Physician">
+			<label for="opt_nat_phy">Naturopathic Physician</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Physician Assistant">
-			<label for="opt_">Physician Assistant</label><br>
+			<input type="checkbox" id="opt_phy_assistant" name="opt_phy_assistant" value="Physician Assistant">
+			<label for="opt_phy_assistant">Physician Assistant</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Registered Nurse">
-			<label for="opt_">Registered Nurse</label><br>
+			<input type="checkbox" id="opt_reg_nurse" name="opt_reg_nurse" value="Registered Nurse">
+			<label for="opt_reg_nurse">Registered Nurse</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Registered Dietitian">
-			<label for="opt_">Registered Dietitian</label><br>
+			<input type="checkbox" id="opt_reg_diet" name="opt_reg_diet" value="Registered Dietitian">
+			<label for="opt_reg_diet">Registered Dietitian</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Nutrition Therapist">
-			<label for="opt_">Nutrition Therapist</label><br>
+			<input type="checkbox" id="opt_nut_therapist" name="opt_nut_therapist" value="Nutrition Therapist">
+			<label for="opt_nut_therapist">Nutrition Therapist</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Neurologist">
-			<label for="opt_">Neurologist</label><br>
+			<input type="checkbox" id="opt_neuro" name="opt_neuro" value="Neurologist">
+			<label for="opt_neuro">Neurologist</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Peer Support Specialist">
-			<label for="opt_">Peer Support Specialist</label><br>
+			<input type="checkbox" id="opt_peer_support" name="opt_peer_support" value="Peer Support Specialist">
+			<label for="opt_peer_support">Peer Support Specialist</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Food Addiction Specialist">
-			<label for="opt_">Food Addiction Specialist</label><br>
+			<input type="checkbox" id="opt_food_add" name="opt_food_add" value="Food Addiction Specialist">
+			<label for="opt_food_add">Food Addiction Specialist</label><br>
 			
-			<input type="checkbox" id="opt_" name="opt_" value="Obesity Medicine Specialist">
-			<label for="opt_">Obesity Medicine Specialist</label><br>
+			<input type="checkbox" id="opt_obesity" name="opt_obesity" value="Obesity Medicine Specialist">
+			<label for="opt_obesity">Obesity Medicine Specialist</label><br>
 		</div>
 		
 		<div class="option_remote_consultation">
@@ -278,7 +277,9 @@
 			<input type="text" id="contact_details" name="contact_details"><br>
 		</div>
 		
+		<br><br>
 		
+		<a class="btn" onclick="submitListing()">Submit Listing</a>
 		
 	</form>
 	
