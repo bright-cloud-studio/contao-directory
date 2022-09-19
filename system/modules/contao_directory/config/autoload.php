@@ -20,7 +20,9 @@ ClassLoader::addClasses(array
     // The Listings section in the back end
 	'Bcs\Backend\ListingsBackend' 	    => 'system/modules/contao_directory/library/Bcs/Backend/ListingsBackend.php',
     // The individual listings themselves
-	'Bcs\Model\Listing'                 => 'system/modules/contao_directory/library/Bcs/Model/Listing.php'
+	'Bcs\Model\Listing'                 => 'system/modules/contao_directory/library/Bcs/Model/Listing.php',
+    // hook when processing form to enter our listing into db
+    'Bcs\Handler'                       => 'system/modules/contao_directory/Lbrary/Bcs/Handler.php',
 ));
 
 /* Register the templates */
