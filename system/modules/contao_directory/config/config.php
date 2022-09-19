@@ -25,4 +25,4 @@ $GLOBALS['FE_MOD']['contao_directory']['submission_form'] 	= 'Bcs\Module\Submiss
 $GLOBALS['TL_MODELS']['tl_listing'] = 'Bcs\Model\Listing';
 
 /* Hooks */
-$GLOBALS['TL_HOOKS']['processFormData'][]      = array('ContaoDirectory\Handler', 'onFormProcessed');
+$GLOBALS['TL_HOOKS']['processFormData'][]      = array('Bcs\Handler', 'onFormProcessed');
