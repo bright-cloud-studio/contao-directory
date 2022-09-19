@@ -1,6 +1,6 @@
 <?php
 
-namespace Bcs\Handler;
+namespace Bcs;
 
 class Handler
 {
@@ -8,6 +8,6 @@ class Handler
 
     public function onProcessForm($submittedData, $formData, $files, $labels, $form)
     {
-      
+        dump_var($submittedData);
     }
 }
