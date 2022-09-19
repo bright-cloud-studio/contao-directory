@@ -95,6 +95,11 @@
 			</select>
 		</div>
 		
+		<div class="option_city">
+			<label for="s_city">City:</label><br>
+			<input type="text" id="s_city" name="s_city"><br>
+		</div>
+		
 		<div class="option_providence">
 			<label for="s_providence">Filter by Providence</label>
 			<select class="s_providence" id="s_providence" name="s_providence">
@@ -121,91 +126,91 @@
 			<label for="s_credentials">Select Your Credentials</label>
 			<select class="s_credentials" id="s_credentials" name="s_credentials">
 				<option value="" disabled selected hidden> </option>
-				<option value="MD">MD</option>
-				<option value="RD">RD</option>
-				<option value="NP">NP</option>
-				<option value="RN">RN</option>
-				<option value="LICSW">LICSW</option>
+				<option value="md">MD</option>
+				<option value="rd">RD</option>
+				<option value="np">NP</option>
+				<option value="rn">RN</option>
+				<option value="licsw">LICSW</option>
 			</select>
 		</div>
 		
 		<div class="option_profession">
 			<label for="option_profession">Select Your Professions</label><br>
-
-			<input type="checkbox" id="opt_psy_adult" name="opt_psy_adult" value="Psychiatrist, adult">
+   
+			<input type="checkbox" id="opt_psy_adult" name="professions[]" value="Psychiatrist, adult">
 			<label for="opt_psy_adult">Psychiatrist, adult</label><br>
 			
-			<input type="checkbox" id="opt_psy_child" name="opt_psy_child" value="Psychiatrist, child and adolescent">
+			<input type="checkbox" id="opt_psy_child" name="professions[]" value="Psychiatrist, child and adolescent">
 			<label for="opt_psy_child">Psychiatrist, child and adolescent</label><br>
 			
-			<input type="checkbox" id="opt_psy_nurse" name="opt_psy_nurse" value="Psychiatric, Nurse Practitioner">
+			<input type="checkbox" id="opt_psy_nurse" name="professions[]" value="Psychiatric, Nurse Practitioner">
 			<label for="opt_psy_nurse">Psychiatric, Nurse Practitioner</label><br>
 			
-			<input type="checkbox" id="opt_psy" name="opt_psy" value="Psychologist">
+			<input type="checkbox" id="opt_psy" name="professions[]" value="Psychologist">
 			<label for="opt_psy">Psychologist</label><br>
 			
-			<input type="checkbox" id="opt_social_worker" name="opt_social_worker" value="Social Worker">
+			<input type="checkbox" id="opt_social_worker" name="professions[]" value="Social Worker">
 			<label for="opt_social_worker">Social Worker</label><br>
 			
-			<input type="checkbox" id="opt_counselor" name="opt_counselor" value="Counselor (LCPC, LMHC, etc.)">
+			<input type="checkbox" id="opt_counselor" name="professions[]" value="Counselor (LCPC, LMHC, etc.)">
 			<label for="opt_counselor">Counselor (LCPC, LMHC, etc.)</label><br>
 			
-			<input type="checkbox" id="opt_marrige_therapist" name="opt_marrige_therapist" value="Marriage and Family Therapist">
+			<input type="checkbox" id="opt_marrige_therapist" name="professions[]" value="Marriage and Family Therapist">
 			<label for="opt_marrige_therapist">Marriage and Family Therapist</label><br>
 			
-			<input type="checkbox" id="opt_health_coach" name="opt_health_coach" value="Health Coach">
+			<input type="checkbox" id="opt_health_coach" name="professions[]" value="Health Coach">
 			<label for="opt_health_coach">Health Coach</label><br>
 			
-			<input type="checkbox" id="opt_medical_nurse" name="opt_medical_nurse" value="Medical Nurse Practitioner">
+			<input type="checkbox" id="opt_medical_nurse" name="professions[]" value="Medical Nurse Practitioner">
 			<label for="opt_medical_nurse">Medical Nurse Practitioner</label><br>
 			
-			<input type="checkbox" id="opt_family_phy" name="opt_family_phy" value="Family Physician">
+			<input type="checkbox" id="opt_family_phy" name="professions[]" value="Family Physician">
 			<label for="opt_family_phy">Family Physician</label><br>
 			
-			<input type="checkbox" id="opt_internal_medicine" name="opt_internal_medicine" value="Internal Medicine Physician">
+			<input type="checkbox" id="opt_internal_medicine" name="professions[]" value="Internal Medicine Physician">
 			<label for="opt_internal_medicine">Internal Medicine Physician</label><br>
 			
-			<input type="checkbox" id="opt_nat_phy" name="opt_nat_phy" value="Naturopathic Physician">
+			<input type="checkbox" id="opt_nat_phy" name="professions[]" value="Naturopathic Physician">
 			<label for="opt_nat_phy">Naturopathic Physician</label><br>
 			
-			<input type="checkbox" id="opt_phy_assistant" name="opt_phy_assistant" value="Physician Assistant">
+			<input type="checkbox" id="opt_phy_assistant" name="professions[]" value="Physician Assistant">
 			<label for="opt_phy_assistant">Physician Assistant</label><br>
 			
-			<input type="checkbox" id="opt_reg_nurse" name="opt_reg_nurse" value="Registered Nurse">
+			<input type="checkbox" id="opt_reg_nurse" name="professions[]" value="Registered Nurse">
 			<label for="opt_reg_nurse">Registered Nurse</label><br>
 			
-			<input type="checkbox" id="opt_reg_diet" name="opt_reg_diet" value="Registered Dietitian">
+			<input type="checkbox" id="opt_reg_diet" name="professions[]" value="Registered Dietitian">
 			<label for="opt_reg_diet">Registered Dietitian</label><br>
 			
-			<input type="checkbox" id="opt_nut_therapist" name="opt_nut_therapist" value="Nutrition Therapist">
+			<input type="checkbox" id="opt_nut_therapist" name="professions[]" value="Nutrition Therapist">
 			<label for="opt_nut_therapist">Nutrition Therapist</label><br>
 			
-			<input type="checkbox" id="opt_neuro" name="opt_neuro" value="Neurologist">
+			<input type="checkbox" id="opt_neuro" name="professions[]" value="Neurologist">
 			<label for="opt_neuro">Neurologist</label><br>
 			
-			<input type="checkbox" id="opt_peer_support" name="opt_peer_support" value="Peer Support Specialist">
+			<input type="checkbox" id="opt_peer_support" name="professions[]" value="Peer Support Specialist">
 			<label for="opt_peer_support">Peer Support Specialist</label><br>
 			
-			<input type="checkbox" id="opt_food_add" name="opt_food_add" value="Food Addiction Specialist">
+			<input type="checkbox" id="opt_food_add" name="professions[]" value="Food Addiction Specialist">
 			<label for="opt_food_add">Food Addiction Specialist</label><br>
 			
-			<input type="checkbox" id="opt_obesity" name="opt_obesity" value="Obesity Medicine Specialist">
+			<input type="checkbox" id="opt_obesity" name="professions[]" value="Obesity Medicine Specialist">
 			<label for="opt_obesity">Obesity Medicine Specialist</label><br>
 		</div>
 		
 		<div class="option_remote_consultation">
 			<label for="option_remote_consultation">Do you offer Remote Consultations?</label><br>
-			<input type="radio" id="rc_yes" name="rc_yes" value="Yes">
+			<input type="radio" id="rc_yes" name="rc" value="Yes">
 			<label for="rc_yes">Yes</label><br>
-			<input type="radio" id="rc_no" name="rc_no" value="No">
+			<input type="radio" id="rc_no" name="rc" value="No">
 			<label for="rc_no">No</label><br>
 		</div>
 		
 		<div class="option_training_program">
 			<label for="option_remote_consultation">Did you finish training program?</label><br>
-			<input type="radio" id="tp_yes" name="tp_yes" value="Yes">
+			<input type="radio" id="tp_yes" name="tp" value="Yes">
 			<label for="tp_yes">Yes</label><br>
-			<input type="radio" id="tp_no" name="tp_no" value="No">
+			<input type="radio" id="tp_no" name="tp" value="No">
 			<label for="tp_no">No</label><br>
 		</div>
 		
@@ -245,17 +250,17 @@
 		
 		<div class="option_medication_management">
 			<label for="option_medication_management">Do you offer Medication Management?</label><br>
-			<input type="radio" id="mm_yes" name="mm_yes" value="Yes">
+			<input type="radio" id="mm_yes" name="mm" value="Yes">
 			<label for="mm_yes">Yes</label><br>
-			<input type="radio" id="mm_no" name="mm_no" value="No">
+			<input type="radio" id="mm_no" name="mm" value="No">
 			<label for="mm_no">No</label><br>
 		</div>
 		
 		<div class="option_child_services">
 			<label for="option_child_services">Do you offer Child/Adolescents Services?</label><br>
-			<input type="radio" id="cs_yes" name="cs_yes" value="Yes">
+			<input type="radio" id="cs_yes" name="cs" value="Yes">
 			<label for="cs_yes">Yes</label><br>
-			<input type="radio" id="cs_no" name="cs_no" value="No">
+			<input type="radio" id="cs_no" name="cs" value="No">
 			<label for="cs_no">No</label><br>
 		</div>
 		
@@ -265,10 +270,10 @@
 			<label for="option_contact_method">Select Your Preferred Contact Method</label>
 			<select class="contact_method" id="contact_method" name="contact_method">
 				<option value="" disabled selected hidden> </option>
-				<option value="Offie Address">Office Address</option>
-				<option value="Phone">Phone</option>
-				<option value="Email">Email</option>
-				<option value="Website">Website</option>
+				<option value="o_a">Office Address</option>
+				<option value="ph">Phone</option>
+				<option value="em">Email</option>
+				<option value="ws">Website</option>
 			</select>
 		</div>
 		
