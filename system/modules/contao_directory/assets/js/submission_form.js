@@ -103,7 +103,7 @@ function submitListing(){
     $.ajax({
         url:'/system/modules/contao_directory/assets/php/action.submit.listing.php',
         type:'POST',
-        data:"first_name="+first_name+"&last_name="+last_name+"&photo="+photo+"&country="+country+"&state="+state+"&credentials="+credentials+"&professions="+professions+"&remote_consultation="+remote_consultation+"&finished_training="+finished_training+"&desc_practice="+desc_practice+"&specific_services="+specific_services+"&specialties_1="+specialties_1+"&specialties_2="+specialties_2+"&specialties_3="+specialties_3+"&specialties_4="+specialties_4+"&medication_management="+medication_management+"&child_services="+child_services+"&contact_method="+contact_method+"&contact_details="+contact_details+"",
+        data:"first_name="+first_name+"&last_name="+last_name+"&photo="+photo+"&country="+country+"&state="+state+"&credentials="+credentials+"&professions="+JSON.stringify(professions)+"&remote_consultation="+remote_consultation+"&finished_training="+finished_training+"&desc_practice="+desc_practice+"&specific_services="+specific_services+"&specialties_1="+specialties_1+"&specialties_2="+specialties_2+"&specialties_3="+specialties_3+"&specialties_4="+specialties_4+"&medication_management="+medication_management+"&child_services="+child_services+"&contact_method="+contact_method+"&contact_details="+contact_details+"",
         success:function(result){
             console.log("SUCCESS");
             
