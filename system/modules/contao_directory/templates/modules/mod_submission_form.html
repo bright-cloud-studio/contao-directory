@@ -1,3 +1,285 @@
-<div class="directory_submission">
-  THIS IS THE SUBMISSION FORM
+<div class="mod_submission_form">
+	
+	<h2>Submit Your Listing</h2>
+	
+	<form class="directory_submission" id="directory_submission">
+		
+		<div class="option_first_name">
+			<label for="first_name">First Name:</label><br>
+			<input type="text" id="first_name" name="first_name"><br>
+		</div>
+		
+		<div class="option_first_name">
+			<label for="last_name">Last Name:</label><br>
+			<input type="text" id="last_name" name="last_name"><br>
+		</div>
+		
+		<div class="option_photo">
+			<label for="photo">Select a file:</label>
+			<input type="file" id="photo" name="photo">
+		</div>
+		
+		<br><br><br>
+		
+		<div class="option_country">
+			<label for="submit_country">Select Your Country</label>
+			<select class="submit_country" id="submit_country" name="country">
+				<option value="" disabled selected hidden> </option>
+				<option value="USA">United States</option>
+				<option value="Canada">Canada</option>
+			</select>
+		</div>
+		
+		<div class="option_state_prov">
+			<label for="submit_state_prov">Select Your State/Providence</label>
+			<select class="submit_state_prov" id="submit_state_prov" name="state_prov" disabled>
+				<option value="" disabled selected hidden> </option>
+			</select>
+		</div>
+		
+		<div class="option_state">
+			<label for="submit_state">Filter by State</label>
+			<select class="submitr_state" id="submit_state" name="state">
+				<option value="" disabled selected hidden> </option>
+				<option value="AL">Alabama</option>
+				<option value="AK">Alaska</option>
+				<option value="AZ">Arizona</option>
+				<option value="AR">Arkansas</option>
+				<option value="CA">California</option>
+				<option value="CO">Colorado</option>
+				<option value="CT">Connecticut</option>
+				<option value="DE">Delaware</option>
+				<option value="DC">District Of Columbia</option>
+				<option value="Florida">Florida</option>
+				<option value="GA">Georgia</option>
+				<option value="HI">Hawaii</option>
+				<option value="ID">Idaho</option>
+				<option value="IL">Illinois</option>
+				<option value="IN">Indiana</option>
+				<option value="IA">Iowa</option>
+				<option value="KS">Kansas</option>
+				<option value="KY">Kentucky</option>
+				<option value="LA">Louisiana</option>
+				<option value="ME">Maine</option>
+				<option value="MD">Maryland</option>
+				<option value="Massachusetts">Massachusetts</option>
+				<option value="MI">Michigan</option>
+				<option value="MN">Minnesota</option>
+				<option value="MS">Mississippi</option>
+				<option value="MO">Missouri</option>
+				<option value="MT">Montana</option>
+				<option value="NE">Nebraska</option>
+				<option value="NV">Nevada</option>
+				<option value="New Hampshire">New Hampshire</option>
+				<option value="NJ">New Jersey</option>
+				<option value="NM">New Mexico</option>
+				<option value="NY">New York</option>
+				<option value="NC">North Carolina</option>
+				<option value="ND">North Dakota</option>
+				<option value="OH">Ohio</option>
+				<option value="OK">Oklahoma</option>
+				<option value="OR">Oregon</option>
+				<option value="PA">Pennsylvania</option>
+				<option value="RI">Rhode Island</option>
+				<option value="SC">South Carolina</option>
+				<option value="SD">South Dakota</option>
+				<option value="TN">Tennessee</option>
+				<option value="TX">Texas</option>
+				<option value="UT">Utah</option>
+				<option value="VT">Vermont</option>
+				<option value="VA">Virginia</option>
+				<option value="WA">Washington</option>
+				<option value="WV">West Virginia</option>
+				<option value="WI">Wisconsin</option>
+				<option value="WY">Wyoming</option>
+			</select>
+		</div>
+		
+		<div class="option_providence">
+			<label for="submit_providence">Filter by Providence</label>
+			<select class="submit_providence" id="submit_providence" name="providence">
+				<option value="" disabled selected hidden> </option>
+					<option value="AB">Alberta</option>
+					<option value="BC">British Columbia</option>
+					<option value="MB">Manitoba</option>
+					<option value="NB">New Brunswick</option>
+					<option value="NL">Newfoundland and Labrador</option>
+					<option value="NS">Nova Scotia</option>
+					<option value="Ontario">Ontario</option>
+					<option value="PE">Prince Edward Island</option>
+					<option value="QC">Quebec</option>
+					<option value="SK">Saskatchewan</option>
+					<option value="NT">Northwest Territories</option>
+					<option value="NU">Nunavut</option>
+					<option value="YT">Yukon</option>
+			</select>
+		</div>
+		
+		
+		<br><br><br>
+		
+		<div class="option_credentials">
+			<label for="submit_credentials">Select Your Credentials</label>
+			<select class="submit_credentials" id="submit_credentials" name="credentials">
+				<option value="" disabled selected hidden> </option>
+				<option value="MD">MD</option>
+				<option value="RD">RD</option>
+				<option value="NP">NP</option>
+				<option value="RN">RN</option>
+				<option value="LICSW">LICSW</option>
+			</select>
+		</div>
+		
+		<div class="option_profession">
+			<label for="submit_profession">Select Your Professions</label>
+
+			<input type="checkbox" id="opt_psy_adult" name="opt_psy_adult" value="Psychiatrist, adult">
+			<label for="opt_psy_adult">Psychiatrist, adult</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Psychiatrist, child and adolescent">
+			<label for="opt_">Psychiatrist, child and adolescent</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Psychiatric, Nurse Practitioner">
+			<label for="opt_">Psychiatric, Nurse Practitioner</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Psychologist">
+			<label for="opt_">Psychologist</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Social Worker">
+			<label for="opt_">Social Worker</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Counselor (LCPC, LMHC, etc.)">
+			<label for="opt_">Counselor (LCPC, LMHC, etc.)</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Marriage and Family Therapist">
+			<label for="opt_">Marriage and Family Therapist</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Health Coach">
+			<label for="opt_">Health Coach</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Medical Nurse Practitioner">
+			<label for="opt_">Medical Nurse Practitioner</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Family Physician">
+			<label for="opt_">Family Physician</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Internal Medicine Physician">
+			<label for="opt_">Internal Medicine Physician</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Naturopathic Physician">
+			<label for="opt_">Naturopathic Physician</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Physician Assistant">
+			<label for="opt_">Physician Assistant</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Registered Nurse">
+			<label for="opt_">Registered Nurse</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Registered Dietitian">
+			<label for="opt_">Registered Dietitian</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Nutrition Therapist">
+			<label for="opt_">Nutrition Therapist</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Neurologist">
+			<label for="opt_">Neurologist</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Peer Support Specialist">
+			<label for="opt_">Peer Support Specialist</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Food Addiction Specialist">
+			<label for="opt_">Food Addiction Specialist</label><br>
+			
+			<input type="checkbox" id="opt_" name="opt_" value="Obesity Medicine Specialist">
+			<label for="opt_">Obesity Medicine Specialist</label><br>
+		</div>
+		
+		<div class="option_remote_consultation">
+			<label for="option_remote_consultation">Do you offer Remote Consultations?</label><br>
+			<input type="radio" id="rc_yes" name="rc_yes" value="Yes">
+			<label for="rc_yes">Yes</label><br>
+			<input type="radio" id="rc_no" name="rc_no" value="No">
+			<label for="rc_no">No</label><br>
+		</div>
+		
+		<div class="option_training_program">
+			<label for="option_remote_consultation">Did you finish training program?</label><br>
+			<input type="radio" id="tp_yes" name="tp_yes" value="Yes">
+			<label for="tp_yes">Yes</label><br>
+			<input type="radio" id="tp_no" name="tp_no" value="No">
+			<label for="tp_no">No</label><br>
+		</div>
+		
+		<div class="option_describe_practice">
+			<label for="describe_practice">Describe Your Practice:</label><br>
+			<input type="text" id="describe_practice" name="describe_practice"><br>
+		</div>
+		
+		<div class="option_specific_services">
+			<label for="specific_services">Specific Services:</label><br>
+			<input type="text" id="specific_services" name="specific_services"><br>
+		</div>
+		
+		<br><br><br>
+		
+		<div class="option_specialties_1">
+			<label for="specialties_1">Specialties #1:</label><br>
+			<input type="text" id="specialties_1" name="specialties_1"><br>
+		</div>
+		
+		<div class="option_specialties_2">
+			<label for="specialties_2">Specialties #2:</label><br>
+			<input type="text" id="specialties_2" name="specialties_2"><br>
+		</div>
+		
+		<div class="option_specialties_3">
+			<label for="specialties_3">Specialties #3:</label><br>
+			<input type="text" id="specialties_3" name="specialties_3"><br>
+		</div>
+		
+		<div class="option_specialties_4">
+			<label for="specialties_4">Specialties #4:</label><br>
+			<input type="text" id="specialties_4" name="specialties_4"><br>
+		</div>
+		
+		<br><br><br>
+		
+		<div class="option_medication_management">
+			<label for="option_medication_management">Do you offer Medication Management?</label><br>
+			<input type="radio" id="mm_yes" name="mm_yes" value="Yes">
+			<label for="mm_yes">Yes</label><br>
+			<input type="radio" id="mm_no" name="mm_no" value="No">
+			<label for="mm_no">No</label><br>
+		</div>
+		
+		<div class="option_child_services">
+			<label for="option_child_services">Do you offer Child/Adolescents Services?</label><br>
+			<input type="radio" id="cs_yes" name="cs_yes" value="Yes">
+			<label for="cs_yes">Yes</label><br>
+			<input type="radio" id="cs_no" name="cs_no" value="No">
+			<label for="cs_no">No</label><br>
+		</div>
+		
+		<br><br><br>
+		
+		<div class="option_contact_method">
+			<label for="option_contact_method">Select Your Preferred Contact Method</label>
+			<select class="contact_method" id="contact_method" name="contact_method">
+				<option value="" disabled selected hidden> </option>
+				<option value="Offie Address">Office Address</option>
+				<option value="Phone">Phone</option>
+				<option value="Email">Email</option>
+				<option value="Website">Website</option>
+			</select>
+		</div>
+		
+		<div class="option_contact_details">
+			<label for="contact_details">Enter Your Contact Details:</label><br>
+			<input type="text" id="contact_details" name="contact_details"><br>
+		</div>
+		
+		
+		
+	</form>
+	
 </div>
