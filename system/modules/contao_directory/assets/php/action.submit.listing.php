@@ -1,28 +1,23 @@
 <?php
-// Starts the session and connects to the database
-include_once("prepend.cart.endpoint.php");
-
-	// turn the form values into $vars
+    
+    // turn the form values into $vars
 	$vars = $_POST;
 	
-
-  $vars['user_first_name']
-
     
     
+    try {
+        $dbh = new PDO("mysql:host=localhost;dbname=framework_contao_4_13", 'framework_user', 'fjE2NQ&[4c19hc!#th', array(
+        PDO::ATTR_PERSISTENT => true
+    ));
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        echo 'ERROR: ' . $e->getMessage();
+    }
+  
     
-  try {
-  $dbh = new PDO("mysql:host=localhost;dbname=ampersan_cms49", 'ampersan_dbadmin', 'Y06ZCg9BiAh2Uv#@', array(
-  PDO::ATTR_PERSISTENT => true
-  ));
-  $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  } catch (PDOException $e) {
-  echo 'ERROR: ' . $e->getMessage();
-  }
-    
-  $query = "INSERT INTO `tl_quote_request` (`id`, `tstamp`, `sorting`, `alias`, `panel_type`, `thickness`, `cradle`, `width`, `height`, `quantity`, `discount`, `price`, `published`, `tell_us`, `zip`, `state`, `city`, `address_2`, `address_1`, `phone`, `email`, `last_name`, `reviewed`, `first_name`, `created`) VALUES (NULL, '0', '".$sorting_number."', '', '".getPanelNameByID($clean['panel_id'])."', '".getPanelThicknessFromID($clean['flat_id'])."', '".getPanelCradleFromID($clean['cradle_id'])."', '".$clean['width']."', '".$clean['height']."', '".$clean['quantity']."', '0', '".$clean['price']."', '1', '".$vars['user_tell_us']."', '".$vars['user_zip']."', '".$vars['user_state']."', '".$vars['user_city']."', '".$vars['user_address_2']."', '".$vars['user_address_1']."', '".$vars['user_phone']."', '".$vars['user_email']."', '".$vars['user_last_name']."', 'unreviewed', '".$vars['user_first_name']."', '".date('F j, Y, g:i a')."')";
-  $result = $dbh->prepare($query);
-  $result->execute();
+    $query = "INSERT INTO `tl_listing` (`published`, `country`, `state`, `profession`, `credentials`, `last_name`, `first_name`, `approved`, `specific_services`, `contact_details`, `how_to_contact`, `describe_practice`, `specialties_4`, `specialties_3`, `specialties_2`, `specialties_1`, `provide_cas`, `provide_mms`, `training_program`, `remote_consultations`) VALUES (1, '".$vars['country']."', '".$vars['state']."', '".$vars['professions']."', '".$vars['credentials']."', '".$vars['last_name']."', '".$vars['first_name']."', 'unapproved', '".$vars['specific_services']."', '".$vars['contact_details']."', '".$vars['contact_method']."', '".$vars['desc_practice']."', '".$vars['specialties_4']."', '".$vars['specialties_3']."', '".$vars['specialties_2']."', '".$vars['specialties_1']."', '".$vars['child_services']."', '".$vars['medication_management']."', '".$vars['finished_training']."', '".$vars['remote_consultation']."')";
+    $result = $dbh->prepare($query);
+    $result->execute();
 
 
 	echo "Email Sent!";
