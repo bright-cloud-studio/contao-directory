@@ -333,7 +333,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['how_to_contact'],
             'inputType'               => 'select',
-            'options'                 => array('o_a' => 'Office Address',  'ph' => 'Phone',  'em' => 'Email',  'ws' => 'Website'),
+            'options'                 => array('Office Address' => 'Office Address',  'Phone' => 'Phone',  'Email' => 'Email',  'Website' => 'Website'),
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
         ),
