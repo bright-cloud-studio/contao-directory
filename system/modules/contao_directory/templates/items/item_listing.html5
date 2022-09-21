@@ -4,7 +4,7 @@
 ?>
 
 
-<div class="item_listing id_<?= $this->id ?>" id="item_listing id_<?= $this->id ?>" data-country="<?= $this->country ?>" data-state="<?= $this->state ?>" data-professions="<?php
+<div class="item_listing id_<?= $this->id ?> flex_wrapper" id="item_listing id_<?= $this->id ?>" data-country="<?= $this->country ?>" data-state="<?= $this->state ?>" data-professions="<?php
 		$professionsTotal = sizeof($professions);
 		$professionsCount = 0;
 		foreach($professions as $profession) {
@@ -17,16 +17,12 @@
 		}
 	?>" data-rc="<?= $this->remote_consultations ?>" data-mm="<?= $this->provide_mms ?>" data-cs="<?= $this->provide_cas ?>">
 	
-	<p><img src="<?= FilesModel::findByUuid($this->photo)->path ?>"></p>
-	<p><strong>First Name: </strong> <?= $this->first_name ?></p>
-	<p><strong>Last Name: </strong> <?= $this->last_name ?></p>
-	<p><strong>City: </strong> <?= $this->city ?></p>
-	<p><strong>State: </strong> <?= $this->state ?></p>
-	<p><strong>Country: </strong> <?= $this->country ?></p>
-	<br>
-	<p><strong>Credentials: </strong> <?= $this->credentials ?></p>
-	<p><strong>Professions:</strong>
-		<?php
+	<!-- Left side text -->
+	<div class="size75">
+		<h3 class="name"><?= $this->first_name ?> <?= $this->last_name ?>, <span class="credentials"><?= $this->credentials ?></span></h3>
+		<p class="address"><?= $this->city ?>, <?= $this->state ?>, <?= $this->country ?></p>
+		
+		<p><?php
 			$professionsTotal = sizeof($professions);
 			$professionsCount = 0;
 			foreach($professions as $profession) {
@@ -37,26 +33,37 @@
 					echo $profession . ", ";
 				}
 			}
-		?>
-	</p>
-	<p><strong>Remote Consultation: </strong> <?= $this->remote_consultations ?></p>
-	<p><strong>Training Program: </strong> <?= $this->training_program ?></p>
-	<p><strong>Describe Practice: </strong> <?= $this->describe_practice ?></p>
-	<p><strong>Specific Services: </strong> <?= $this->specific_services ?></p>
-	<br>
-	<p><strong>Specialties 1: </strong> <?= $this->specialties_1 ?></p>
-	<p><strong>Specialties 2: </strong> <?= $this->specialties_2 ?></p>
-	<p><strong>Specialties 3: </strong> <?= $this->specialties_3 ?></p>
-	<p><strong>Specialties 4: </strong> <?= $this->specialties_4 ?></p>
-	<br>
-	<p><strong>Provide MMS: </strong> <?= $this->provide_mms ?></p>
-	<p><strong>Provide CAS: </strong> <?= $this->provide_cas ?></p>
-	<br>
-	<p><strong>How to Contact: </strong> <?= $this->how_to_contact ?></p>
-	<p><strong>Contact Details: </strong> <?= $this->contact_details ?></p>
-	<br>
-	<p><strong>Internal Notes: </strong> <?= $this->internal_notes ?></p>
-	<p><strong>Date Created: </strong> <?= $this->date_created ?></p>
-	<p><strong>Date Approved: </strong> <?= $this->date_approved ?></p>
+		?></p>
+		
+		<?php if($this->remote_consultations == "yes") { ?>
+			<p class="remote_consultations">Offers virtual sessions</p>
+		<?php } ?>
+		
+		<?php if($this->provide_mms == "yes") { ?>
+			<p class="medication_management">Offers medication management</p>
+		<?php } ?>
+		
+		<?php if($this->provide_cas == "yes") { ?>
+			<p class="child_services">Offers child/adolescent services</p>
+		<?php } ?>
+		
+		<p><strong>Describe Practice: </strong> <?= $this->describe_practice ?></p>
+		<p><strong>Specific Services: </strong> <?= $this->specific_services ?></p>
+		
+		<br><br>
+		
+		<p class="specialties"><?= $this->specialties_1 ?>, <?= $this->specialties_2 ?>, <?= $this->specialties_3 ?>, <?= $this->specialties_4 ?></p>
+		<br>
+		<p><strong>Contact By: </strong> <?= $this->how_to_contact ?></p>
+		<p><?= $this->contact_details ?></p>
+	</div>
 	
+	<!-- Right side image and training badge -->
+	<div class="size25 flex_wrapper">
+		<?php if($this->training_program == "yes") { ?>
+		<div class="training_program"><img src="files/content/directory/training_badge.png"></div>
+		<?php } ?>
+		<div class="photo"><img src="<?= FilesModel::findByUuid($this->photo)->path ?>"></div>
+	</div>
+
 </div>
