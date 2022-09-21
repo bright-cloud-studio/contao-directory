@@ -19,7 +19,6 @@ $GLOBALS['BE_MOD']['content']['listings'] = array(
 
 /* Front end modules */
 $GLOBALS['FE_MOD']['contao_directory']['directory_list'] 	= 'Bcs\Module\DirectoryList';
-$GLOBALS['FE_MOD']['contao_directory']['submission_form'] 	= 'Bcs\Module\SubmissionForm';
 
 /* Models */
 $GLOBALS['TL_MODELS']['tl_listing'] = 'Bcs\Model\Listing';
