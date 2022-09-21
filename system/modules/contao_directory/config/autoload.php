@@ -15,8 +15,6 @@ ClassLoader::addClasses(array
 (
     // This is the listing module
     'Bcs\Module\DirectoryList'          => 'system/modules/contao_directory/library/Bcs/Module/DirectoryList.php',
-    // this is the submission module
-    'Bcs\Module\SubmissionForm'          => 'system/modules/contao_directory/library/Bcs/Module/SubmissionForm.php',
     // The Listings section in the back end
 	'Bcs\Backend\ListingsBackend' 	    => 'system/modules/contao_directory/library/Bcs/Backend/ListingsBackend.php',
     // The individual listings themselves
@@ -30,7 +28,6 @@ TemplateLoader::addFiles(array
 (
     // Template for front end modules
    	'mod_directory_list' 		    => 'system/modules/contao_directory/templates/modules',
-    'mod_submission_form' 		    => 'system/modules/contao_directory/templates/modules',
     // Template for items in the front end module
 	'item_listing' 		            => 'system/modules/contao_directory/templates/items',
 ));
