@@ -15,4 +15,3 @@ $GLOBALS['TL_LANG']['MOD']['listings']          = array('Listings', 'Listings fo
 
 /* Front end modules */
 $GLOBALS['TL_LANG']['FMD']['directory_list']    = array('Directory List', 'Displays Listings and the filters to customize them');
-$GLOBALS['TL_LANG']['FMD']['submission_form']    = array('Submission Form', 'Displays form for submitting listings');
