@@ -153,7 +153,7 @@ class ListingsBackend extends \Backend
         );
     }
     
-    public function getStates() {
+    public function optionsStates() {
 		return array(
 			'United States' => array(
 				'AL' => 'Alabama',
@@ -232,7 +232,7 @@ class ListingsBackend extends \Backend
 			);
 	}
     
-    public function getCountries() {
+    public function optionsCountries() {
 		return array(
 			'United States' => array(
 				'AL' => 'Alabama',
