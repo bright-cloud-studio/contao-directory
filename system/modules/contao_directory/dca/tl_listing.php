@@ -250,12 +250,12 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 		),
         'state' => array
 		(
-			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['state'],
-			'inputType'                 => 'text',
-			'default'                   => '',
-			'search'                    => true,
-			'eval'                      => array('mandatory'=>false, 'tl_class'=>'w50'),
-			'sql'                       => "varchar(255) NOT NULL default ''"
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['state'],
+			'inputType'                 => 'select',
+            'options_callback'          => array('Bcs\Backend\ListingsBackend', 'getProfessions'),
+            'default'                   => '',
+			'eval'                      => array('mandatory'=>false, 'multiple'=>false, 'tl_class'=>'w50'),
+			'sql'                       => ['type' => 'blob']
 		),
         'zip' => array
 		(
@@ -269,11 +269,11 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         'country' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['country'],
-			'inputType'                 => 'text',
-			'default'                   => '',
-			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50 clr'),
-			'sql'                       => "varchar(255) NOT NULL default ''"
+			'inputType'                 => 'select',
+            'options_callback'          => array('Bcs\Backend\ListingsBackend', 'getCountries'),
+            'default'                   => '',
+			'eval'                      => array('mandatory'=>false, 'multiple'=>false, 'tl_class'=>'w50'),
+			'sql'                       => ['type' => 'blob']
 		),
         
         
