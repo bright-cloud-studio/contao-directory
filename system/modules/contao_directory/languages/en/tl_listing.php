@@ -43,7 +43,7 @@ $GLOBALS['TL_LANG']['tl_listing']['address_legend']             = 'Address Detai
 $GLOBALS['TL_LANG']['tl_listing']['address_1']                  = array('Address', 'Enter the clinician\'s first address line');
 $GLOBALS['TL_LANG']['tl_listing']['address_2']                  = array('Addres 2', 'Enter the clinician\'s second address line');
 $GLOBALS['TL_LANG']['tl_listing']['city']                       = array('City', 'Enter the clinician\'s city');
-$GLOBALS['TL_LANG']['tl_listing']['state']                      = array('State', 'Enter the clinician\'s state');
+$GLOBALS['TL_LANG']['tl_listing']['state']                      = array('State/Providence', 'Enter State for United States, Providence for Canada');
 $GLOBALS['TL_LANG']['tl_listing']['zip']                        = array('ZIP code', 'Enter the clinician\'s ZIP code');
 $GLOBALS['TL_LANG']['tl_listing']['country']                    = array('Country', 'Enter the clinician\'s country');
 
