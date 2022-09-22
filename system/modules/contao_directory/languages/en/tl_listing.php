@@ -32,22 +32,28 @@ $GLOBALS['TL_LANG']['tl_listing']['approved']                   = array('Approve
 $GLOBALS['TL_LANG']['tl_listing']['listing_legend']             = 'Main Details';
 $GLOBALS['TL_LANG']['tl_listing']['first_name']                 = array('First Name', 'Enter the clinician\'s first name');
 $GLOBALS['TL_LANG']['tl_listing']['last_name']                  = array('Last Name', 'Enter the clinician\'s last name');
+$GLOBALS['TL_LANG']['tl_listing']['phone']                      = array('Phone Number', 'Enter the clinician\'s phone number');
+$GLOBALS['TL_LANG']['tl_listing']['email_internal']             = array('Internal Email', 'This is a private email Diagnosis Diet will contact you at');
+$GLOBALS['TL_LANG']['tl_listing']['email_public']               = array('Public Email', 'This is the email adress the listing will use if chosen as contact method');
+$GLOBALS['TL_LANG']['tl_listing']['website']                    = array('Website', 'Enter the clinician\'s website');
 $GLOBALS['TL_LANG']['tl_listing']['photo']                      = array('Photo', 'Upload clinician\'s photo');
 
 /* Address Details */
 $GLOBALS['TL_LANG']['tl_listing']['address_legend']             = 'Address Details';
+$GLOBALS['TL_LANG']['tl_listing']['address_1']                  = array('Address', 'Enter the clinician\'s first address line');
+$GLOBALS['TL_LANG']['tl_listing']['address_2']                  = array('Addres 2', 'Enter the clinician\'s second address line');
 $GLOBALS['TL_LANG']['tl_listing']['city']                       = array('City', 'Enter the clinician\'s city');
 $GLOBALS['TL_LANG']['tl_listing']['state']                      = array('State', 'Enter the clinician\'s state');
+$GLOBALS['TL_LANG']['tl_listing']['zip']                        = array('ZIP code', 'Enter the clinician\'s ZIP code');
 $GLOBALS['TL_LANG']['tl_listing']['country']                    = array('Country', 'Enter the clinician\'s country');
 
 /* Specific Details */
 $GLOBALS['TL_LANG']['tl_listing']['details_legend']             = 'Specific Details';
-$GLOBALS['TL_LANG']['tl_listing']['credentials']                = array('Credentials', 'Select the clinician\'s credentials');
+$GLOBALS['TL_LANG']['tl_listing']['credentials']                = array('Credentials', 'Enter the clinician\'s credentials');
 $GLOBALS['TL_LANG']['tl_listing']['profession']                 = array('Profession', 'Select the clinician\'s professions');
 $GLOBALS['TL_LANG']['tl_listing']['remote_consultations']       = array('Remote Consultation', 'Select if remote consultation is provided');
 $GLOBALS['TL_LANG']['tl_listing']['training_program']           = array('Training Program', 'Select if the clinician\'s has finished Dr. Ede\'s Training Program');
 $GLOBALS['TL_LANG']['tl_listing']['describe_practice']          = array('Describe Practice', 'Enter a description of the clinician\'s practice');
-$GLOBALS['TL_LANG']['tl_listing']['specific_services']          = array('Specific Services', 'List the clinician\'s specific services offered');
 
 /* Specialties */
 $GLOBALS['TL_LANG']['tl_listing']['specialties_legend']         = 'Specialties';
@@ -69,5 +75,6 @@ $GLOBALS['TL_LANG']['tl_listing']['contact_details']            = array('Enter D
 /* Internal Details */
 $GLOBALS['TL_LANG']['tl_listing']['internal_legend']            = 'Internal Details';
 $GLOBALS['TL_LANG']['tl_listing']['internal_notes']             = array('Internal Notes', 'INTERNAL - Notes');
+$GLOBALS['TL_LANG']['tl_listing']['specific_services']          = array('Specific Services', 'INTERNAL - Specific Services');
 $GLOBALS['TL_LANG']['tl_listing']['date_created']               = array('Date Created', 'INTERNAL - Date listing created');
 $GLOBALS['TL_LANG']['tl_listing']['date_approved']              = array('Date Approved', 'INTERNAL - Date listing was approved');
