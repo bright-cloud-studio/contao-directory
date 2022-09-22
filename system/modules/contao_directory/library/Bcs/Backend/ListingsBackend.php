@@ -240,12 +240,12 @@ class ListingsBackend extends \Backend
         );
     }
     
-    public function getDateCreated() {
+    public function getDateCreated(DataContainer $dc) {
        $todaysDate = date("Y/m/d");
         return $todaysDate;
     }
     
-    public function getDateApproved() {
+    public function getDateApproved(DataContainer $dc) {
         $todaysDate = date("Y/m/d");
         return $todaysDate;
     }
