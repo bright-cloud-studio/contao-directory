@@ -86,57 +86,60 @@ class DirectoryList extends \Contao\Module
         foreach ($objListing as $listing)
 		{
 		    
-		    // initialize
-		    $strListingKey = $listing->name;
-		    if (!array_key_exists($strListingKey, $arrListings)) {
-				$arrListings[$strListingKey] = array(
-					"name" 			=> $listing->name,
-					'id'		    => \StringUtil::deserialize($listing->id),
-    				'alias'		    => $listing->alias,
-    				'tstamp'	    => $listing->tstamp,
-    				'timetamp'	    => \Date::parse(\Config::get('datimFormat'), $listing->tstamp),
-    				'published'     => $listing->published,
-					"listings"		=> array()
-				);
-			}
+            // if the listing is 'Approved'
+            if($listing->approved == "Approved") {
+                // initialize
+                $strListingKey = $listing->name;
+                if (!array_key_exists($strListingKey, $arrListings)) {
+                    $arrListings[$strListingKey] = array(
+                        "name" 			=> $listing->name,
+                        'id'		    => \StringUtil::deserialize($listing->id),
+                        'alias'		    => $listing->alias,
+                        'tstamp'	    => $listing->tstamp,
+                        'timetamp'	    => \Date::parse(\Config::get('datimFormat'), $listing->tstamp),
+                        'published'     => $listing->published,
+                        "listings"		=> array()
+                    );
+                }
 
-            // Set values for template
-			$arrListing['id']                       = $listing->id;
-			$arrListing['photo']                    = $listing->photo;
-			$arrListing['first_name']               = $listing->first_name;
-			$arrListing['last_name']                = $listing->last_name;
-            $arrListing['phone']                    = $listing->last_name;
-            $arrListing['email_public']             = $listing->last_name;
-            $arrListing['website']                  = $listing->last_name;
-            
-			$arrListing['address_1']                = $listing->address_1;
-            $arrListing['address_2']                = $listing->address_2;
-            $arrListing['city']                     = $listing->city;
-			$arrListing['state']                    = $listing->state;
-            $arrListing['zip']                      = $listing->zip;
-			$arrListing['country']                  = $listing->country;
-			
-			$arrListing['credentials']              = $listing->credentials;
-			$arrListing['profession']               = $listing->profession;
-			$arrListing['remote_consultations']     = $listing->remote_consultations;
-			$arrListing['training_program']         = $listing->training_program;
-			$arrListing['describe_practice']        = $listing->describe_practice;
-			
-			$arrListing['specialties_1']            = $listing->specialties_1;
-			$arrListing['specialties_2']            = $listing->specialties_2;
-			$arrListing['specialties_3']            = $listing->specialties_3;
-			$arrListing['specialties_4']            = $listing->specialties_4;
-			
-			$arrListing['provide_mms']              = $listing->provide_mms;
-			$arrListing['provide_cas']              = $listing->provide_cas;
-			
-			$arrListing['how_to_contact']           = $listing->how_to_contact;
+                // Set values for template
+                $arrListing['id']                       = $listing->id;
+                $arrListing['photo']                    = $listing->photo;
+                $arrListing['first_name']               = $listing->first_name;
+                $arrListing['last_name']                = $listing->last_name;
+                $arrListing['phone']                    = $listing->last_name;
+                $arrListing['email_public']             = $listing->last_name;
+                $arrListing['website']                  = $listing->last_name;
+
+                $arrListing['address_1']                = $listing->address_1;
+                $arrListing['address_2']                = $listing->address_2;
+                $arrListing['city']                     = $listing->city;
+                $arrListing['state']                    = $listing->state;
+                $arrListing['zip']                      = $listing->zip;
+                $arrListing['country']                  = $listing->country;
+
+                $arrListing['credentials']              = $listing->credentials;
+                $arrListing['profession']               = $listing->profession;
+                $arrListing['remote_consultations']     = $listing->remote_consultations;
+                $arrListing['training_program']         = $listing->training_program;
+                $arrListing['describe_practice']        = $listing->describe_practice;
+
+                $arrListing['specialties_1']            = $listing->specialties_1;
+                $arrListing['specialties_2']            = $listing->specialties_2;
+                $arrListing['specialties_3']            = $listing->specialties_3;
+                $arrListing['specialties_4']            = $listing->specialties_4;
+
+                $arrListing['provide_mms']              = $listing->provide_mms;
+                $arrListing['provide_cas']              = $listing->provide_cas;
+
+                $arrListing['how_to_contact']           = $listing->how_to_contact;
 
 
-			$strItemTemplate = ($this->listings_customItemTpl != '' ? $this->listings_customItemTpl : 'item_listing');
-			$objTemplate = new \FrontendTemplate($strItemTemplate);
-			$objTemplate->setData($arrListing);
-            $arrListings[$strListingKey]['listings'][] = $objTemplate->parse();
+                $strItemTemplate = ($this->listings_customItemTpl != '' ? $this->listings_customItemTpl : 'item_listing');
+                $objTemplate = new \FrontendTemplate($strItemTemplate);
+                $objTemplate->setData($arrListing);
+                $arrListings[$strListingKey]['listings'][] = $objTemplate->parse();
+            }
 		}
         
         $this->Template->listings = $arrListings;
