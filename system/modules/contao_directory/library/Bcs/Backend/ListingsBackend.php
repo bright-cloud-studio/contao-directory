@@ -155,9 +155,26 @@ class ListingsBackend extends \Backend
     
     public function getCountries() {
         return array(
-            'USA' => 'United States',
-            'Canada' => 'Canada',
-            'Other' => 'Other'
+            'Psychiatrist, adult' => 'Psychiatrist, adult',
+            'Psychiatrist, child and adolescent' => 'Psychiatrist, child and adolescent',
+            'Psychiatric, Nurse Practitioner' => 'Psychiatric, Nurse Practitioner',
+            'Psychologist' => 'Psychologist',
+            'Social Worker' => 'Social Worker',
+            'Counselor (LCPC, LMHC, etc.)' => 'Counselor (LCPC, LMHC, etc.)',
+            'Marriage and Family Therapist' => 'Marriage and Family Therapist',
+            'Health Coach' => 'Health Coach',
+            'Medical Nurse Practitioner' => 'Medical Nurse Practitioner',
+            'Family Physician' => 'Family Physician',
+            'Internal Medicine Physician' => 'Internal Medicine Physician',
+            'Naturopathic Physician' => 'Naturopathic Physician',
+            'Physician Assistant' => 'Physician Assistant',
+            'Registered Nurse' => 'Registered Nurse',
+            'Registered Dietitian' => 'Registered Dietitian',
+            'Nutrition Therapist' => 'Nutrition Therapist',
+            'Neurologist' => 'Neurologist',
+            'Peer Support Specialist' => 'Peer Support Specialist',
+            'Food Addiction Specialist' => 'Food Addiction Specialist',
+            'Obesity Medicine Specialist' => 'Obesity Medicine Specialist'
         );
     }
     
