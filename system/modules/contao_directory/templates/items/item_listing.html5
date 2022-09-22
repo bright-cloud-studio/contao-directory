@@ -1,9 +1,9 @@
 <?php
-	// Unserialize
+	/* Professions is passed here serialized */
 	$professions = unserialize($this->profession);
 ?>
 
-
+<!-- Listing Wrapper with custom data types for the filter -->
 <div class="item_listing id_<?= $this->id ?> flex_wrapper" id="item_listing id_<?= $this->id ?>" data-country="<?= $this->country ?>" data-state="<?= $this->state ?>" data-professions="<?php
 		$professionsTotal = sizeof($professions);
 		$professionsCount = 0;
@@ -17,70 +17,170 @@
 		}
 	?>" data-rc="<?= $this->remote_consultations ?>" data-mm="<?= $this->provide_mms ?>" data-cs="<?= $this->provide_cas ?>">
 	
-	<!-- Left side text -->
+	
+	<!-- Left Side -->
 	<div class="size75">
+	
+		<!-- Name, Credentials -->
 		<h3 class="name"><?= $this->first_name ?> <?= $this->last_name ?>, <span class="credentials"><?= $this->credentials ?></span></h3>
-		<p class="address"><?= $this->city ?>, <?= $this->state ?>, <?= $this->country ?></p>
 		
-		<div class="speciality">
-		<strong>Professions:</strong> <?php
-			$professionsTotal = sizeof($professions);
-			$professionsCount = 0;
-			foreach($professions as $profession) {
-				$professionsCount++;
-				if($professionsCount == $professionsTotal) {
-					echo $profession;
-				} else {
-					echo $profession . ", ";
-				}
+		<!-- Address -->
+		<?php
+			// Only display State for USA and Canada
+			if($this->country == 'Other') {
+				?> <div class="address"><?= $this->city ?>, <?= $this->country ?></div> <?php
+			} else {
+			 ?> <div class="address"><?= $this->city ?>, <?= $this->state ?>, <?= $this->country ?></div> <?
 			}
-		?></div>
 		
-		<div class="offers">
-			<strong>Offers:</strong> 
-		<?php if($this->remote_consultations == "yes") { ?>
-			<span class="remote_consultations">Virtual sessions<?php if($this->provide_mms == "yes") { echo ', medication management'; } ?><?php if($this->provide_cas == "yes") { echo ', Child/Adolescent services'; } ?></span>
-		<?php } ?>
-		</div>
+		?>
 		
 		
+		<!-- Professions Section -->
+		<div class="professions">
+		<strong>Professions:</strong>
+		<?php
+			$professionsCount = 1;
+			foreach($professions as $profession) {
+				// if this is the last profession dont add a comma
+				if($professionsCount == count($professions))
+					echo $profession;
+				else
+					echo $profession . ', ';
+				$professionsCount++;
+			}
+		?>
+		</div> <!-- End Professions Section -->
+		
+		
+		<!-- Offers Section -->
+		<?php 
+			$offers = [];
+			if($this->remote_consultations == "yes")
+				array_push($offers, "virtual sessions");
+			if($this->provide_mms == "yes")
+				array_push($offers, "medication management");
+			if($this->provide_cas == "yes")
+				array_push($offers, "child/adolescent services");
+			
+			// if we have offers
+			if(!empty($offers)) { ?>
+				<div class="offers">
+					<strong>Offers: </strong>
+					<?php
+						$offerCount = 1;
+						foreach ($offers as $offer) {
+							// if this is the last entry dont add a comma
+							if($offerCount == count($offers))
+								echo $offer;
+							else
+								echo $offer . ', ';
+							$offerCount++;
+						}
+					?>
+				</div>
+			<?php }
+		?> <!-- End Offers Section -->
+		
+		<!-- Website Section -->
+		<?php
+			if(!empty($this->website)) {
+				?><div class="website"><?php echo $this->website; ?></div><?php
+			}
+			
+		?>
+
+		
+		<!-- Accordion Section -->
 		<section class="ce_accordionStart ce_accordion block">
 			<div class="toggler ui-accordion-header ui-corner-top ui-state-default ui-accordion-icons ui-accordion-header-collapsed ui-corner-all" role="tab" id="ui-id-<?= $this->id ?>" aria-controls="ui-id-<?= $this->id ?>" aria-selected="false" aria-expanded="false" tabindex="0">
 				<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
 			</div>
 			<div class="accordion ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" id="ui-id-<?= $this->id ?>" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="true" style="display: none;">
 				<div>
-					<p><strong>Describe Practice: </strong><?= $this->describe_practice ?></p></p>
-					<p><strong>Specific Services: </strong> <?= $this->specific_services ?></p>
+					<!-- Description -->
+					<div class="description"><strong>Description: </strong><?= $this->describe_practice ?></div>
 					
-					<br><br>
+					<!-- Specialties -->
+					<?php
+						$specialties = [];
+						if(!empty($this->specialties_1))
+							array_push($specialties, $this->specialties_1);
+						if(!empty($this->specialties_2))
+							array_push($specialties, $this->specialties_2);
+						if(!empty($this->specialties_3))
+							array_push($specialties, $this->specialties_3);
+						if(!empty($this->specialties_4))
+							array_push($specialties, $this->specialties_4);
+							
+						// if we have specialties
+						if(!empty($specialties)) { ?>
+							<div class="specialties">
+								<strong>Specialties: </strong>
+								<?php
+									$specialtiesCount = 1;
+									foreach ($specialties as $specialty) {
+										// if this is the last entry dont add a comma
+										if($specialtiesCount == count($specialties))
+											echo $specialty;
+										else
+											echo $specialty . ', ';
+										$specialtiesCount++;
+									}
+								?>
+							</div>
+						<?php }
+					?> <!-- End Specialties >
 					
-					<p class="specialties"><?= $this->specialties_1 ?>, <?= $this->specialties_2 ?>, <?= $this->specialties_3 ?>, <?= $this->specialties_4 ?></p>
-					<br>
-					<p><strong>Contact By: </strong>
-					<a href="
-					<?php if($this->how_to_contact == "Email") { echo 'mailto:' . $this->contact_details; } ?>
-					<?php if($this->how_to_contact == "Website") { echo $this->contact_details; } ?>
-					<?php if($this->how_to_contact == "Phone") { echo 'tel:' . preg_replace('/[^0-9]/', '', $this->contact_details); } ?>
-					"><?= $this->how_to_contact ?></a>
-					</p>
+					
+					
+					
+					<!-- Contact By Phone -->
+					<?php if($this->how_to_contact == 'Phone') { ?>
+						<div class="contact"><strong>Contact By: </strong>
+							<a href="<?= 'tel:' . preg_replace('/[^0-9]/', '', $this->phone); ?>">Phone</a>
+						</div>							
+					<?php } ?>
+					
+					<!-- Contact By Email -->
+					<?php if($this->how_to_contact == 'Email') { ?>
+						<div class="contact"><strong>Contact By: </strong>
+							<a href="<?= 'mailto:' . $this->email_public; ?>">Email</a>
+						</div>							
+					<?php } ?>
+					
+					<!-- Contact By Office Address -->
+					<?php if($this->how_to_contact == 'Office Address') { ?>
+						<div class="contact">
+							<?= $this->address_1; ?><br>
+							<?= $this->address_2; ?><br>
+							<?php
+								if($this->country == 'Other')
+									echo $this->city . ', ' . $this->country . ', ' . $this->zip;
+								else
+									echo $this->city . ', ' . $this->state . ', ' . $this->country . ', ' . $this->zip;
+							?>
+						</div>							
+					<?php } ?>
+					
+					
 
 				</div>
 			</div>
-		</section>
+		</section> <!-- End Accordion Section -->
 		
 		
 		
 		
 
-	</div>
+	</div><!-- End Left Side -->
 	
-	<!-- Right side image and training badge -->
+	<!-- Right Side -->
 	<div class="size25 flex_wrapper">
 		<?php if($this->training_program == "yes") { ?>
 		<div class="training_program"><img src="files/content/directory/training_badge.png"></div>
 		<?php } ?>
 		<div class="photo"><img src="<?= FilesModel::findByUuid($this->photo)->path ?>"></div>
-	</div>
+	</div> <!-- End Right Side -->
 
-</div>
+</div> <!-- End Listing Wrapper -->
