@@ -239,12 +239,12 @@ class ListingsBackend extends \Backend
                 'Other'     => 'Other');
 	}
     
-    public function getDateCreated(DataContainer $dc) {
+    public function getDateCreated($varValue, DataContainer $dc) {
        $todaysDate = date("Y/m/d");
         return $todaysDate;
     }
     
-    public function getDateApproved(DataContainer $dc) {
+    public function getDateApproved($varValue, DataContainer $dc) {
         $todaysDate = date("Y/m/d");
         return $todaysDate;
     }
