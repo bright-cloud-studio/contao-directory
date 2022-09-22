@@ -153,7 +153,7 @@ class ListingsBackend extends \Backend
         );
     }
     
-    public function getCountries() {
+    public function optionsCountry() {
         return array(
             'Psychiatrist, adult' => 'Psychiatrist, adult',
             'Psychiatrist, child and adolescent' => 'Psychiatrist, child and adolescent',
@@ -178,7 +178,7 @@ class ListingsBackend extends \Backend
         );
     }
     
-    public function getStatesProvidences() {
+    public function optionsStates() {
         return array(
             "United States" => array(
                 'AL' => 'Alabama',
