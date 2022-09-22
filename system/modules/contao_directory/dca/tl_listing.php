@@ -253,7 +253,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['state'],
 			'inputType'                 => 'select',
 			'default'                   => '',
-			'options_callback'          => array('Bcs\Backend\ListingsBackend', 'getStates'),
+			'options_callback'          => array('Bcs\Backend\ListingsBackend', 'optionsStates'),
 			'eval'                      => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
@@ -271,7 +271,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['country'],
 			'inputType'                 => 'select',
 			'default'                   => '',
-			'options_callback'          => array('Bcs\Backend\ListingsBackend', 'getCountries'),
+			'options_callback'          => array('Bcs\Backend\ListingsBackend', 'optionsCountries'),
 			'eval'                      => array('includeBlankOption'=>false, 'chosen'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
