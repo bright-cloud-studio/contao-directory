@@ -104,7 +104,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                       => '{approved_legend},approved;{listing_legend},first_name,last_name,photo,phone,email_internal,email_public,website;{address_legend},address_1,address_2,city,state,zip,country;{details_legend},credentials,profession,remote_consultations,training_program,describe_practice;{specialties_legend},specialties_1,specialties_2,specialties_3,specialties_4;{provide_legend},provide_mms,provide_cas;{contact_legend},how_to_contact,contact_details;{internal_legend},internal_notes,specific_services,date_created,date_approved;{publish_legend},published;'
+        'default'                       => '{approved_legend},approved;{listing_legend},photo,first_name,last_name,phone,email_internal,email_public,website;{address_legend},address_1,address_2,city,state,zip,country;{details_legend},credentials,profession,remote_consultations,training_program,describe_practice;{specialties_legend},specialties_1,specialties_2,specialties_3,specialties_4;{provide_legend},provide_mms,provide_cas;{contact_legend},how_to_contact,contact_details;{internal_legend},internal_notes,specific_services,date_created,date_approved;{publish_legend},published;'
     ),
  
     // Fields
@@ -149,6 +149,20 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         
         
         
+        
+        'photo' => array
+		(
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['photo'],
+            'inputType'                 => 'fileTree',
+            'default'                   => '',
+            'search'                    => true,
+            'eval'                      => [
+                                            'mandatory' => true,
+                                            'fieldType' => 'radio', 
+                                            'filesOnly' => true
+                                        ],
+            'sql'                       => ['type' => 'binary', 'length' => 16, 'notnull' => false, 'fixed' => true]
+		),
 		'first_name' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['first_name'],
@@ -191,7 +205,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>false, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         'website' => array
@@ -200,22 +214,10 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>false, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
-        'photo' => array
-		(
-            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['photo'],
-            'inputType'                 => 'fileTree',
-            'default'                   => '',
-            'search'                    => true,
-            'eval'                      => [
-                                            'tl_class' => 'long clr',
-                                            'fieldType' => 'radio', 
-                                            'filesOnly' => true
-                                        ],
-            'sql'                       => ['type' => 'binary', 'length' => 16, 'notnull' => false, 'fixed' => true]
-		),
+        
         
         
         
@@ -234,7 +236,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>false, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         'city' => array
@@ -283,7 +285,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>false, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
         ),
         'profession' => array
@@ -317,7 +319,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'inputType'                 => 'textarea',
             'default'                   => '',
             'search'                    => true,
-            'eval'                      => array('tl_class'=>'clr'),
+            'eval'                      => array('mandatory' => true, 'tl_class'=>'clr'),
             'sql'                       => "varchar(255) NOT NULL default ''"
         ),
         
@@ -330,7 +332,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>false, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         'specialties_2' => array
@@ -339,7 +341,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>false, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         'specialties_3' => array
@@ -348,7 +350,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>false, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         'specialties_4' => array
@@ -357,7 +359,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>false, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         
@@ -402,7 +404,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'inputType'                 => 'textarea',
             'default'                   => '',
             'search'                    => true,
-            'eval'                      => array('tl_class'=>'clr'),
+            'eval'                      => array('tl_class'=>'long'),
             'sql'                       => "varchar(255) NOT NULL default ''"
         ),
         'specific_services' => array
@@ -411,7 +413,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>false, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         'date_created' => array
