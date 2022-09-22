@@ -25,3 +25,9 @@ $GLOBALS['TL_MODELS']['tl_listing'] = 'Bcs\Model\Listing';
 
 /* Hooks */
 $GLOBALS['TL_HOOKS']['processFormData'][]      = array('Bcs\Handler', 'onProcessForm');
+
+/* Add Backend CSS to style Reviewed and Unreviewed */
+if (TL_MODE == 'BE')
+{
+	$GLOBALS['TL_CSS'][]					= 'system/modules/contao_directory/assets/css/contao_directory_backend.css';
+}
