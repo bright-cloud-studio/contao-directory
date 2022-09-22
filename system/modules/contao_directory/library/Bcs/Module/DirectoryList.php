@@ -87,7 +87,7 @@ class DirectoryList extends \Contao\Module
 		{
 		    
             // if the listing is 'Approved'
-            if($listing->approved == "Approved") {
+            if($listing->approved == "approved") {
                 // initialize
                 $strListingKey = $listing->name;
                 if (!array_key_exists($strListingKey, $arrListings)) {
