@@ -39,7 +39,7 @@ $GLOBALS['TL_LANG']['tl_listing']['website']                    = array('Website
 $GLOBALS['TL_LANG']['tl_listing']['photo']                      = array('Photo', 'Upload clinician\'s photo');
 
 /* Address Details */
-$GLOBALS['TL_LANG']['tl_listing']['address_legend']             = 'Address Details';
+$GLOBALS['TL_LANG']['tl_listing']['address_legend']             = array('Address Details', 'NOTE: Details will only show if that Contact Method is selected');
 $GLOBALS['TL_LANG']['tl_listing']['address_1']                  = array('Address', 'Enter the clinician\'s first address line');
 $GLOBALS['TL_LANG']['tl_listing']['address_2']                  = array('Addres 2', 'Enter the clinician\'s second address line');
 $GLOBALS['TL_LANG']['tl_listing']['city']                       = array('City', 'Enter the clinician\'s city');
