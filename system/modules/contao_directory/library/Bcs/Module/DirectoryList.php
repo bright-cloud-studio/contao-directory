@@ -109,7 +109,7 @@ class DirectoryList extends \Contao\Module
                 $arrListing['last_name']                = $listing->last_name;
                 $arrListing['phone']                    = $listing->last_name;
                 $arrListing['email_public']             = $listing->last_name;
-                $arrListing['website']                  = $listing->last_name;
+                $arrListing['website']                  = $listing->website;
 
                 $arrListing['address_1']                = $listing->address_1;
                 $arrListing['address_2']                = $listing->address_2;
