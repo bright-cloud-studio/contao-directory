@@ -252,7 +252,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 		(
             'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['state'],
 			'inputType'                 => 'select',
-            'options_callback'          => array('Bcs\Backend\ListingsBackend', 'getProfessions'),
+            'options_callback'          => array('Bcs\Backend\ListingsBackend', 'getStatesProvidences'),
             'default'                   => '',
 			'eval'                      => array('mandatory'=>false, 'multiple'=>false, 'tl_class'=>'w50'),
 			'sql'                       => ['type' => 'blob']
