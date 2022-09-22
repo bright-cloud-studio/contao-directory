@@ -22,7 +22,8 @@
 		<h3 class="name"><?= $this->first_name ?> <?= $this->last_name ?>, <span class="credentials"><?= $this->credentials ?></span></h3>
 		<p class="address"><?= $this->city ?>, <?= $this->state ?>, <?= $this->country ?></p>
 		
-		<p><?php
+		<div class="speciality">
+		<strong>Professions:</strong> <?php
 			$professionsTotal = sizeof($professions);
 			$professionsCount = 0;
 			foreach($professions as $profession) {
@@ -33,29 +34,45 @@
 					echo $profession . ", ";
 				}
 			}
-		?></p>
+		?></div>
 		
+		<div class="offers">
+			<strong>Offers:</strong> 
 		<?php if($this->remote_consultations == "yes") { ?>
-			<p class="remote_consultations">Offers virtual sessions</p>
+			<span class="remote_consultations">Virtual sessions<?php if($this->provide_mms == "yes") { echo ', medication management'; } ?><?php if($this->provide_cas == "yes") { echo ', Child/Adolescent services'; } ?></span>
 		<?php } ?>
+		</div>
 		
-		<?php if($this->provide_mms == "yes") { ?>
-			<p class="medication_management">Offers medication management</p>
-		<?php } ?>
 		
-		<?php if($this->provide_cas == "yes") { ?>
-			<p class="child_services">Offers child/adolescent services</p>
-		<?php } ?>
+		<section class="ce_accordionStart ce_accordion block">
+			<div class="toggler ui-accordion-header ui-corner-top ui-state-default ui-accordion-icons ui-accordion-header-collapsed ui-corner-all" role="tab" id="ui-id-<?= $this->id ?>" aria-controls="ui-id-<?= $this->id ?>" aria-selected="false" aria-expanded="false" tabindex="0">
+				<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+			</div>
+			<div class="accordion ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" id="ui-id-<?= $this->id ?>" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="true" style="display: none;">
+				<div>
+					<p><strong>Describe Practice: </strong><?= $this->describe_practice ?></p></p>
+					<p><strong>Specific Services: </strong> <?= $this->specific_services ?></p>
+					
+					<br><br>
+					
+					<p class="specialties"><?= $this->specialties_1 ?>, <?= $this->specialties_2 ?>, <?= $this->specialties_3 ?>, <?= $this->specialties_4 ?></p>
+					<br>
+					<p><strong>Contact By: </strong>
+					<a href="
+					<?php if($this->how_to_contact == "Email") { echo 'mailto:' . $this->contact_details; } ?>
+					<?php if($this->how_to_contact == "Website") { echo $this->contact_details; } ?>
+					<?php if($this->how_to_contact == "Phone") { echo 'tel:' . preg_replace('/[^0-9]/', '', $this->contact_details); } ?>
+					"><?= $this->how_to_contact ?></a>
+					</p>
+
+				</div>
+			</div>
+		</section>
 		
-		<p><strong>Describe Practice: </strong> <?= $this->describe_practice ?></p>
-		<p><strong>Specific Services: </strong> <?= $this->specific_services ?></p>
 		
-		<br><br>
 		
-		<p class="specialties"><?= $this->specialties_1 ?>, <?= $this->specialties_2 ?>, <?= $this->specialties_3 ?>, <?= $this->specialties_4 ?></p>
-		<br>
-		<p><strong>Contact By: </strong> <?= $this->how_to_contact ?></p>
-		<p><?= $this->contact_details ?></p>
+		
+
 	</div>
 	
 	<!-- Right side image and training badge -->
