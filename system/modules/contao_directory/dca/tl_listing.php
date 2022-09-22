@@ -252,10 +252,10 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 		(
             'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['state'],
 			'inputType'                 => 'select',
-            'options_callback'          => array('Bcs\Backend\ListingsBackend', 'getStatesProvidences'),
-            'default'                   => '',
-			'eval'                      => array('mandatory'=>false, 'multiple'=>false, 'tl_class'=>'w50'),
-			'sql'                       => ['type' => 'blob']
+			'default'                   => '',
+			'options_callback'          => array('Bcs\Backend\ListingsBackend', 'getStates'),
+			'eval'                      => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         'zip' => array
 		(
@@ -268,12 +268,12 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 		),
         'country' => array
 		(
-			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['country'],
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['country'],
 			'inputType'                 => 'select',
-            'options_callback'          => array('Bcs\Backend\ListingsBackend', 'getCountries'),
-            'default'                   => '',
-			'eval'                      => array('mandatory'=>false, 'multiple'=>false, 'tl_class'=>'w50'),
-			'sql'                       => ['type' => 'blob']
+			'default'                   => '',
+			'options_callback'          => array('Bcs\Backend\ListingsBackend', 'getCountries'),
+			'eval'                      => array('includeBlankOption'=>false, 'chosen'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         
         
