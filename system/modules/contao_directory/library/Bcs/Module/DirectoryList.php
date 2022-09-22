@@ -105,8 +105,15 @@ class DirectoryList extends \Contao\Module
 			$arrListing['photo']                    = $listing->photo;
 			$arrListing['first_name']               = $listing->first_name;
 			$arrListing['last_name']                = $listing->last_name;
-			$arrListing['city']                     = $listing->city;
+            $arrListing['phone']                    = $listing->last_name;
+            $arrListing['email_public']             = $listing->last_name;
+            $arrListing['website']                  = $listing->last_name;
+            
+			$arrListing['address_1']                = $listing->address_1;
+            $arrListing['address_2']                = $listing->address_2;
+            $arrListing['city']                     = $listing->city;
 			$arrListing['state']                    = $listing->state;
+            $arrListing['zip']                      = $listing->zip;
 			$arrListing['country']                  = $listing->country;
 			
 			$arrListing['credentials']              = $listing->credentials;
@@ -114,7 +121,6 @@ class DirectoryList extends \Contao\Module
 			$arrListing['remote_consultations']     = $listing->remote_consultations;
 			$arrListing['training_program']         = $listing->training_program;
 			$arrListing['describe_practice']        = $listing->describe_practice;
-			$arrListing['specific_services']        = $listing->specific_services;
 			
 			$arrListing['specialties_1']            = $listing->specialties_1;
 			$arrListing['specialties_2']            = $listing->specialties_2;
@@ -125,11 +131,6 @@ class DirectoryList extends \Contao\Module
 			$arrListing['provide_cas']              = $listing->provide_cas;
 			
 			$arrListing['how_to_contact']           = $listing->how_to_contact;
-			$arrListing['contact_details']          = $listing->contact_details;
-			
-			$arrListing['internal_notes']           = $listing->internal_notes;
-			$arrListing['date_created']             = $listing->date_created;
-			$arrListing['date_approved']            = $listing->date_approved;
 
 
 			$strItemTemplate = ($this->listings_customItemTpl != '' ? $this->listings_customItemTpl : 'item_listing');
