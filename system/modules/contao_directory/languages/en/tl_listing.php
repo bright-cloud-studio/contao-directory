@@ -53,7 +53,7 @@ $GLOBALS['TL_LANG']['tl_listing']['credentials']                = array('Credent
 $GLOBALS['TL_LANG']['tl_listing']['profession']                 = array('Profession', 'Select the clinician\'s professions');
 $GLOBALS['TL_LANG']['tl_listing']['remote_consultations']       = array('Remote Consultation', 'Select if remote consultation is provided');
 $GLOBALS['TL_LANG']['tl_listing']['training_program']           = array('Training Program', 'Select if the clinician\'s has finished Dr. Ede\'s Training Program');
-$GLOBALS['TL_LANG']['tl_listing']['describe_practice']          = array('Describe Practice', 'Enter a description of the clinician\'s practice');
+$GLOBALS['TL_LANG']['tl_listing']['describe_practice']          = array('Describe your practice/services/philosophy', 'Enter a description of the clinician\'s practice');
 
 /* Specialties */
 $GLOBALS['TL_LANG']['tl_listing']['specialties_legend']         = 'Specialties';
