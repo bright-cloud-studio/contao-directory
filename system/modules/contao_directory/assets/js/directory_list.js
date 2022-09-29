@@ -1,8 +1,58 @@
 // When page is loaded
 $(document).ready(function() {
 
-    // Initialize Select2
+    // store our options
+    var countries = [];
+    var states = [];
+    var providences = [];
+    
+
+    // loop through all listings
+    $('.listings_wrapper').find('.item_listing').each(function(){
+
+        // Add Country option if it doesnt exist
+        var listingCountry = $(this).attr('data-country');
+        if(jQuery.inArray('<option value="'+ listingCountry +'">'+ listingCountry +'</option>', countries) !== 0) {
+            countries.push('<option value="'+ listingCountry +'">'+ listingCountry +'</option>');
+        }
+        
+        // Add option to State if USA is country, add option to Providence if Canada is country
+        var listingState = $(this).attr('data-state');
+        if(listingCountry === 'USA') {
+            if(jQuery.inArray('<option value="'+ listingState +'">'+ listingState +'</option>', states) !== 0) {
+                states.push('<option value="'+ listingState +'">'+ listingState +'</option>');
+            }
+        } else if(listingCountry === 'Canada') {
+            if(jQuery.inArray('<option value="'+ listingState +'">'+ listingState +'</option>', providences) !== 0) {
+                providences.push('<option value="'+ listingState +'">'+ listingState +'</option>');
+            }
+        }
+        
+    });
+
+    countries.sort();
+    
+    countries = countries.filter(item => item !== '<option value="USA">USA</option>');
+    countries.unshift('<option value="USA">United States</option>');
+    
+    states.sort();
+    providences.sort();
+    
+    // add our default options
+    countries.unshift('<option value="" disabled selected hidden> </option>');
+    states.unshift('<option value="" disabled selected hidden> </option>');
+    providences.unshift('<option value="" disabled selected hidden> </option>');
+
+
+    // add our arrays to our selects
+    $('#filter_country').html(countries.join(''));
+    $('#filter_state').html(states.join(''));
+    $('#filter_providence').html(providences.join(''));
+        
+    
+    // Options have been built, initialize Select2
     $('.filter_country').select2({ width: '100%' });
+    $('.filter_state_prov').select2({ width: '100%' });
     $('.filter_state').select2({ width: '100%' });
     $('.filter_providence').select2({ width: '100%' });
     $('.filter_professions').select2({ width: '100%' });
@@ -29,14 +79,13 @@ function filterListings() {
     var desiredState = $(".filter_state").val();
     var desiredProvidence = $(".filter_providence").val();
     var desiredProfessions = $(".filter_professions").val();
-    console.log(desiredProfessions.length);
     var desiredRC = document.getElementById('filter_rc').checked;
     var desiredMM = document.getElementById('filter_mm').checked;
     var desiredCS = document.getElementById('filter_cs').checked;
     
     
     // loop through all listings
-    $('.listings_wrapper').find('div').each(function(){
+    $('.listings_wrapper').find('.item_listing').each(function(){
         
         // set our flag to hide by default, change to 1 to show
         var flagHide = 0;
@@ -59,7 +108,10 @@ function filterListings() {
                 if(listingState != desiredState) {
                     flagHide = 1;
                 } else {
-                    flagHide = 0;
+                    if(listingCountry == 'Other') {
+                        flagHide = 1;
+                    } else
+                        flagHide = 0;
                 }
             }
         } else if(selectedCountry === "Canada") {
@@ -68,7 +120,10 @@ function filterListings() {
                 if(listingProvidence != desiredProvidence) {
                     flagHide = 1;
                 } else {
-                    flagHide = 0;
+                    if(listingCountry == 'Other') {
+                        flagHide = 1;
+                    } else
+                        flagHide = 0;
                 }
             }
         }
@@ -134,22 +189,22 @@ function setStateProvidence() {
     var selectedCountry = $(".filter_country").val();
     
     if(selectedCountry == "USA") {
-        // hide the initial placeholder
-        $(".option_state_prov").hide();
-        // show state hide providence
-        $(".option_state").show();
         $(".option_providence").hide();
-        
-        $(".filter_providence").val('');
-        
-    } else if(selectedCountry == "Canada") {
-        // hide the initial placeholder
         $(".option_state_prov").hide();
-        // show providence hide state
+        $(".option_state").show();
+        $('#filter_providence').val(null).trigger('change.select2');
+    } else if(selectedCountry == "Canada") {
+        
+        $(".option_state_prov").hide();
         $(".option_state").hide();
         $(".option_providence").show();
-        
-        $(".filter_state").val('');
+        $('#filter_state').val(null).trigger('change.select2');
+    } else {
+        $(".option_state_prov").show();
+        $(".option_state").hide();
+        $(".option_providence").hide();
+        $('#filter_state').val(null).trigger('change.select2');
+        $('#filter_providence').val(null).trigger('change.select2');
     }
 }
 
