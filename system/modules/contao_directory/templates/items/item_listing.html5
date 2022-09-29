@@ -35,10 +35,10 @@
 		
 		?>
 		
-		
+
 		<!-- Professions Section -->
 		<div class="professions">
-		<strong>Professions:</strong>
+		<strong>Profession:</strong>
 		<?php
 			$professionsCount = 1;
 			foreach($professions as $profession) {
@@ -52,6 +52,36 @@
 		?>
 		</div> <!-- End Professions Section -->
 		
+		<!-- Specialties -->
+		<?php
+			$specialties = [];
+			if(!empty($this->specialties_1))
+				array_push($specialties, $this->specialties_1);
+			if(!empty($this->specialties_2))
+				array_push($specialties, $this->specialties_2);
+			if(!empty($this->specialties_3))
+				array_push($specialties, $this->specialties_3);
+			if(!empty($this->specialties_4))
+				array_push($specialties, $this->specialties_4);
+				
+			// if we have specialties
+			if(!empty($specialties)) { ?>
+				<div class="specialties">
+					<strong>Specialties: </strong>
+					<?php
+						$specialtiesCount = 1;
+						foreach ($specialties as $specialty) {
+							// if this is the last entry dont add a comma
+							if($specialtiesCount == count($specialties))
+								echo $specialty;
+							else
+								echo $specialty . ', ';
+							$specialtiesCount++;
+						}
+					?>
+				</div>
+			<?php }
+		?> <!-- End Specialties -->
 		
 		<!-- Offers Section -->
 		<?php 
@@ -66,7 +96,7 @@
 			// if we have offers
 			if(!empty($offers)) { ?>
 				<div class="offers">
-					<strong>Offers: </strong>
+					Offers 
 					<?php
 						$offerCount = 1;
 						foreach ($offers as $offer) {
@@ -85,10 +115,11 @@
 		<!-- Website Section -->
 		<?php
 			if(!empty($this->website)) {
-				?><div class="website"><?php echo $this->website; ?></div><?php
+				?><a href="<?= $this->website ?>" class="website" target="_blank" rel="nofollow"><?= $this->website ?></a><?php
 			}
 			
 		?>
+		
 
 		
 		<!-- Accordion Section -->
@@ -99,55 +130,7 @@
 			<div class="accordion ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" id="ui-id-<?= $this->id ?>" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="true" style="display: none;">
 				<div>
 					<!-- Description -->
-					<div class="description"><strong>Description: </strong><?= $this->describe_practice ?></div>
-					
-					<!-- Specialties -->
-					<?php
-						$specialties = [];
-						if(!empty($this->specialties_1))
-							array_push($specialties, $this->specialties_1);
-						if(!empty($this->specialties_2))
-							array_push($specialties, $this->specialties_2);
-						if(!empty($this->specialties_3))
-							array_push($specialties, $this->specialties_3);
-						if(!empty($this->specialties_4))
-							array_push($specialties, $this->specialties_4);
-							
-						// if we have specialties
-						if(!empty($specialties)) { ?>
-							<div class="specialties">
-								<strong>Specialties: </strong>
-								<?php
-									$specialtiesCount = 1;
-									foreach ($specialties as $specialty) {
-										// if this is the last entry dont add a comma
-										if($specialtiesCount == count($specialties))
-											echo $specialty;
-										else
-											echo $specialty . ', ';
-										$specialtiesCount++;
-									}
-								?>
-							</div>
-						<?php }
-					?> <!-- End Specialties >
-					
-					
-					
-					
-					<!-- Contact By Phone -->
-					<?php if($this->how_to_contact == 'Phone') { ?>
-						<div class="contact"><strong>Contact By: </strong>
-							<a href="<?= 'tel:' . preg_replace('/[^0-9]/', '', $this->phone); ?>">Phone</a>
-						</div>							
-					<?php } ?>
-					
-					<!-- Contact By Email -->
-					<?php if($this->how_to_contact == 'Email') { ?>
-						<div class="contact"><strong>Contact By: </strong>
-							<a href="<?= 'mailto:' . $this->email_public; ?>">Email</a>
-						</div>							
-					<?php } ?>
+					<div class="description"><?= $this->describe_practice ?></div>
 					
 					<!-- Contact By Office Address -->
 					<?php if($this->how_to_contact == 'Office Address') { ?>
@@ -163,7 +146,20 @@
 						</div>							
 					<?php } ?>
 					
-					
+					<!-- Start Contact -->
+				<?php if($this->how_to_contact == 'Phone') { ?>
+					<div class="contact">
+						<strong>Contact: </strong><a href="<?= 'tel:' . preg_replace('/[^0-9]/', '', $this->phone); ?>"><?= $this->phone ?></a>
+					</div>							
+				<?php } ?>
+				
+				<!-- Contact By Email -->
+				<?php if($this->how_to_contact == 'Email') { ?>
+					<div class="contact">
+						<strong>Contact: </strong><a href="<?= 'mailto:' . $this->email_public; ?>">Email</a>
+					</div>							
+				<?php } ?>
+				<!-- End Contact Section -->
 
 				</div>
 			</div>
