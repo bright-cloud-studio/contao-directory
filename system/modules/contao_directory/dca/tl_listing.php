@@ -388,10 +388,11 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         'how_to_contact' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['how_to_contact'],
-            'inputType'               => 'select',
+			'inputType'               => 'checkbox',
             'options'                 => array('Office Address' => 'Office Address',  'Phone' => 'Phone',  'Email' => 'Email',  'Website' => 'Website'),
-            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(32) NOT NULL default ''"
+            'default'                 => '',
+			'eval'                    => array('mandatory'=>false, 'multiple'=>true, 'tl_class'=>'w50'),
+			'sql'                     => ['type' => 'blob']
         ),
 
         
