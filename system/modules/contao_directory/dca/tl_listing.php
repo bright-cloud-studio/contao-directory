@@ -320,7 +320,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'default'                   => '',
             'search'                    => true,
             'eval'                      => array('mandatory' => true, 'tl_class'=>'clr'),
-            'sql'                       => "varchar(255) NOT NULL default ''"
+            'sql'                       => "varchar(1000) NOT NULL default ''"
         ),
         
         
@@ -406,7 +406,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'default'                   => '',
             'search'                    => true,
             'eval'                      => array('tl_class'=>'long', 'rte' => 'tinyMCE'),
-            'sql'                       => "varchar(255) NOT NULL default ''"
+            'sql'                       => "varchar(1000) NOT NULL default ''"
         ),
         'specific_services' => array
 		(
@@ -415,7 +415,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'default'                   => '',
 			'search'                    => true,
 			'eval'                      => array('mandatory'=>false, 'tl_class'=>'w50'),
-			'sql'                       => "varchar(255) NOT NULL default ''"
+			'sql'                       => "varchar(1000) NOT NULL default ''"
 		),
         'date_created' => array
 		(
