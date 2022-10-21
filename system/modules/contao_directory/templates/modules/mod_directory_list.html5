@@ -76,12 +76,19 @@
 		</div>
 	</form>
 
-	<div class=" marbot30 key">
-		<img src="files/content/directory/training_badge.png"> Indicates provider has completed Dr. Ede’s Ketogenic Diets for Mental Health clinician training program.
+	<div class="marbot30 key">
+		<img src="files/content/directory/training_badge.png">
+		<p>Indicates provider has completed Dr. Ede’s Ketogenic Diets for Mental Health clinician training program.</p>
 	</div>
 
 
 	<div class="listings_wrapper">
+		
+		<div class="no_results">
+			No providers meet your search criteria. Please broaden your search.
+		</div>
+		
+		
 		<?php if (empty($this->listings)): ?>
 			<p class="empty">No Listings Found!</p>
 		<?php else: ?>
