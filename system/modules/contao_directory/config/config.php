@@ -24,6 +24,7 @@ $GLOBALS['FE_MOD']['contao_directory']['directory_list'] 	= 'Bcs\Module\Director
 $GLOBALS['TL_MODELS']['tl_listing'] = 'Bcs\Model\Listing';
 
 /* Hooks */
+$GLOBALS['TL_HOOKS']['prepareFormData'][]      = array('Bcs\Handler', 'onPrepareForm');
 $GLOBALS['TL_HOOKS']['processFormData'][]      = array('Bcs\Handler', 'onProcessForm');
 
 /* Add Backend CSS to style Reviewed and Unreviewed */
