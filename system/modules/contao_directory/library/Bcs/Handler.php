@@ -8,18 +8,6 @@ class Handler
 {
     protected static $arrUserOptions = array();
 
-    public function onProcessForm($submittedData, $labels, $fields, $form)
-    {
-        
-        if($form['formID'] == 'directory_submission') {
-            echo "our form";
-            die();
-        } else {
-            echo "not our form";
-            die();
-        }
-    }
-    
     public function onProcessForm($submittedData, $formData, $files, $labels, $form)
     {
         
