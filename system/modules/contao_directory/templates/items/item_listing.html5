@@ -1,6 +1,7 @@
 <?php
 	/* Professions is passed here serialized */
 	$professions = unserialize($this->profession);
+	$how_to_contact = unserialize($this->how_to_contact);
 ?>
 
 <!-- Listing Wrapper with custom data types for the filter -->
@@ -96,7 +97,7 @@
 			// if we have offers
 			if(!empty($offers)) { ?>
 				<div class="offers">
-					Offers 
+					<strong>Services: </strong>Offers 
 					<?php
 						$offerCount = 1;
 						foreach ($offers as $offer) {
@@ -125,7 +126,10 @@
 		<!-- Accordion Section -->
 		<section class="ce_accordionStart ce_accordion block">
 			<div class="toggler ui-accordion-header ui-corner-top ui-state-default ui-accordion-icons ui-accordion-header-collapsed ui-corner-all" role="tab" id="ui-id-<?= $this->id ?>" aria-controls="ui-id-<?= $this->id ?>" aria-selected="false" aria-expanded="false" tabindex="0">
-				<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+				
+				<span class="accordion_message"><i class="fa-regular fa-chevron-down"></i> Practice and Contact Information <i class="fa-regular fa-chevron-down"></i></span>
+				
+				
 			</div>
 			<div class="accordion ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" id="ui-id-<?= $this->id ?>" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="true" style="display: none;">
 				<div>
@@ -133,11 +137,15 @@
 					<div class="description"><?= $this->describe_practice ?></div>
 					
 					<!-- Contact By Office Address -->
-					<?php if($this->how_to_contact == 'Office Address') { ?>
+					<?php if(in_array('Office Address', $how_to_contact)) { ?>
 						<div class="contact">
-							<?= $this->address_1; ?><br>
-							<?= $this->address_2; ?><br>
+							<strong>Contact: </strong><br>
+							
 							<?php
+								if($this->address_1 != '')
+									echo $this->address_1 . '<br>';
+								if($this->address_2 != '')
+									echo $this->address_2 . '<br>';
 								if($this->country == 'Other')
 									echo $this->city . ', ' . $this->country . ', ' . $this->zip;
 								else
@@ -147,16 +155,16 @@
 					<?php } ?>
 					
 					<!-- Start Contact -->
-				<?php if($this->how_to_contact == 'Phone') { ?>
+				<?php if(in_array('Phone', $how_to_contact)) { ?>
 					<div class="contact">
-						<strong>Contact: </strong><a href="<?= 'tel:' . preg_replace('/[^0-9]/', '', $this->phone); ?>"><?= $this->phone ?></a>
+						<a href="<?= 'tel:' . preg_replace('/[^0-9]/', '', $this->phone); ?>"><?= $this->phone ?></a>
 					</div>							
 				<?php } ?>
 				
 				<!-- Contact By Email -->
-				<?php if($this->how_to_contact == 'Email') { ?>
+				<?php if(in_array('Email', $how_to_contact)) { ?>
 					<div class="contact">
-						<strong>Contact: </strong><a href="<?= 'mailto:' . $this->email_public; ?>">Email</a>
+						<a href="<?= 'mailto:' . $this->email_public; ?>">Email</a>
 					</div>							
 				<?php } ?>
 				<!-- End Contact Section -->
