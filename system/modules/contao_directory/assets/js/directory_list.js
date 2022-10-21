@@ -65,7 +65,7 @@ $(document).ready(function() {
     $(".filter_rc").change(function() { filterListings(); });
     $(".filter_mm").change(function() { filterListings(); });
     $(".filter_cs").change(function() { filterListings(); });
-
+    
 });
 
 
@@ -83,6 +83,8 @@ function filterListings() {
     var desiredMM = document.getElementById('filter_mm').checked;
     var desiredCS = document.getElementById('filter_cs').checked;
     
+
+    var noListings = true;
     
     // loop through all listings
     $('.listings_wrapper').find('.item_listing').each(function(){
@@ -131,7 +133,13 @@ function filterListings() {
         
         // PROFESSIONS
         if(desiredProfessions.length !== 0) {
+            
+            console.log("TEST");
+            
             var listingProfessions = $(this).attr('data-professions');
+            
+            console.log("TEST: " . listingProfessions);
+            
             var listingArray = listingProfessions.split('|');
             // we have no match so far
             var hasMatch = 0;
@@ -176,10 +184,16 @@ function filterListings() {
             $(this).hide();
         } else {
             $(this).show();
+            noListings = false;
         }
         
-        
     });
+    
+    if(noListings) {
+        $('.no_results').show();
+    } else {
+        $('.no_results').hide();
+    }
     
 }
 
