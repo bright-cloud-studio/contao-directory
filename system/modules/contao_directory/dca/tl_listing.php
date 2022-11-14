@@ -196,7 +196,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>false, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         'email_public' => array
@@ -272,7 +272,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'select',
 			'default'                   => '',
 			'options_callback'          => array('Bcs\Backend\ListingsBackend', 'optionsCountries'),
-			'eval'                      => array('includeBlankOption'=>false, 'chosen'=>true, 'tl_class'=>'w50'),
+			'eval'                      => array('includeBlankOption'=>false, 'mandatory'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         
@@ -414,7 +414,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
-			'eval'                      => array('mandatory'=>false, 'tl_class'=>'w50'),
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(1000) NOT NULL default ''"
 		),
         'date_created' => array
