@@ -124,6 +124,8 @@ class DirectoryList extends \Contao\Module
                 $arrListing['training_program']         = $listing->training_program;
                 $arrListing['describe_practice']        = $listing->describe_practice;
 
+                $arrListing['language']                 = $listing->language;
+                
                 $arrListing['specialties_1']            = $listing->specialties_1;
                 $arrListing['specialties_2']            = $listing->specialties_2;
                 $arrListing['specialties_3']            = $listing->specialties_3;
