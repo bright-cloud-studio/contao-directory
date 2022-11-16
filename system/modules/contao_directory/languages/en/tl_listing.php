@@ -62,6 +62,10 @@ $GLOBALS['TL_LANG']['tl_listing']['specialties_2']              = array('Special
 $GLOBALS['TL_LANG']['tl_listing']['specialties_3']              = array('Specialties #3', 'List clinician\'s specialties');
 $GLOBALS['TL_LANG']['tl_listing']['specialties_4']              = array('Specialties #4', 'List clinician\'s specialties');
 
+/* Language */
+$GLOBALS['TL_LANG']['tl_listing']['language_legend']            = 'Practice\'s Language';
+$GLOBALS['TL_LANG']['tl_listing']['language']                   = array('Language', 'Which languages the clinician\'s practice prefers');
+
 /* Services Provided */
 $GLOBALS['TL_LANG']['tl_listing']['provide_legend']             = 'Services Provided';
 $GLOBALS['TL_LANG']['tl_listing']['provide_mms']                = array('Medication Management', 'Select if medication management is provided');
