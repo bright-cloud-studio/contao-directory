@@ -104,7 +104,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                       => '{approved_legend},approved;{listing_legend},photo,first_name,last_name,phone,email_internal,email_public,website;{address_legend},address_1,address_2,city,state,zip,country;{details_legend},credentials,profession,remote_consultations,training_program,describe_practice;{specialties_legend},specialties_1,specialties_2,specialties_3,specialties_4;{provide_legend},provide_mms,provide_cas;{contact_legend},how_to_contact;{internal_legend},internal_notes,specific_services,date_created,date_approved;{publish_legend},published;'
+        'default'                       => '{approved_legend},approved;{listing_legend},photo,first_name,last_name,phone,email_internal,email_public,website;{address_legend},address_1,address_2,city,state,zip,country;{details_legend},credentials,profession,remote_consultations,training_program,describe_practice;{specialties_legend},specialties_1,specialties_2,specialties_3,specialties_4;{language_legend},language;{provide_legend},provide_mms,provide_cas;{contact_legend},how_to_contact;{internal_legend},internal_notes,specific_services,date_created,date_approved;{publish_legend},published;'
     ),
  
     // Fields
@@ -360,6 +360,18 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'default'                   => '',
 			'search'                    => true,
 			'eval'                      => array('mandatory'=>false, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
+		),
+        
+        
+        
+        'language' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['language'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "varchar(255) NOT NULL default ''"
 		),
         
