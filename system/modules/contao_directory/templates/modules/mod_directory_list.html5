@@ -30,27 +30,26 @@
 			<div class="option_professions">
 				<label for="filter_professions">Search by Profession</label>
 				<select class="filter_professions" id="filter_professions" name="professions[]" multiple="professions">
-					<option value="Psychiatrist, adult">Psychiatrist, adult</option>
-					<option value="Psychiatrist, child and adolescent">Psychiatrist, child and adolescent</option>
+					<option value="Psychiatrist">Psychiatrist</option>
 					<option value="Psychiatric nurse practitioner">Psychiatric nurse practitioner</option>
 					<option value="Medical nurse practitioner">Medical nurse practitioner</option>
 					<option value="Registered nurse">Registered nurse</option>
 					<option value="Licensed practical nurse">Licensed practical nurse</option>
-					<option value="Physician, internal medicine">Physician, internal medicine</option>
-					<option value="Physician, family medicine">Physician, family medicine</option>
-					<option value="Physician, obesity medicine">Physician, obesity medicine</option>
-					<option value="Physician, neurologist">Physician, neurologist</option>
-					<option value="Physician, other specialty">Physician, other specialty</option>
+					<option value="Physician - internal medicine">Physician - internal medicine</option>
+					<option value="Physician - family medicine">Physician - family medicine</option>
+					<option value="Physician - obesity medicine">Physician - obesity medicine</option>
+					<option value="Neurologist">Neurologist</option>
+					<option value="Physician - specialist">Physician - specialist</option>
 					<option value="Physician assistant">Physician assistant</option>
 					<option value="Registered dietitian">Registered dietitian</option>
-					<option value="Nutrition therapist">Nutrition therapist</option>
+					<option value="Nutritional therapist">Nutritional therapist</option>
 					<option value="Naturopathic doctor">Naturopathic doctor</option>
 					<option value="Psychologist">Psychologist</option>
 					<option value="Social worker">Social worker</option>
-					<option value="Licensed counselor (LCPC, LMHC, etc.)">Licensed counselor (LCPC, LMHC, etc.)</option>
+					<option value="Licensed counselor">Licensed counselor</option>
 					<option value="Marriage and family therapist">Marriage and family therapist</option>
 					<option value="Food addiction specialist">Food addiction specialist</option>
-					<option value="AHealth coachSDF">Health coach</option>
+					<option value="Health coach">Health coach</option>
 					<option value="Peer support specialist">Peer support specialist</option>
 				</select>
 			</div>
