@@ -32,32 +32,34 @@
 				<select class="filter_professions" id="filter_professions" name="professions[]" multiple="professions">
 					<option value="Psychiatrist, adult">Psychiatrist, adult</option>
 					<option value="Psychiatrist, child and adolescent">Psychiatrist, child and adolescent</option>
-					<option value="Psychiatric, Nurse Practitioner">Psychiatric, Nurse Practitioner</option>
+					<option value="Psychiatric nurse practitioner">Psychiatric nurse practitioner</option>
+					<option value="Medical nurse practitioner">Medical nurse practitioner</option>
+					<option value="Registered nurse">Registered nurse</option>
+					<option value="Licensed practical nurse">Licensed practical nurse</option>
+					<option value="Physician, internal medicine">Physician, internal medicine</option>
+					<option value="Physician, family medicine">Physician, family medicine</option>
+					<option value="Physician, obesity medicine">Physician, obesity medicine</option>
+					<option value="Physician, neurologist">Physician, neurologist</option>
+					<option value="Physician, other specialty">Physician, other specialty</option>
+					<option value="Physician assistant">Physician assistant</option>
+					<option value="Registered dietitian">Registered dietitian</option>
+					<option value="Nutrition therapist">Nutrition therapist</option>
+					<option value="Naturopathic doctor">Naturopathic doctor</option>
 					<option value="Psychologist">Psychologist</option>
-					<option value="Social Worker">Social Worker</option>
-					<option value="Counselor (LCPC, LMHC, etc.)">Counselor (LCPC, LMHC, etc.)</option>
-					<option value="Marriage and Family Therapist">Marriage and Family Therapist</option>
-					<option value="Health Coach">Health Coach</option>
-					<option value="Medical Nurse Practitioner">Medical Nurse Practitioner</option>
-					<option value="Family Physician">Family Physician</option>
-					<option value="Internal Medicine Physician">Internal Medicine Physician</option>
-					<option value="Naturopathic Physician">Naturopathic Physician</option>
-					<option value="Physician Assistant">Physician Assistant</option>
-					<option value="Registered Nurse">Registered Nurse</option>
-					<option value="Registered Dietitian">Registered Dietitian</option>
-					<option value="Nutrition Therapist">Nutrition Therapist</option>
-					<option value="Neurologist">Neurologist</option>
-					<option value="Peer Support Specialist">Peer Support Specialist</option>
-					<option value="Food Addiction Specialist">Food Addiction Specialist</option>
-					<option value="Obesity Medicine Specialist">Obesity Medicine Specialist</option>
+					<option value="Social worker">Social worker</option>
+					<option value="Licensed counselor (LCPC, LMHC, etc.)">Licensed counselor (LCPC, LMHC, etc.)</option>
+					<option value="Marriage and family therapist">Marriage and family therapist</option>
+					<option value="Food addiction specialist">Food addiction specialist</option>
+					<option value="AHealth coachSDF">Health coach</option>
+					<option value="Peer support specialist">Peer support specialist</option>
 				</select>
 			</div>
 			
 			<div class="option_checkboxes">
-				<label class="checkbox_label" for="filter_rc">Refine your search</label>
+				<label class="checkbox_label" for="filter_rc">Refine Your Search</label>
 				<div class="remote_consultation">
 					<input type="checkbox" class="filter_rc" id="filter_rc" name="remote_consultation" value="remote_consultation">
-					<label for="filter_rc">Remote Consultation</label><br>
+					<label for="filter_rc">Remote Consultations</label><br>
 				</div>
 				<div class="medication_management">
 					<input type="checkbox" class="filter_mm" id="filter_mm" name="medication_management" value="medication_management">
