@@ -403,7 +403,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'               => 'checkbox',
             'options'                 => array('Office Address' => 'Office Address',  'Phone' => 'Phone',  'Email' => 'Email',  'Website' => 'Website'),
             'default'                 => '',
-			'eval'                    => array('mandatory'=>false, 'multiple'=>true, 'tl_class'=>'w50'),
+			'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'w50'),
 			'sql'                     => ['type' => 'blob']
         ),
 
