@@ -12,18 +12,18 @@ $(document).ready(function() {
 
         // Add Country option if it doesnt exist
         var listingCountry = $(this).attr('data-country');
-        if(jQuery.inArray('<option value="'+ listingCountry +'">'+ listingCountry +'</option>', countries) !== 0) {
+        if(jQuery.inArray('<option value="'+ listingCountry +'">'+ listingCountry +'</option>', countries) == -1) {
             countries.push('<option value="'+ listingCountry +'">'+ listingCountry +'</option>');
         }
         
         // Add option to State if USA is country, add option to Providence if Canada is country
         var listingState = $(this).attr('data-state');
         if(listingCountry === 'USA') {
-            if(jQuery.inArray('<option value="'+ listingState +'">'+ listingState +'</option>', states) !== 0) {
+            if(jQuery.inArray('<option value="'+ listingState +'">'+ listingState +'</option>', states) == -1) {
                 states.push('<option value="'+ listingState +'">'+ listingState +'</option>');
             }
         } else if(listingCountry === 'Canada') {
-            if(jQuery.inArray('<option value="'+ listingState +'">'+ listingState +'</option>', providences) !== 0) {
+            if(jQuery.inArray('<option value="'+ listingState +'">'+ listingState +'</option>', providences) == -1) {
                 providences.push('<option value="'+ listingState +'">'+ listingState +'</option>');
             }
         }
