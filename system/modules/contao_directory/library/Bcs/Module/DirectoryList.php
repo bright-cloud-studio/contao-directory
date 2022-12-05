@@ -70,8 +70,9 @@ class DirectoryList extends \Contao\Module
         // add js file for filter functions
 	    $GLOBALS['TL_BODY'][] = '<script src="system/modules/contao_directory/assets/js/directory_list.js"></script>';
         
+        // Sort our Listings based on the 'last_name' field
         $options = [
-            'order' => 'first_name ASC'
+            'order' => 'last_name ASC'
         ];
         
 		$objListing = Listing::findBy('published', '1', $options);
