@@ -101,7 +101,7 @@
 			// if we have offers
 			if(!empty($offers)) { ?>
 				<div class="offers">
-					<strong>Services: </strong>Offers 
+					<strong>Additional Services: </strong>Offers 
 					<?php
 						$offerCount = 1;
 						foreach ($offers as $offer) {
