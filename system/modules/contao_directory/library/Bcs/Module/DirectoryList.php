@@ -70,8 +70,11 @@ class DirectoryList extends \Contao\Module
         // add js file for filter functions
 	    $GLOBALS['TL_BODY'][] = '<script src="system/modules/contao_directory/assets/js/directory_list.js"></script>';
         
+        $options = [
+            'order' => 'first_name ASC'
+        ];
         
-		$objListing = Listing::findBy('published', '1');
+		$objListing = Listing::findBy('published', '1', $options);
 		
 		// Return if no pending items were found
 		if (!$objListing)
