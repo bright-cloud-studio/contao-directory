@@ -13,6 +13,7 @@ class Handler
 
         if($formData['formID'] == 'directory_submission') {
             
+            
             $img = \FilesModel::findByUuid($files['photo']['uuid']);
             $bin = \StringUtil::uuidToBin($files['photo']['uuid']);
             
@@ -78,16 +79,14 @@ class Handler
             $message_user_contents = $message_user_contents . '<p>Specific Services: '.$submittedData['specific_services'].'</p>'. "\r\n";
 
 	        
-	        //$to = "mark@brightcloudstudio.com";
-            $to = "web@brightcloudstudio.com,suzatonic@gmail.com";
+	        //$to = "web@brightcloudstudio.com, mark@brightcloudstudio.com";
+            $to = "web@brightcloudstudio.com, suzismith@diagnosisdiet.com";
             $subject = "[DD] New Directory Submission";
 
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-            $headers .= 'From: <webmaster@example.com>' . "\r\n";
-            $headers .= 'Cc: mark@brightcloudstudio.com' . "\r\n";
             
-            mail($to,$subject,$message_start . $message_user_contents . $message_end,$headers);
+            mail($to,$subject,$message_start . $message_user_contents . $message_end, $headers);
 
         }
     }
