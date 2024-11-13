@@ -142,6 +142,7 @@ class ListingsBackend extends \Backend
             'Physician - specialist' => 'Physician - specialist',
             'Physician assistant' => 'Physician assistant',
             'Registered dietitian' => 'Registered dietitian',
+            'Dietitian / Nutritionist' => 'Dietitian / Nutritionist',
             'Nutritional therapist' => 'Nutritional therapist',
             'Naturopathic doctor' => 'Naturopathic doctor',
             'Psychologist' => 'Psychologist',
