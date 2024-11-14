@@ -283,18 +283,28 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 		(
             'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['service_area_worldwide'],
             'inputType'                 => 'radio',
+            'default'                   => 'no',
             'options'                   => array('yes' => 'Yes', 'no' => 'No'),
             'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''"
 		),
-        'service_area' => array
+        'service_area_country' => array
 		(
-            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['service_area'],
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['service_area_country'],
 			'inputType'                 => 'select',
 			'default'                   => '',
-			'options_callback'          => array('Bcs\Backend\ListingsBackend', 'optionsServiceArea'),
+			'options_callback'          => array('Bcs\Backend\ListingsBackend', 'optionsServiceAreaCountry'),
 			'eval'                      => array('includeBlankOption'=>false, 'multiple'=>true, 'mandatory'=>false, 'chosen'=>true, 'tl_class'=>'w50'),
-			'sql'                       => "varchar(255) NOT NULL default ''"
+			'sql'                       => "text default ''"
+		),
+        'service_area_state' => array
+		(
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['service_area_state'],
+			'inputType'                 => 'select',
+			'default'                   => '',
+			'options_callback'          => array('Bcs\Backend\ListingsBackend', 'optionsServiceAreaStates'),
+			'eval'                      => array('includeBlankOption'=>false, 'multiple'=>true, 'mandatory'=>false, 'chosen'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "text default ''"
 		),
         
         
