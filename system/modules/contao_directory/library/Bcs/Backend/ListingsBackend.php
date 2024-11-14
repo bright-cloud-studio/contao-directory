@@ -498,7 +498,12 @@ class ListingsBackend extends \Backend
 				'Northern Mariana Islands' => 'Northern Mariana Islands',
 				'Palau' => 'Palau',
 				'Puerto Rico' => 'Puerto Rico',
-				'Virgin Islands' => 'Virgin Islands'),
+				'Virgin Islands' => 'Virgin Islands')
+			);
+	}
+
+    public function optionsServiceAreaProvinces() {
+		return array(
 			'Canada' => array(
 				'Alberta' => 'Alberta',
 				'British Columbia' => 'British Columbia',
