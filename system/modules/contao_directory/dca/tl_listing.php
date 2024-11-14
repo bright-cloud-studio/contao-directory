@@ -104,7 +104,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                       => '{approved_legend},approved;{listing_legend},photo,first_name,last_name,phone,email_internal,email_public,website;{address_legend},address_1,address_2,city,state,zip,country;{service_area_legend}, service_area_worldwide, service_area_country, service_area_state;{details_legend},credentials,profession,remote_consultations,training_program,describe_practice;{specialties_legend},specialties_1,specialties_2,specialties_3,specialties_4;{language_legend},language;{provide_legend},provide_mms,provide_cas;{contact_legend},how_to_contact;{internal_legend},internal_notes,specific_services,date_created,date_approved;{publish_legend},published;'
+        'default'                       => '{approved_legend},approved;{listing_legend},photo,first_name,last_name,phone,email_internal,email_public,website;{address_legend},address_1,address_2,city,state,zip,country;{service_area_legend}, service_area_worldwide, service_area_country, service_area_state, service_area_province;{details_legend},credentials,profession,remote_consultations,training_program,describe_practice;{specialties_legend},specialties_1,specialties_2,specialties_3,specialties_4;{language_legend},language;{provide_legend},provide_mms,provide_cas;{contact_legend},how_to_contact;{internal_legend},internal_notes,specific_services,date_created,date_approved;{publish_legend},published;'
     ),
  
     // Fields
@@ -303,6 +303,15 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'                 => 'select',
 			'default'                   => '',
 			'options_callback'          => array('Bcs\Backend\ListingsBackend', 'optionsServiceAreaStates'),
+			'eval'                      => array('includeBlankOption'=>false, 'multiple'=>true, 'mandatory'=>false, 'chosen'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "text default ''"
+		),
+        'service_area_province' => array
+		(
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['service_area_province'],
+			'inputType'                 => 'select',
+			'default'                   => '',
+			'options_callback'          => array('Bcs\Backend\ListingsBackend', 'optionsServiceAreaProvinces'),
 			'eval'                      => array('includeBlankOption'=>false, 'multiple'=>true, 'mandatory'=>false, 'chosen'=>true, 'tl_class'=>'w50'),
 			'sql'                       => "text default ''"
 		),
