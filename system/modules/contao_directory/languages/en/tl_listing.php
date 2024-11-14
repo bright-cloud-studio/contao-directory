@@ -47,6 +47,12 @@ $GLOBALS['TL_LANG']['tl_listing']['state']                      = array('State/P
 $GLOBALS['TL_LANG']['tl_listing']['zip']                        = array('ZIP code', 'Enter the clinician\'s ZIP code');
 $GLOBALS['TL_LANG']['tl_listing']['country']                    = array('Country', 'Enter the clinician\'s country');
 
+/* Service Area Details */
+$GLOBALS['TL_LANG']['tl_listing']['service_area_legend']        = 'Service Area Details';
+$GLOBALS['TL_LANG']['tl_listing']['service_area_worldwide']     = array('Worldwide', 'Determines if this Listing displays in all search results or not');
+$GLOBALS['TL_LANG']['tl_listing']['service_area_country']       = array('Country', 'Select the countries this practice services');
+$GLOBALS['TL_LANG']['tl_listing']['service_area_state']         = array('State / Province', 'Select the States / Provinces this practice services');
+
 /* Specific Details */
 $GLOBALS['TL_LANG']['tl_listing']['details_legend']             = 'Specific Details';
 $GLOBALS['TL_LANG']['tl_listing']['credentials']                = array('Credentials', 'Enter the clinician\'s credentials');
