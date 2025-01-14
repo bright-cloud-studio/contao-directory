@@ -50,8 +50,9 @@ $GLOBALS['TL_LANG']['tl_listing']['country']                    = array('Country
 /* Service Area Details */
 $GLOBALS['TL_LANG']['tl_listing']['service_area_legend']        = 'Service Area Details';
 $GLOBALS['TL_LANG']['tl_listing']['service_area_worldwide']     = array('Worldwide', 'Determines if this Listing displays in all search results or not');
-$GLOBALS['TL_LANG']['tl_listing']['service_area_country']       = array('Country', 'Select the countries this practice services');
-$GLOBALS['TL_LANG']['tl_listing']['service_area_state']         = array('State / Province', 'Select the States / Provinces this practice services');
+$GLOBALS['TL_LANG']['tl_listing']['service_area_country']       = array('Countrys', 'Select the countries this practice services');
+$GLOBALS['TL_LANG']['tl_listing']['service_area_state']         = array('States', 'Select the States this practice services');
+$GLOBALS['TL_LANG']['tl_listing']['service_area_province']      = array('Provinces', 'Select the Provinces this practice services');
 
 /* Specific Details */
 $GLOBALS['TL_LANG']['tl_listing']['details_legend']             = 'Specific Details';
