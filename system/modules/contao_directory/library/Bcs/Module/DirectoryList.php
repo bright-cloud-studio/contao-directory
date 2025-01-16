@@ -120,19 +120,29 @@ class DirectoryList extends \Contao\Module
                 $arrListing['city']                     = $listing->city;
                 $arrListing['zip']                      = $listing->zip;
                 
+                $arrListing['state']                    = $listing->state;
+                $arrListing['country']                  = $listing->country;
+                
                 
                 // Multiple choise State/Country into CSV
                 if($listing->service_area_state) {
                     $state_csv = implode(",", unserialize($listing->service_area_state));
-                    $arrListing['state']                    = $state_csv;
+                    $arrListing['service_state']                    = $state_csv;
                 } else
-                $arrListing['state']                    = '';
+                $arrListing['service_state']                    = '';
                 
-                if($listing->service_area_state) {
-                    $country_csv = implode(",", unserialize($listing->service_area_country));
-                    $arrListing['country']                  = $country_csv;
+                // Multiple choise State/Country into CSV
+                if($listing->service_area_province) {
+                    $province_csv = implode(",", unserialize($listing->service_area_province));
+                    $arrListing['service_province']                    = $province_csv;
                 } else
-                $arrListing['country']                    = '';
+                $arrListing['service_province']                    = '';
+                
+                if($listing->service_area_country) {
+                    $country_csv = implode(",", unserialize($listing->service_area_country));
+                    $arrListing['service_country']                  = $country_csv;
+                } else
+                $arrListing['service_country']                    = '';
                 
                 
                 $arrListing['worldwide'] = $listing->service_area_worldwide;
