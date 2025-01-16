@@ -118,9 +118,26 @@ class DirectoryList extends \Contao\Module
                 $arrListing['address_1']                = $listing->address_1;
                 $arrListing['address_2']                = $listing->address_2;
                 $arrListing['city']                     = $listing->city;
-                $arrListing['state']                    = $listing->state;
                 $arrListing['zip']                      = $listing->zip;
-                $arrListing['country']                  = $listing->country;
+                
+                
+                // Multiple choise State/Country into CSV
+                if($listing->service_area_state) {
+                    $state_csv = implode(",", unserialize($listing->service_area_state));
+                    $arrListing['state']                    = $state_csv;
+                } else
+                $arrListing['state']                    = '';
+                
+                if($listing->service_area_state) {
+                    $country_csv = implode(",", unserialize($listing->service_area_country));
+                    $arrListing['country']                  = $country_csv;
+                } else
+                $arrListing['country']                    = '';
+                
+                
+                $arrListing['worldwide'] = $listing->service_area_worldwide;
+
+                
 
                 $arrListing['credentials']              = $listing->credentials;
                 $arrListing['profession']               = $listing->profession;
