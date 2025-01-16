@@ -6,33 +6,110 @@ $(document).ready(function() {
     var states = [];
     var providences = [];
     
+    var usa_states = [
+				'Alabama',
+				'Alaska',
+				'Arizona',
+				'Arkansas',
+				'California',
+				'Colorado',
+				'Connecticut',
+				'Delaware',
+				'Florida',
+				'Georgia',
+				'Hawaii',
+				'Idaho',
+				'Illinois',
+				'Indiana',
+				'Iowa',
+				'Kansas',
+				'Kentucky',
+				'Louisiana',
+				'Maine',
+				'Maryland',
+				'Massachusetts',
+				'Michigan',
+				'Minnesota',
+				'Mississippi',
+				'Missouri',
+				'Montana',
+				'Nebraska',
+				'Nevada',
+				'New Hampshire',
+				'New Jersey',
+				'New Mexico',
+				'New York',
+				'North Carolina',
+				'North Dakota',
+				'Ohio',
+				'Oklahoma',
+				'Oregon',
+				'Pennsylvania',
+				'Rhode Island',
+				'South Carolina',
+				'South Dakota',
+				'Tennessee',
+				'Texas',
+				'Utah',
+				'Vermont',
+				'Virginia',
+				'Washington',
+				'West Virginia',
+				'Wisconsin',
+				'Wyoming',
+				'American Samoa',
+				'District of Columbia',
+				'Federated States of Micronesia',
+				'Guam',
+				'Marshall Islands',
+				'Northern Mariana Islands',
+				'Palau',
+				'Puerto Rico',
+				'Virgin Islands'];
 
     // loop through all listings
     $('.listings_wrapper').find('.item_listing').each(function(){
 
         // Add Country option if it doesnt exist
         var listingCountry = $(this).attr('data-country');
-        var csv_countries = listingCountry.split(",");
+        var csv_countries = listingCountry.split(',');
         csv_countries.forEach(function(country) {
             if(jQuery.inArray('<option value="'+ country +'">'+ country +'</option>', countries) == -1) {
-            countries.push('<option value="'+ country +'">'+ country +'</option>');
-        }
+                countries.push('<option value="'+ country +'">'+ country +'</option>');
+            }
         });
-
+        
         
         
         
         // Add option to State if USA is country, add option to Providence if Canada is country
         var listingState = $(this).attr('data-state');
-        if(listingCountry === 'USA') {
-            if(jQuery.inArray('<option value="'+ listingState +'">'+ listingState +'</option>', states) == -1) {
-                states.push('<option value="'+ listingState +'">'+ listingState +'</option>');
+        var csv_states = listingState.split(',');
+         csv_states.forEach(function(state) {
+            
+
+            
+            if(state != '') {
+                if(arrayContains(state, usa_states)) {
+                    console.log("STATE: " + state);
+                    if(jQuery.inArray('<option value="'+ state +'">'+ state +'</option>', states) == -1) {
+                        states.push('<option value="'+ state +'">'+ state +'</option>');
+                        
+                    }
+                } else {
+                    console.log("PROVINCE: " + state);
+                    if(jQuery.inArray('<option value="'+ state +'">'+ state +'</option>', providences) == -1) {
+                        providences.push('<option value="'+ state +'">'+ state +'</option>');
+                        
+                    }
+                }
             }
-        } else if(listingCountry === 'Canada') {
-            if(jQuery.inArray('<option value="'+ listingState +'">'+ listingState +'</option>', providences) == -1) {
-                providences.push('<option value="'+ listingState +'">'+ listingState +'</option>');
-            }
-        }
+            
+            
+        });
+        
+        
+
         
     });
 
@@ -98,42 +175,59 @@ function filterListings() {
         // set our flag to hide by default, change to 1 to show
         var flagHide = 0;
         
-        // COUNTRY
-        if(desiredCountry !== null) {
-            var listingCountry = $(this).attr('data-country');
-            if(listingCountry != desiredCountry) {
-                flagHide = 1;
-            } else {
-                flagHide = 0;
-            }
-        }
         
-        // STATE / PROVIDENCE
-        var selectedCountry = $(".filter_country").val();
-        if(selectedCountry === "USA") {
-            if(desiredState !== null) {
-                var listingState = $(this).attr('data-state');
-                if(listingState != desiredState) {
+        // WORLDWIDE
+        var worldwide = $(this).attr('data-worldwide');
+        if(worldwide == 'yes') {
+            flagHide = 0;
+        } else {
+        
+            // COUNTRY
+            if(desiredCountry !== null) {
+                var listingCountry = $(this).attr('data-country');
+                var country_found = listingCountry.indexOf(desiredCountry);
+                
+                //console.log("listing: " + listingCountry);
+                //console.log("desired: " + desiredCountry);
+                //console.log("country_found: " + country_found);
+                
+                if (country_found == -1) {
                     flagHide = 1;
                 } else {
-                    if(listingCountry == 'Other') {
-                        flagHide = 1;
-                    } else
-                        flagHide = 0;
+                    flagHide = 0;
                 }
             }
-        } else if(selectedCountry === "Canada") {
-            if(desiredProvidence !== null) {
-                var listingProvidence = $(this).attr('data-state');
-                if(listingProvidence != desiredProvidence) {
-                    flagHide = 1;
-                } else {
-                    if(listingCountry == 'Other') {
+            
+            // STATE / PROVIDENCE
+            var selectedCountry = $(".filter_country").val();
+            if(selectedCountry === "USA") {
+                if(desiredState !== null) {
+                    var listingState = $(this).attr('data-state');
+                    var state_found = listingState.indexOf(desiredState);
+                    if (state_found == -1) {
                         flagHide = 1;
-                    } else
-                        flagHide = 0;
+                    } else {
+                        if(listingCountry == 'Other') {
+                            flagHide = 1;
+                        } else
+                            flagHide = 0;
+                    }
+                }
+            } else if(selectedCountry === "Canada") {
+                if(desiredProvidence !== null) {
+                    var listingProvidence = $(this).attr('data-state');
+                    var province_found = listingProvidence.indexOf(desiredProvidence);
+                    if (province_found == -1) {
+                        flagHide = 1;
+                    } else {
+                        if(listingCountry == 'Other') {
+                            flagHide = 1;
+                        } else
+                            flagHide = 0;
+                    }
                 }
             }
+            
         }
         
         
@@ -203,6 +297,10 @@ function filterListings() {
     
 }
 
+function arrayContains(needle, arrhaystack)
+{
+    return (arrhaystack.indexOf(needle) > -1);
+}
 
 function setStateProvidence() {
     // get country value
