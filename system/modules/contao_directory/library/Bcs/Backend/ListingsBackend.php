@@ -69,16 +69,17 @@ class ListingsBackend extends \Backend
 	
 	public function exportListings()
 	{
-		$objListing = Listing::findAll();
+	    
+	    $objLocation = Listing::findAll();
 		$strDelimiter = ',';
 	
-		if ($objListing) {
-			$strFilename = "listings_" .(date('Y-m-d_Hi')) ."csv";
+		if ($objLocation) {
+			$strFilename = "locations_" .(date('Y-m-d_Hi')) ."csv";
 			$tmpFile = fopen('php://memory', 'w');
 			
 			$count = 0;
-			while($objListing->next()) {
-				$row = $objListing->row();
+			while($objLocation->next()) {
+				$row = $objLocation->row();
 				if ($count == 0) {
 					$arrColumns = array();
 					foreach ($row as $key => $value) {
