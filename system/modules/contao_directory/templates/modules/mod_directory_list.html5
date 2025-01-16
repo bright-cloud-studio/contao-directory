@@ -42,6 +42,7 @@
 					<option value="Physician - specialist">Physician - specialist</option>
 					<option value="Physician assistant">Physician assistant</option>
 					<option value="Registered dietitian">Registered dietitian</option>
+					<option value="Dietitian / Nutritionist">Dietitian / Nutritionist</option>
 					<option value="Nutritional therapist">Nutritional therapist</option>
 					<option value="Naturopathic doctor">Naturopathic doctor</option>
 					<option value="Psychologist">Psychologist</option>
