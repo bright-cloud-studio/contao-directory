@@ -12,9 +12,15 @@ $(document).ready(function() {
 
         // Add Country option if it doesnt exist
         var listingCountry = $(this).attr('data-country');
-        if(jQuery.inArray('<option value="'+ listingCountry +'">'+ listingCountry +'</option>', countries) == -1) {
-            countries.push('<option value="'+ listingCountry +'">'+ listingCountry +'</option>');
+        var csv_countries = listingCountry.split(",");
+        csv_countries.forEach(function(country) {
+            if(jQuery.inArray('<option value="'+ country +'">'+ country +'</option>', countries) == -1) {
+            countries.push('<option value="'+ country +'">'+ country +'</option>');
         }
+        });
+
+        
+        
         
         // Add option to State if USA is country, add option to Providence if Canada is country
         var listingState = $(this).attr('data-state');
