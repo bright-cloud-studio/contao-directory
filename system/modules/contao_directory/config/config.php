@@ -14,7 +14,7 @@
 $GLOBALS['BE_MOD']['content']['listings'] = array(
 	'tables' => array('tl_listing'),
 	'icon'   => 'system/modules/contao_directory/assets/icons/location.png',
-	'exportLocations' => array('Bcs\Backend\ListingsBackend', 'exportListings')
+	'exportListings' => array('Bcs\Backend\ListingsBackend', 'exportListings')
 );
 
 /* Front end modules */
