@@ -74,7 +74,7 @@ class ListingsBackend extends \Backend
 		$strDelimiter = ',';
 	
 		if ($objLocation) {
-			$strFilename = "locations_" .(date('Y-m-d_Hi')) ."csv";
+			$strFilename = "listings_" .(date('Y-m-d_Hi')) .".csv";
 			$tmpFile = fopen('php://memory', 'w');
 			
 			$count = 0;
