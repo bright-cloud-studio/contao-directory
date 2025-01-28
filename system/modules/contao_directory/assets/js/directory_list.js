@@ -286,13 +286,13 @@ $(document).ready(function() {
             
             if(state != '') {
                 if(arrayContains(state, usa_states)) {
-                    console.log("STATE: " + state);
+                    //console.log("STATE: " + state);
                     if(jQuery.inArray('<option value="'+ state +'">'+ state +'</option>', states) == -1) {
                         states.push('<option value="'+ state +'">'+ state +'</option>');
                         
                     }
                 } else {
-                    console.log("PROVINCE: " + state);
+                    //console.log("PROVINCE: " + state);
                     if(jQuery.inArray('<option value="'+ state +'">'+ state +'</option>', providences) == -1) {
                         providences.push('<option value="'+ state +'">'+ state +'</option>');
                         
@@ -359,7 +359,6 @@ function filterListings() {
     var desiredMM = document.getElementById('filter_mm').checked;
     var desiredCS = document.getElementById('filter_cs').checked;
     
-
     var noListings = true;
     
     // loop through all listings
@@ -380,10 +379,6 @@ function filterListings() {
                 var listingCountry = $(this).attr('data-country');
                 var country_found = listingCountry.indexOf(desiredCountry);
                 
-                //console.log("listing: " + listingCountry);
-                //console.log("desired: " + desiredCountry);
-                //console.log("country_found: " + country_found);
-                
                 if (country_found == -1) {
                     flagHide = 1;
                 } else {
@@ -394,30 +389,49 @@ function filterListings() {
             // STATE / PROVIDENCE
             var selectedCountry = $(".filter_country").val();
             if(selectedCountry === "USA") {
+                
                 if(desiredState !== null) {
+                    
+                    
                     var listingState = $(this).attr('data-state');
-                    var state_found = listingState.indexOf(desiredState);
-                    if (state_found == -1) {
-                        flagHide = 1;
+                    
+                    if(listingState == ',') {
+                        flagHide = 0;
                     } else {
-                        if(listingCountry == 'Other') {
+                        var state_found = listingState.indexOf(desiredState);
+                        if (state_found == -1) {
                             flagHide = 1;
-                        } else
-                            flagHide = 0;
+                        } else {
+                            if(listingCountry == 'Other') {
+                                flagHide = 1;
+                            } else
+                                flagHide = 0;
+                        }
                     }
+                    
+                    
+                    
+                    
                 }
             } else if(selectedCountry === "Canada") {
                 if(desiredProvidence !== null) {
+                    
                     var listingProvidence = $(this).attr('data-state');
-                    var province_found = listingProvidence.indexOf(desiredProvidence);
-                    if (province_found == -1) {
-                        flagHide = 1;
+                    
+                    if(listingProvidence == ',') {
+                        flagHide = 0;
                     } else {
-                        if(listingCountry == 'Other') {
+                        var province_found = listingProvidence.indexOf(desiredProvidence);
+                        if (province_found == -1) {
                             flagHide = 1;
-                        } else
-                            flagHide = 0;
+                        } else {
+                            if(listingCountry == 'Other') {
+                                flagHide = 1;
+                            } else
+                                flagHide = 0;
+                        }
                     }
+                    
                 }
             }
             
@@ -427,11 +441,7 @@ function filterListings() {
         // PROFESSIONS
         if(desiredProfessions.length !== 0) {
             
-            console.log("TEST");
-            
             var listingProfessions = $(this).attr('data-professions');
-            
-            console.log("TEST: " . listingProfessions);
             
             var listingArray = listingProfessions.split('|');
             // we have no match so far
@@ -449,7 +459,6 @@ function filterListings() {
                 flagHide = 1;
             }
         }
-        
         
         // CHECKBOXES
         if(desiredRC === true) {
