@@ -331,6 +331,9 @@ function filterListings() {
     
     var noListings = true;
     
+    
+    
+    
     // loop through all listings
     $('.listings_wrapper').find('.item_listing').each(function(){
         
@@ -460,6 +463,8 @@ function filterListings() {
         }
         
     });
+    
+    
     
     if(noListings) {
         $('.no_results').show();
