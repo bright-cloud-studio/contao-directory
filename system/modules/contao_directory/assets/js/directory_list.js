@@ -1,3 +1,47 @@
+function filterListings() {
+    
+    // change the State dropdown based on the Country dropdown
+    setStateProvidence();
+    
+    // collect our filter's desired values
+    var desiredCountry = $(".filter_country").val();
+    var desiredState = $(".filter_state").val();
+    var desiredProvidence = $(".filter_providence").val();
+    var desiredProfessions = $(".filter_professions").val();
+    var desiredRC = document.getElementById('filter_rc').checked;
+    var desiredMM = document.getElementById('filter_mm').checked;
+    var desiredCS = document.getElementById('filter_cs').checked;
+    
+    // Track if we have any listings or not
+    var noListings = true;
+    
+    // Loop through all listings
+    $('.listings_wrapper').find('.item_listing').each(function(){
+        
+        // Tracks if this listing should be hidden or not at the end
+        var hideListing = false;
+        
+        // Hide if need be
+        if(hideListing) { $(this).hide(); } else {
+            $(this).show();
+            noListings = false;
+        }
+        
+    });
+    
+    // Show our 'no listings' message if need be
+    if(noListings) {
+        $('.no_results').show();
+    } else {
+        $('.no_results').hide();
+    }
+    
+}
+
+
+
+
+
 // When page is loaded
 $(document).ready(function() {
 
@@ -312,171 +356,6 @@ $(document).ready(function() {
     $(".filter_cs").change(function() { filterListings(); });
     
 });
-
-
-
-function filterListings() {
-    
-    // change the State dropdown based on the Country dropdown
-    setStateProvidence();
-    
-    // collect our filter's desired values
-    var desiredCountry = $(".filter_country").val();
-    var desiredState = $(".filter_state").val();
-    var desiredProvidence = $(".filter_providence").val();
-    var desiredProfessions = $(".filter_professions").val();
-    var desiredRC = document.getElementById('filter_rc').checked;
-    var desiredMM = document.getElementById('filter_mm').checked;
-    var desiredCS = document.getElementById('filter_cs').checked;
-    
-    var noListings = true;
-    
-    
-    
-    
-    // loop through all listings
-    $('.listings_wrapper').find('.item_listing').each(function(){
-        
-        // set our flag to hide by default, change to 1 to show
-        var flagHide = 0;
-        
-        
-        // WORLDWIDE
-        var worldwide = $(this).attr('data-worldwide');
-        if(worldwide == 'yes') {
-            flagHide = 0;
-        } else {
-        
-            // COUNTRY
-            if(desiredCountry !== null) {
-                var listingCountry = $(this).attr('data-country');
-                var country_found = listingCountry.indexOf(desiredCountry);
-                
-                if (country_found == -1) {
-                    flagHide = 1;
-                } else {
-                    flagHide = 0;
-                }
-            }
-            
-            // STATE / PROVIDENCE
-            var selectedCountry = $(".filter_country").val();
-            if(selectedCountry === "USA") {
-                
-                if(desiredState !== null) {
-                    
-                    
-                    var listingState = $(this).attr('data-state');
-                    
-                    if(listingState == ',') {
-                        flagHide = 0;
-                    } else {
-                        var state_found = listingState.indexOf(desiredState);
-                        if (state_found == -1) {
-                            flagHide = 1;
-                        } else {
-                            if(listingCountry == 'Other') {
-                                flagHide = 1;
-                            } else
-                                flagHide = 0;
-                        }
-                    }
-                    
-                    
-                    
-                    
-                }
-            } else if(selectedCountry === "Canada") {
-                if(desiredProvidence !== null) {
-                    
-                    var listingProvidence = $(this).attr('data-state');
-                    
-                    if(listingProvidence == ',') {
-                        flagHide = 0;
-                    } else {
-                        var province_found = listingProvidence.indexOf(desiredProvidence);
-                        if (province_found == -1) {
-                            flagHide = 1;
-                        } else {
-                            if(listingCountry == 'Other') {
-                                flagHide = 1;
-                            } else
-                                flagHide = 0;
-                        }
-                    }
-                    
-                }
-            }
-            
-        }
-        
-        
-        // PROFESSIONS
-        if(desiredProfessions.length !== 0) {
-            
-            var listingProfessions = $(this).attr('data-professions');
-            
-            var listingArray = listingProfessions.split('|');
-            // we have no match so far
-            var hasMatch = 0;
-            // loop through each listing entry
-            $.each(listingArray, function(index, value){
-                // if our desired professions includes on of the listing's professions
-                if(desiredProfessions.includes(value) === true) {
-                    // we have a match
-                    hasMatch = 1;
-                }
-            });
-            // if we have no match, hide this
-            if(hasMatch === 0) {
-                flagHide = 1;
-            }
-        }
-        
-        // CHECKBOXES
-        if(desiredRC === true) {
-            var listingRC = $(this).attr('data-rc');
-            if(listingRC === "no") {
-                flagHide = 1;
-            }
-        }
-        if(desiredMM === true) {
-            var listingMM = $(this).attr('data-mm');
-            if(listingMM === "no") {
-                flagHide = 1;
-            }
-        }
-        if(desiredCS === true) {
-            var listingCS = $(this).attr('data-cs');
-            if(listingCS === "no") {
-                flagHide = 1;
-            }
-        }
-        
-
-        // if flagged then hide if not then show
-        if(flagHide == 1) {
-            $(this).hide();
-        } else {
-            $(this).show();
-            noListings = false;
-        }
-        
-    });
-    
-    
-    
-    if(noListings) {
-        $('.no_results').show();
-    } else {
-        $('.no_results').hide();
-    }
-    
-}
-
-
-
-
 
 
 
