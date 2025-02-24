@@ -14,6 +14,16 @@ class Handler
         if($formData['formID'] == 'directory_submission') {
             
             
+            // Create a LOG so we can tell if this is working or not
+            $myfile = fopen($_SERVER['DOCUMENT_ROOT'] . '/../files/content/directory/logs/directory_submission_'.strtolower(date('m_d_y_H:m:s')).".txt", "w") or die("Unable to open file!");
+            foreach($submittedData as $key => $val) {
+                // Write the JSON values to the log
+                fwrite($myfile, "Key: " . $key . "  | Value: " . $val . "\n");
+            }
+            // Close or LOG file
+            fclose($myfile);
+            
+            
             $img = \FilesModel::findByUuid($files['photo']['uuid']);
             $bin = \StringUtil::uuidToBin($files['photo']['uuid']);
             
