@@ -138,7 +138,7 @@ class Handler
 
 
 
-    public function prepareFormData($submittedData, $formData, $files, $labels, $form)
+    public function onPrepareForm($submittedData, $formData, $files, $labels, $form)
     {
 
         if($formData['formID'] == 'directory_submission') {
