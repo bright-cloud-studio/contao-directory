@@ -15,24 +15,24 @@ function filterListings() {
     
     var noListings = true;
     
-    
-    
     // Determine state
-    // 1 = searching provider addresses
-    // 2 = Remote Consultation and searching provider addresses
-    // 3 = worldwide = searching service area addresses
+    // 1 = default - search practitioner addresses
+    // 2 = default + RC
+    // 3 = Worldwide - search service area addresses
+    // 4 = Worldwide + RC
     var state = 0;
-    
     if(desiredWW) {
-        state = 3;
+        if(desiredRC) {
+            state = 4;
+        } else {
+            state = 3;
+        }
     } else {
-        
         if(desiredRC) {
             state = 2;
         } else {
             state = 1;
         }
-        
     }
     console.log("state: " + state);
     
@@ -44,13 +44,10 @@ function filterListings() {
         // set our flag to hide by default, change to 1 to show
         var flagHide = 0;
         
-        
-        // Choose which path we will take
         switch(state) {
+            
+            // 1 = default - search practitioner addresses
             case 1:
-                
-                // Search Provider Addresses
-                
                 // COUNTRY
                 if(desiredCountry !== null) {
                     var listingCountry = $(this).attr('data-practice-country');
@@ -113,42 +110,77 @@ function filterListings() {
                 }
                 
                 break;
+            
+            // 2 = default + RC
             case 2:
                 
-                // Search Provider using RC
-                
-                // COUNTRY
-                if(desiredCountry !== null) {
-                    var listingCountry = $(this).attr('data-practice-country');
-                    var country_found = listingCountry.indexOf(desiredCountry);
-                    
-                    if (country_found == -1) {
+                // If RC is checked
+                if(desiredRC === true) {
+                    // hide listing if RC is 'no'
+                    var listingRC = $(this).attr('data-rc');
+                    if(listingRC === "no") {
                         flagHide = 1;
                     } else {
-                        flagHide = 0;
-                    }
-                }
-                
-                // STATE / PROVIDENCE
-                var selectedCountry = $(".filter_country").val();
-                if(selectedCountry === "USA") {
-                    
-                    if(desiredState !== null) {
                         
                         
-                        var listingState = $(this).attr('data-practice-state');
-                        
-                        if(listingState == ',') {
-                            flagHide = 0;
-                        } else {
-                            var state_found = listingState.indexOf(desiredState);
-                            if (state_found == -1) {
+                         // COUNTRY
+                        if(desiredCountry !== null) {
+                            var listingCountry = $(this).attr('data-practice-country');
+                            var country_found = listingCountry.indexOf(desiredCountry);
+                            
+                            if (country_found == -1) {
                                 flagHide = 1;
                             } else {
-                                if(listingCountry == 'Other') {
-                                    flagHide = 1;
-                                } else
+                                flagHide = 0;
+                            }
+                        }
+                        
+                        // STATE / PROVIDENCE
+                        var selectedCountry = $(".filter_country").val();
+                        if(selectedCountry === "USA") {
+                            
+                            if(desiredState !== null) {
+                                
+                                
+                                var listingState = $(this).attr('data-practice-state');
+                                
+                                if(listingState == ',') {
                                     flagHide = 0;
+                                } else {
+                                    var state_found = listingState.indexOf(desiredState);
+                                    if (state_found == -1) {
+                                        flagHide = 1;
+                                    } else {
+                                        if(listingCountry == 'Other') {
+                                            flagHide = 1;
+                                        } else
+                                            flagHide = 0;
+                                    }
+                                }
+                                
+                                
+                                
+                                
+                            }
+                        } else if(selectedCountry === "Canada") {
+                            if(desiredProvidence !== null) {
+                                
+                                var listingProvidence = $(this).attr('data-practice-state');
+                                
+                                if(listingProvidence == ',') {
+                                    flagHide = 0;
+                                } else {
+                                    var province_found = listingProvidence.indexOf(desiredProvidence);
+                                    if (province_found == -1) {
+                                        flagHide = 1;
+                                    } else {
+                                        if(listingCountry == 'Other') {
+                                            flagHide = 1;
+                                        } else
+                                            flagHide = 0;
+                                    }
+                                }
+                                
                             }
                         }
                         
@@ -156,35 +188,70 @@ function filterListings() {
                         
                         
                     }
-                } else if(selectedCountry === "Canada") {
-                    if(desiredProvidence !== null) {
-                        
-                        var listingProvidence = $(this).attr('data-practice-state');
-                        
-                        if(listingProvidence == ',') {
-                            flagHide = 0;
-                        } else {
-                            var province_found = listingProvidence.indexOf(desiredProvidence);
-                            if (province_found == -1) {
-                                flagHide = 1;
-                            } else {
-                                if(listingCountry == 'Other') {
-                                    flagHide = 1;
-                                } else
-                                    flagHide = 0;
-                            }
-                        }
-                        
-                    }
                 }
-                
+ 
                 break;
+            // 3 = Worldwide - search service area addresses
             case 3:
                 
                 // Search Service Area
                 var worldwide = $(this).attr('data-worldwide');
                 if(worldwide == 'yes') {
-                    flagHide = 0;
+                    
+                    // If no country, or country matches
+                    if(desiredCountry !== null) {
+                        var listingCountry = $(this).attr('data-country');
+                        var country_found = listingCountry.indexOf(desiredCountry);
+                        if(listingCountry == '') {
+                            flagHide = 0;
+                        } else {
+                            if (country_found == -1) {
+                                flagHide = 1;
+                            } else {
+                                flagHide = 0;
+                            }
+                        }
+                    }
+                    
+                    var selectedCountry = $(".filter_country").val();
+                    if(selectedCountry === "USA") {
+                        if(desiredState !== null) {
+                            var listingState = $(this).attr('data-state');
+                            if(listingState == ',') {
+                                flagHide = 0;
+                            } else {
+                                var state_found = listingState.indexOf(desiredState);
+                                if (state_found == -1) {
+                                    flagHide = 1;
+                                } else {
+                                    if(listingCountry == 'Other') {
+                                        flagHide = 1;
+                                    } else
+                                        flagHide = 0;
+                                }
+                            }
+                        }
+                    } else if(selectedCountry === "Canada") {
+                        if(desiredProvidence !== null) {
+                            
+                            var listingProvidence = $(this).attr('data-state');
+                            
+                            if(listingProvidence == ',') {
+                                flagHide = 0;
+                            } else {
+                                var province_found = listingProvidence.indexOf(desiredProvidence);
+                                if (province_found == -1) {
+                                    flagHide = 1;
+                                } else {
+                                    if(listingCountry == 'Other') {
+                                        flagHide = 1;
+                                    } else
+                                        flagHide = 0;
+                                }
+                            }
+                        }
+                    }
+
                 } else {
                 
                     // COUNTRY
@@ -209,7 +276,7 @@ function filterListings() {
                             var listingState = $(this).attr('data-state');
                             
                             if(listingState == ',') {
-                                flagHide = 0;
+                                flagHide = 1;
                             } else {
                                 var state_found = listingState.indexOf(desiredState);
                                 if (state_found == -1) {
@@ -251,6 +318,143 @@ function filterListings() {
                 }
                 
                 break;
+            // 4 = Worldwide + RC
+            case 4:
+                
+                // CHECKBOXES
+                if(desiredRC === true) {
+                    var listingRC = $(this).attr('data-rc');
+                    if(listingRC === "no") {
+                        flagHide = 1;
+                    } else {
+                        
+                        // Search Service Area
+                        var worldwide = $(this).attr('data-worldwide');
+                        if(worldwide == 'yes') {
+                            
+                            // If no country, or country matches
+                            if(desiredCountry !== null) {
+                                var listingCountry = $(this).attr('data-country');
+                                var country_found = listingCountry.indexOf(desiredCountry);
+                                if(listingCountry == '') {
+                                    flagHide = 0;
+                                } else {
+                                    if (country_found == -1) {
+                                        flagHide = 1;
+                                    } else {
+                                        flagHide = 0;
+                                    }
+                                }
+                            }
+                            
+                            var selectedCountry = $(".filter_country").val();
+                            if(selectedCountry === "USA") {
+                                if(desiredState !== null) {
+                                    var listingState = $(this).attr('data-state');
+                                    if(listingState == ',') {
+                                        flagHide = 0;
+                                    } else {
+                                        var state_found = listingState.indexOf(desiredState);
+                                        if (state_found == -1) {
+                                            flagHide = 1;
+                                        } else {
+                                            if(listingCountry == 'Other') {
+                                                flagHide = 1;
+                                            } else
+                                                flagHide = 0;
+                                        }
+                                    }
+                                }
+                            } else if(selectedCountry === "Canada") {
+                                if(desiredProvidence !== null) {
+                                    
+                                    var listingProvidence = $(this).attr('data-state');
+                                    
+                                    if(listingProvidence == ',') {
+                                        flagHide = 0;
+                                    } else {
+                                        var province_found = listingProvidence.indexOf(desiredProvidence);
+                                        if (province_found == -1) {
+                                            flagHide = 1;
+                                        } else {
+                                            if(listingCountry == 'Other') {
+                                                flagHide = 1;
+                                            } else
+                                                flagHide = 0;
+                                        }
+                                    }
+                                }
+                            }
+        
+                        } else {
+                        
+                            // COUNTRY
+                            if(desiredCountry !== null) {
+                                var listingCountry = $(this).attr('data-country');
+                                var country_found = listingCountry.indexOf(desiredCountry);
+                                
+                                if (country_found == -1) {
+                                    flagHide = 1;
+                                } else {
+                                    flagHide = 0;
+                                }
+                            }
+                            
+                            // STATE / PROVIDENCE
+                            var selectedCountry = $(".filter_country").val();
+                            if(selectedCountry === "USA") {
+                                
+                                if(desiredState !== null) {
+                                    
+                                    
+                                    var listingState = $(this).attr('data-state');
+                                    
+                                    if(listingState == ',') {
+                                        flagHide = 1;
+                                    } else {
+                                        var state_found = listingState.indexOf(desiredState);
+                                        if (state_found == -1) {
+                                            flagHide = 1;
+                                        } else {
+                                            if(listingCountry == 'Other') {
+                                                flagHide = 1;
+                                            } else
+                                                flagHide = 0;
+                                        }
+                                    }
+                                    
+                                    
+                                    
+                                    
+                                }
+                            } else if(selectedCountry === "Canada") {
+                                if(desiredProvidence !== null) {
+                                    
+                                    var listingProvidence = $(this).attr('data-state');
+                                    
+                                    if(listingProvidence == ',') {
+                                        flagHide = 0;
+                                    } else {
+                                        var province_found = listingProvidence.indexOf(desiredProvidence);
+                                        if (province_found == -1) {
+                                            flagHide = 1;
+                                        } else {
+                                            if(listingCountry == 'Other') {
+                                                flagHide = 1;
+                                            } else
+                                                flagHide = 0;
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                            
+                        }
+
+                    }
+                }
+
+                break;
         }
 
         
@@ -278,14 +482,7 @@ function filterListings() {
                 flagHide = 1;
             }
         }
-        
-        // CHECKBOXES
-        if(desiredRC === true) {
-            var listingRC = $(this).attr('data-rc');
-            if(listingRC === "no") {
-                flagHide = 1;
-            }
-        }
+
         if(desiredMM === true) {
             var listingMM = $(this).attr('data-mm');
             if(listingMM === "no") {
