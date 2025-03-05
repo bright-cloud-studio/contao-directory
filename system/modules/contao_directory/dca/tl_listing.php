@@ -104,7 +104,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                       => '{approved_legend},approved;{listing_legend},photo,first_name,last_name,phone,email_internal,email_public,website;{address_legend},address_1,address_2,city,state,zip,country;{service_area_legend}, service_area_worldwide, service_area_country, service_area_state, service_area_province;{details_legend},credentials,profession,remote_consultations,training_program,describe_practice;{specialties_legend},specialties_1,specialties_2,specialties_3,specialties_4;{language_legend},language;{provide_legend},provide_mms,provide_cas;{contact_legend},how_to_contact;{internal_legend},internal_notes,specific_services,date_created,date_approved;{publish_legend},published;'
+        'default'                       => '{approved_legend},approved;{listing_legend},photo,first_name,last_name,phone,email_internal,email_public,website;{address_legend},address_1,address_2,city,state,zip,country;{service_area_legend}, service_area_worldwide, service_area_country, service_area_state, service_area_province;{details_legend},credentials,profession,remote_consultations,training_program,describe_practice;{specialties_legend},specialties_1,specialties_2,specialties_3,specialties_4;{practice_details_legend},language, practice_area;{provide_legend},provide_mms,provide_cas;{contact_legend},how_to_contact;{internal_legend},internal_notes,specific_services,date_created,date_approved;{publish_legend},published;'
     ),
  
     // Fields
@@ -407,6 +407,15 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         'language' => array
 		(
 			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['language'],
+			'inputType'                 => 'text',
+			'default'                   => '',
+			'search'                    => true,
+			'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                       => "varchar(255) NOT NULL default ''"
+		),
+        'practice_area' => array
+		(
+			'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['practice_area'],
 			'inputType'                 => 'text',
 			'default'                   => '',
 			'search'                    => true,
