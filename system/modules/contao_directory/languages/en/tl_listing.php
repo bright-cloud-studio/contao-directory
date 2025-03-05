@@ -70,8 +70,9 @@ $GLOBALS['TL_LANG']['tl_listing']['specialties_3']              = array('Special
 $GLOBALS['TL_LANG']['tl_listing']['specialties_4']              = array('Specialties #4', 'List clinician\'s specialties');
 
 /* Language */
-$GLOBALS['TL_LANG']['tl_listing']['language_legend']            = 'Practice\'s Language';
-$GLOBALS['TL_LANG']['tl_listing']['language']                   = array('Language', 'Which languages the clinician\'s practice prefers');
+$GLOBALS['TL_LANG']['tl_listing']['language_legend']            = 'Practice Details';
+$GLOBALS['TL_LANG']['tl_listing']['language']                   = array('Practice Language', 'Which languages the clinician\'s practice prefers');
+$GLOBALS['TL_LANG']['tl_listing']['practice_area']              = array('Practice Area', 'A summary of the Practice Area');
 
 /* Services Provided */
 $GLOBALS['TL_LANG']['tl_listing']['provide_legend']             = 'Services Provided';
