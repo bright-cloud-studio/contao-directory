@@ -10,6 +10,8 @@
  * @license    http://opensource.org/licenses/lgpl-3.0.html
  */
 
+use Contao\System;
+
 /* Back end modules */
 $GLOBALS['BE_MOD']['content']['listings'] = array(
 	'tables' => array('tl_listing'),
@@ -27,7 +29,8 @@ $GLOBALS['TL_MODELS']['tl_listing'] = 'Bcs\Model\Listing';
 $GLOBALS['TL_HOOKS']['processFormData'][]      = array('Bcs\Handler', 'onProcessForm');
 
 /* Add Backend CSS to style Reviewed and Unreviewed */
-if (TL_MODE == 'BE')
+$request = System::getContainer()->get('request_stack')->getCurrentRequest();
+if ($request && System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request))
 {
 	$GLOBALS['TL_CSS'][]					= 'system/modules/contao_directory/assets/css/contao_directory_backend.css';
 }
