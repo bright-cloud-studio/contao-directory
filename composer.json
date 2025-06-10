@@ -1,36 +1,41 @@
 {
     "name":"bright-cloud-studio/contao-directory",
-    "description":"Users can make submissions to a directory with a module to display and filter the results.",
+    "description":"Displays listings using a module",
+    "keywords": ["contao", "directory", "bright", "cloud", "studio"],
+    "type": "contao-bundle",
     "homepage": "http://brightcloudstudio.com/",
-    "keywords":["directory", "bright", "cloud"],
-    "type":"contao-module",
-    "license":"LGPL-3.0-or-later",
+    "license": "LGPL-3.0+",
     "authors":[
         {
-            "name":"Bright Cloud Studio",
-            "homepage":"https://brightcloudstudio.com"
+            "name": "Bright Cloud Studio",
+            "homepage": "https://brightcloudstudio.com",
+            "email": "mark@brightcloudstudio.com",
+            "role": "Developer"
         }
     ],
-    "require":{
-        "php": "^8.0",
-        "contao/core-bundle": "^4.13"
+    "support":{
+        "issues": "https://github.com/bright-cloud-studio/contao-directory/issues",
+        "source": "https://github.com/bright-cloud-studio/contao-directory"
     },
-    "require-dev": {
-        "contao/manager-plugin": "^2.0"
+    "require":{
+        "php": "^8.1",
+        "contao/core-bundle": "^5.3"
+    },
+    "extra":{
+        "contao-manager-plugin": "Bcs\\DirectoryBundle\\ContaoManager\\Plugin"
     },
     "autoload": {
         "psr-4": {
-            "Bcs\\": [
-                "system/modules/contao_directory/library/Bcs"
-            ]
-        }
-    },
-    "extra": {
-        "contao": {
-            "sources": {
-                "system/modules/contao_directory": "system/modules/contao_directory"
-            }
-        }
-    },
-    "minimum-stability": "dev"
+            "Bcs\\DirectoryBundle\\": "src"
+        },
+        "classmap": [
+            "src/Resources/contao"
+        ],
+        "exclude-from-classmap": [
+            "src/Resources/contao/config/",
+            "src/Resources/contao/dca/",
+            "src/Resources/contao/languages/",
+            "src/Resources/contao/templates/"
+        ]
+    }
 }
