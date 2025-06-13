@@ -13,7 +13,9 @@
  
 namespace Bcs\Model;
 
-class Listing extends \Model
+use Contao\Model;
+
+class Listing extends Model
 {
 	
 	/**
