@@ -14,7 +14,13 @@
 namespace Bcs\Module;
  
 use Bcs\Model\Listing;
- 
+
+use Contao\Config;
+use Contao\Date;
+use Contao\FrontendTemplate;
+use Contao\System;
+use Contao\StringUtil;
+
 class DirectoryList extends \Contao\Module
 {
  
@@ -99,10 +105,10 @@ class DirectoryList extends \Contao\Module
                 if (!array_key_exists($strListingKey, $arrListings)) {
                     $arrListings[$strListingKey] = array(
                         "name" 			=> $listing->name,
-                        'id'		    => \StringUtil::deserialize($listing->id),
+                        'id'		    => StringUtil::deserialize($listing->id),
                         'alias'		    => $listing->alias,
                         'tstamp'	    => $listing->tstamp,
-                        'timetamp'	    => \Date::parse(\Config::get('datimFormat'), $listing->tstamp),
+                        'timetamp'	    => Date::parse(Config::get('datimFormat'), $listing->tstamp),
                         'published'     => $listing->published,
                         "listings"		=> array()
                     );
@@ -171,7 +177,7 @@ class DirectoryList extends \Contao\Module
 
 
                 $strItemTemplate = ($this->listings_customItemTpl != '' ? $this->listings_customItemTpl : 'item_listing');
-                $objTemplate = new \FrontendTemplate($strItemTemplate);
+                $objTemplate = new FrontendTemplate($strItemTemplate);
                 $objTemplate->setData($arrListing);
                 $arrListings[$strListingKey]['listings'][] = $objTemplate->parse();
             }
