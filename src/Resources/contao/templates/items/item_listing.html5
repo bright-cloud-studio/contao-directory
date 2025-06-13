@@ -5,7 +5,7 @@
 ?>
 
 <!-- Listing Wrapper with custom data types for the filter -->
-<div class="item_listing id_<?= $this->id ?> flex_wrapper" id="item_listing id_<?= $this->id ?>" data-worldwide="<?= $this->worldwide ?>" data-country="<?= $this->country ?>" data-state="<?= $this->state ?>" data-professions="<?php
+<div class="item_listing id_<?= $this->id ?> flex_wrapper" id="item_listing id_<?= $this->id ?>" data-worldwide="<?= $this->worldwide ?>" data-country="<?= $this->service_country ?>" data-state="<?= $this->service_state ?>,<?= $this->service_province ?>" data-professions="<?php
 		$professionsTotal = sizeof($professions);
 		$professionsCount = 0;
 		foreach($professions as $profession) {
@@ -16,7 +16,7 @@
 				echo $profession . "|";
 			}
 		}
-	?>" data-rc="<?= $this->remote_consultations ?>" data-mm="<?= $this->provide_mms ?>" data-cs="<?= $this->provide_cas ?>">
+	?>" data-rc="<?= $this->remote_consultations ?>" data-mm="<?= $this->provide_mms ?>" data-cs="<?= $this->provide_cas ?>" data-practice-country="<?= $this->country ?>" data-practice-state="<?= $this->state ?>">
 	
 	
 	<!-- Left Side -->
@@ -195,7 +195,7 @@
 		<?php if($this->training_program == "yes") { ?>
 		<div class="training_program"><img src="files/content/directory/training_badge.png"></div>
 		<?php } ?>
-		<div class="photo"><img src="<?= FilesModel::findByUuid($this->photo)->path ?>"></div>
+		<div class="photo"><img src="<?= \Contao\FilesModel::findByUuid($this->photo)->path ?>"></div>
 	</div> <!-- End Right Side -->
 
 </div> <!-- End Listing Wrapper -->
