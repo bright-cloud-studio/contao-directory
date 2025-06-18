@@ -13,10 +13,11 @@
  
 namespace Bcs\Backend;
 
+use Contao\Backend;
 use Contao\DataContainer;
 use Bcs\Model\Listing;
 
-class ListingsBackend extends \Backend
+class ListingsBackend extends Backend
 {
 
 	public function getItemTemplates()
