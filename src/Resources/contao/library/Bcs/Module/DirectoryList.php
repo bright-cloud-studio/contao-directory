@@ -76,7 +76,7 @@ class DirectoryList extends \Contao\Module
     {
         
         // add js file for filter functions
-        $GLOBALS['TL_BODY'][] = 'bundles/bcsdirectory/js/directory_list.js';
+        $GLOBALS['TL_BODY'][] = '<script src="bundles/bcsdirectory/js/directory_list.js"></script>';
         
         // Sort our Listings based on the 'last_name' field
         $options = [
