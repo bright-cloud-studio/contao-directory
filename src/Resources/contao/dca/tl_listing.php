@@ -10,7 +10,8 @@
  * @license    http://opensource.org/licenses/lgpl-3.0.html
  */
 
- 
+use Contao\DC_Table;
+
 /* Table tl_listing */
 $GLOBALS['TL_DCA']['tl_listing'] = array
 (
@@ -18,7 +19,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
     // Config
     'config' => array
     (
-        'dataContainer'               => 'Table',
+        'dataContainer'               => DC_Table::class,
         'enableVersioning'            => true,
         'sql' => array
         (
