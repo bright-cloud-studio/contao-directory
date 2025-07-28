@@ -95,7 +95,9 @@ class Handler
             
             $message_user_contents = $message_user_contents . '<p>City: '.$submittedData['city'].'</p>'. "\r\n";
             $message_user_contents = $message_user_contents . '<p>Zip: '.$submittedData['zip'].'</p>'. "\r\n";
-            $message_user_contents = $message_user_contents . '<p>Preferred Contact Method: '.implode(',', $submittedData['how_to_contact']).'</p>'. "\r\n\r\n";
+            
+            if($submittedData['how_to_contact'])
+                $message_user_contents = $message_user_contents . '<p>Preferred Contact Method: '.implode(',', $submittedData['how_to_contact']).'</p>'. "\r\n\r\n";
             
             
             $message_user_contents = $message_user_contents . '<p>Service Area Worldwide: '.$service_area_worldwide.'</p>'. "\r\n";
@@ -104,8 +106,8 @@ class Handler
             $message_user_contents = $message_user_contents . '<p>Service Area Province: '.$service_area_province.'</p>'. "\r\n\r\n";
             
             
-            
-            $message_user_contents = $message_user_contents . '<p>Profession: '.implode(',', $submittedData['profession']).'</p>'. "\r\n";
+            if($submittedData['profession'])
+                $message_user_contents = $message_user_contents . '<p>Profession: '.implode(',', $submittedData['profession']).'</p>'. "\r\n";
             
             $message_user_contents = $message_user_contents . '<p>Practice\'s Preferred Language: '.$submittedData['language'].'</p>'. "\r\n";
             
