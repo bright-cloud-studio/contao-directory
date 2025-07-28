@@ -725,22 +725,6 @@ class ListingsBackend extends Backend
 				'Zimbabwe'    => 'Zimbabwe');
 	}
 
-
-
-
-
-
-
-    
-    
-    public function getDateCreated($varValue, DataContainer $dc) {
-        if($dc->activeRecord->date_created == '')
-           $todaysDate = date("Y/m/d");
-        else
-            $todaysDate = '';
-        return $todaysDate;
-    }
-    
     public function getDateApproved($varValue, DataContainer $dc) {
         if($dc->activeRecord->approved == 'approved') {
             if($dc->activeRecord->date_approved == '') {
