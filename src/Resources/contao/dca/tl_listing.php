@@ -484,12 +484,12 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'exclude'                   => true,
             'inputType'                 => 'text',
             'search'                    => true,
-            'eval'                      => array('unique'=>true, 'rgxp'=>'date', 'doNotCopy'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
+            'eval'                      => array('rgxp'=>'date', 'doNotCopy'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
             'save_callback' => array
             (
                 array('Bcs\Backend\ListingsBackend', 'getDateCreated')
             ),
-            'sql'                       => "varchar(128) COLLATE utf8_bin NOT NULL default ''"
+            'sql'                       => "varchar(128) COLLATE utf8_bin NULL default ''"
 		),
         'date_approved' => array
 		(
@@ -497,12 +497,12 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'exclude'                   => true,
             'inputType'                 => 'text',
             'search'                    => true,
-            'eval'                      => array('unique'=>true, 'rgxp'=>'date', 'doNotCopy'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
+            'eval'                      => array('rgxp'=>'date', 'doNotCopy'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
             'save_callback' => array
             (
                 array('Bcs\Backend\ListingsBackend', 'getDateApproved')
             ),
-            'sql'                       => "varchar(128) COLLATE utf8_bin NOT NULL default ''"
+            'sql'                       => "varchar(128) COLLATE utf8_bin NULL default ''"
 		),
         
 
