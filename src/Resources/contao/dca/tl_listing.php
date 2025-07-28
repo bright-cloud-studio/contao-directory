@@ -485,10 +485,6 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'inputType'                 => 'text',
             'search'                    => true,
             'eval'                      => array('rgxp'=>'date', 'doNotCopy'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
-            'save_callback' => array
-            (
-                array('Bcs\Backend\ListingsBackend', 'getDateCreated')
-            ),
             'sql'                       => "varchar(128) COLLATE utf8_bin NULL default ''"
 		),
         'date_approved' => array
