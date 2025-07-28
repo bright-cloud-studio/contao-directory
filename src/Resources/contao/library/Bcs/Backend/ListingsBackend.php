@@ -734,12 +734,21 @@ class ListingsBackend extends Backend
     
     
     public function getDateCreated($varValue, DataContainer $dc) {
-       $todaysDate = date("Y/m/d");
+        if($dc->activeRecord->date_created == '')
+           $todaysDate = date("Y/m/d");
+        else
+            $todaysDate = '';
         return $todaysDate;
     }
     
     public function getDateApproved($varValue, DataContainer $dc) {
-        $todaysDate = date("Y/m/d");
+        if($dc->activeRecord->approved == 'approved') {
+            if($dc->activeRecord->date_approved == '') {
+                $todaysDate = date("Y/m/d");
+            } else
+                    $todaysDate = '';
+        }
+        
         return $todaysDate;
     }
     
