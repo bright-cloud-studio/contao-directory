@@ -159,7 +159,7 @@ class Handler
                 $message_user_contents = $message_user_contents . '<p>Completed Training: '.$submittedData['training_program'].'</p>'. "\r\n";
                 $message_user_contents = $message_user_contents . '<p>Specific Services: '.$submittedData['specific_services'].'</p>'. "\r\n";
     
-                $to = "web@brightcloudstudio.com, suzismith@diagnosisdiet.com, mark@brightcloudstudio.com";
+                $to = "web@brightcloudstudio.com, suzismith@diagnosisdiet.com";
                 $subject = "[DD] New Directory Submission";
     
                 $headers = "MIME-Version: 1.0" . "\r\n";
