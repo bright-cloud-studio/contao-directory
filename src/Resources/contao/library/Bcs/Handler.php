@@ -6,6 +6,8 @@ use Contao\Database;
 use Contao\FilesModel;
 use Contao\StringUtil;
 
+use Bcs\Model\Listing;
+
 class Handler
 {
     protected static $arrUserOptions = array();
@@ -15,21 +17,61 @@ class Handler
         
         if($formData['formID'] == 'directory_submission') {
             
-            
             if($submittedData['first_name']) {
             
-                // Create a LOG so we can tell if this is working or not
-                $myfile = fopen($_SERVER['DOCUMENT_ROOT'] . '/../files/content/directory/logs/directory_submission_'.strtolower(date('m_d_y_H:m:s')).".txt", "w") or die("Unable to open file!");
-                foreach($submittedData as $key => $val) {
-                    // Write the JSON values to the log
-                    fwrite($myfile, "Key: " . $key . "  | Value: " . $val . "\n");
-                }
-                // Close or LOG file
-                fclose($myfile);
-                
+                // Get Bin of our uploaded image
                 $img = FilesModel::findByUuid($files['photo']['uuid']);
                 $bin = StringUtil::uuidToBin($files['photo']['uuid']);
+
+                // Create our Listing
+                $listing = new Listing();
+                $listing->tstamp = time();
+                $listing->published = 1;
+                $listing->approved = 'unapproved';
+                $listing->photo = $bin;
+                $listing->first_name = $submittedData['first_name'];
+                $listing->last_name = $submittedData['last_name'];
+                $listing->credentials = $submittedData['credentials'];
+                $listing->phone = $submittedData['phone'];
+                $listing->email_internal = $submittedData['email_internal'];
+                $listing->email_public = $submittedData['email_public'];
+                $listing->website = $submittedData['website'];
+                $listing->address_1 = $submittedData['address_1'];
+                $listing->address_2 = $submittedData['address_2'];
+                $listing->city = $submittedData['city'];
+                $listing->state = $submittedData['state'];
+                $listing->zip = $submittedData['zip'];
+                $listing->country = $submittedData['country'];
+                $listing->profession = $submittedData['profession'];
+                $listing->remote_consultations = $submittedData['remote_consultations'];
+                $listing->training_program = $submittedData['training_program'];
+                $listing->describe_practice = $submittedData['describe_practice'];
+                $listing->provide_mms = $submittedData['provide_mms'];
+                $listing->provide_cas = $submittedData['provide_cas'];
+                $listing->language = $submittedData['language'];
+                $listing->specialties_1 = $submittedData['specialties_1'];
+                $listing->specialties_2 = $submittedData['specialties_2'];
+                $listing->specialties_3 = $submittedData['specialties_3'];
+                $listing->specialties_4 = $submittedData['specialties_4'];
+                $listing->how_to_contact = $submittedData['how_to_contact'];
+                $listing->specific_services = $submittedData['specific_services'];
+                $listing->service_area_state = $submittedData['service_area_state'];
+                $listing->service_area_province = $submittedData['service_area_province'];
+                $listing->service_area_country = $submittedData['service_area_country'];
+                $listing->service_area_worldwide = $submittedData['service_area_worldwide'];
+                $listing->date_created = time();
+                $listing->save();
                 
+                // Create a log of this submission
+                $myfile = fopen($_SERVER['DOCUMENT_ROOT'] . '/../files/content/directory/logs/directory_submission_'.strtolower(date('m_d_y_H:m:s')).".txt", "w") or die("Unable to open file!");
+                fwrite($myfile, "Listing ID: " . $listing->id . "\n");
+                foreach($submittedData as $key => $val) {
+                    fwrite($myfile, "Key: " . $key . "  | Value: " . $val . "\n");
+                }
+                fclose($myfile);
+
+                
+                // Setup strings for our email
                 $service_area_worldwide = $submittedData['service_area_worldwide'];
                 
                 $service_area_country = '';
@@ -52,14 +94,8 @@ class Handler
                 } else {
                     $service_area_province = $submittedData['service_area_province'];
                 }
-                
-                if($submittedData['country'] == 'USA')
-                    Database::getInstance()->prepare("INSERT INTO tl_listing (`tstamp`, `published`, `approved`, `photo`, `first_name`, `last_name`, `credentials`, `phone`, `email_internal`, `email_public`, `website`, `address_1`, `address_2`, `city`, `state`, `zip`, `country`, `profession`, `remote_consultations`, `training_program`, `describe_practice`, `provide_mms`, `provide_cas`, `language`, `specialties_1`, `specialties_2`, `specialties_3`, `specialties_4`, `how_to_contact`, `specific_services`, `service_area_state`, `service_area_province`, `service_area_country`, `service_area_worldwide`, `date_created`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")->execute(time(), 1, 'unapproved', $bin, $submittedData['first_name'], $submittedData['last_name'], $submittedData['credentials'], $submittedData['phone'], $submittedData['email_internal'], $submittedData['email_public'], $submittedData['website'], $submittedData['address_1'], $submittedData['address_2'], $submittedData['city'], $submittedData['state'], $submittedData['zip'], $submittedData['country'], $submittedData['profession'], $submittedData['remote_consultations'], $submittedData['training_program'], $submittedData['describe_practice'], $submittedData['provide_mms'], $submittedData['provide_cas'], $submittedData['language'], $submittedData['specialties_1'], $submittedData['specialties_2'], $submittedData['specialties_3'], $submittedData['specialties_4'], $submittedData['how_to_contact'], $submittedData['specific_services'], $submittedData['service_area_state'], $submittedData['service_area_province'], $submittedData['service_area_country'], $service_area_worldwide, time());
-                else if($submittedData['country'] == 'Canada')
-                    Database::getInstance()->prepare("INSERT INTO tl_listing (`tstamp`, `published`, `approved`, `photo`, `first_name`, `last_name`, `credentials`, `phone`, `email_internal`, `email_public`, `website`, `address_1`, `address_2`, `city`, `state`, `zip`, `country`, `profession`, `remote_consultations`, `training_program`, `describe_practice`, `provide_mms`, `provide_cas`, `language`, `specialties_1`, `specialties_2`, `specialties_3`, `specialties_4`, `how_to_contact`, `specific_services`, `service_area_state`, `service_area_province`, `service_area_country`, `service_area_worldwide`, `date_created`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")->execute(time(), 1, 'unapproved', $bin, $submittedData['first_name'], $submittedData['last_name'], $submittedData['credentials'], $submittedData['phone'], $submittedData['email_internal'], $submittedData['email_public'], $submittedData['website'], $submittedData['address_1'], $submittedData['address_2'], $submittedData['city'], $submittedData['providence'], $submittedData['zip'], $submittedData['country'], $submittedData['profession'], $submittedData['remote_consultations'], $submittedData['training_program'], $submittedData['describe_practice'], $submittedData['provide_mms'], $submittedData['provide_cas'], $submittedData['language'], $submittedData['specialties_1'], $submittedData['specialties_2'], $submittedData['specialties_3'], $submittedData['specialties_4'], $submittedData['how_to_contact'], $submittedData['specific_services'], $submittedData['service_area_state'], $submittedData['service_area_province'], $submittedData['service_area_country'], $service_area_worldwide, time());
-                else
-                    Database::getInstance()->prepare("INSERT INTO tl_listing (`tstamp`, `published`, `approved`, `photo`, `first_name`, `last_name`, `credentials`, `phone`, `email_internal`, `email_public`, `website`, `address_1`, `address_2`, `city`, `state`, `zip`, `country`, `profession`, `remote_consultations`, `training_program`, `describe_practice`, `provide_mms`, `provide_cas`, `language`, `specialties_1`, `specialties_2`, `specialties_3`, `specialties_4`, `how_to_contact`, `specific_services`, `service_area_state`, `service_area_province`, `service_area_country`, `service_area_worldwide`, `date_created`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")->execute(time(), 1, 'unapproved', $bin, $submittedData['first_name'], $submittedData['last_name'], $submittedData['credentials'], $submittedData['phone'], $submittedData['email_internal'], $submittedData['email_public'], $submittedData['website'], $submittedData['address_1'], $submittedData['address_2'], $submittedData['city'], '', $submittedData['zip'], $submittedData['country'], $submittedData['profession'], $submittedData['remote_consultations'], $submittedData['training_program'], $submittedData['describe_practice'], $submittedData['provide_mms'], $submittedData['provide_cas'], $submittedData['language'], $submittedData['specialties_1'], $submittedData['specialties_2'], $submittedData['specialties_3'], $submittedData['specialties_4'], $submittedData['how_to_contact'], $submittedData['specific_services'], $submittedData['service_area_state'], $submittedData['service_area_province'], $submittedData['service_area_'], $service_area_worldwide, time());
-    
+
+                // Create our email message
                 $message_start = "
                 <html>
                 <head>
@@ -102,12 +138,10 @@ class Handler
                 if($submittedData['how_to_contact'])
                     $message_user_contents = $message_user_contents . '<p>Preferred Contact Method: '.implode(',', $submittedData['how_to_contact']).'</p>'. "\r\n\r\n";
                 
-                
                 $message_user_contents = $message_user_contents . '<p>Service Area Worldwide: '.$service_area_worldwide.'</p>'. "\r\n";
                 $message_user_contents = $message_user_contents . '<p>Service Area Country: '.$service_area_country.'</p>'. "\r\n";
                 $message_user_contents = $message_user_contents . '<p>Service Area State: '.$service_area_state.'</p>'. "\r\n";
                 $message_user_contents = $message_user_contents . '<p>Service Area Province: '.$service_area_province.'</p>'. "\r\n\r\n";
-                
                 
                 if($submittedData['profession'])
                     $message_user_contents = $message_user_contents . '<p>Profession: '.implode(',', $submittedData['profession']).'</p>'. "\r\n";
@@ -125,9 +159,7 @@ class Handler
                 $message_user_contents = $message_user_contents . '<p>Completed Training: '.$submittedData['training_program'].'</p>'. "\r\n";
                 $message_user_contents = $message_user_contents . '<p>Specific Services: '.$submittedData['specific_services'].'</p>'. "\r\n";
     
-    	        
-    	        //$to = "web@brightcloudstudio.com, mark@brightcloudstudio.com";
-                $to = "web@brightcloudstudio.com, suzismith@diagnosisdiet.com";
+                $to = "web@brightcloudstudio.com, suzismith@diagnosisdiet.com, mark@brightcloudstudio.com";
                 $subject = "[DD] New Directory Submission";
     
                 $headers = "MIME-Version: 1.0" . "\r\n";
@@ -135,15 +167,6 @@ class Handler
                 
                 mail($to,$subject,$message_start . $message_user_contents . $message_end, $headers);
     
-            } else {
-                // Create a LOG so we can tell if this is working or not
-                $myfile = fopen($_SERVER['DOCUMENT_ROOT'] . '/../files/content/directory/logs/directory_submission__BLANK_'.strtolower(date('m_d_y_H:m:s')).".txt", "w") or die("Unable to open file!");
-                foreach($submittedData as $key => $val) {
-                    // Write the JSON values to the log
-                    fwrite($myfile, "BLANK SUBMISSION \n");
-                }
-                // Close or LOG file
-                fclose($myfile);
             }
         }
     }
