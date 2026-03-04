@@ -14,18 +14,6 @@ class Handler
 
     public function onProcessForm($submittedData, $formData, $files, $labels, $form)
     {
-                
-        
-        
-        
-        
-        
-                
-        
-        
-        
-        
-        
         
         // If our new conditional form is being submitted
         if($formData['formID'] == 'directory_submission_conditional') {
@@ -54,7 +42,14 @@ class Handler
             $listing->address_1 = $submittedData['address_1'];
             $listing->address_2 = $submittedData['address_2'];
             $listing->country = $submittedData['country'];
-            $listing->state = !empty($submittedData['state']) ? $submittedData['state'] : ($submittedData['province'] ?? null);
+            
+            if($submittedData['country'] == 'Canada')
+                $listing->state = $submittedData['providence'];
+            else if($submittedData['country'] == 'USA')
+                $listing->state = $submittedData['state'];
+            else
+                $listing->state = "N/A";
+            
             $listing->city = $submittedData['city'];
             $listing->zip = $submittedData['zip'];
             $listing->how_to_contact = $submittedData['how_to_contact'];
@@ -189,7 +184,7 @@ class Handler
             $message_user_contents = $message_user_contents . '<p>Completed Training: '.$submittedData['training_program'].'</p>'. "\r\n";
             $message_user_contents = $message_user_contents . '<p>Specific Services: '.$submittedData['specific_services'].'</p>'. "\r\n";
 
-            $to = "web@brightcloudstudio.com, suzismith@diagnosisdiet.com";
+            $to = "web@brightcloudstudio.com, suzismith@diagnosisdiet.com, mark@brightcloudstudio.com";
             $subject = "[DD] New Directory Submission";
 
             $headers = "MIME-Version: 1.0" . "\r\n";
@@ -197,73 +192,7 @@ class Handler
             
             mail($to,$subject,$message_start . $message_user_contents . $message_end, $headers);
         }
-        
-        
-        
-        
-        
-        
-                
-        
-        
-        
-        
-        
-                
-        
-        
-        
-        
-        
-                
-        
-        
-        
-        
-        
-                
-        
-        
-        
-        
-        
-                
-        
-        
-        
-        
-        
-                
-        
-        
-        
-        
-        
-                
-        
-        
-        
-        
-        
-                
-        
-        
-        
-        
-        
-                
-        
-        
-        
-        
-        
-                
-        
-        
-        
-        
-        
-        
+
         /* OLD */
         else if($formData['formID'] == 'directory_submission') {
             
