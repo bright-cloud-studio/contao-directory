@@ -251,7 +251,9 @@ class ListingsBackend extends Backend
 				'Prince Edward Island' => 'Prince Edward Island',
 				'Quebec' => 'Quebec',
 				'Saskatchewan' => 'Saskatchewan',
-				'Yukon' => 'Yukon')
+				'Yukon' => 'Yukon'),
+			'Empty' => array(
+				'N/A' => 'No State or Province selected')
 			);
 	}
     
