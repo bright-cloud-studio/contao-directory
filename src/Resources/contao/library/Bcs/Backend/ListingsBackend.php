@@ -22,7 +22,7 @@ use Bcs\Model\Listing;
 
 class ListingsBackend extends Backend
 {
-    public function addListingLabel($row, $label, \DataContainer $dc, $args)
+    public function addListingLabel($row, $label, $dc, $args)
     {
         // Convert the timestamp to mm/dd/yy
         $formattedDate = date('m/d/y', $row['tstamp']);
