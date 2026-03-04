@@ -43,13 +43,13 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             
             'mode'                    => 1, // Records are grouped by the first field in 'fields'
             'panelLayout'             => 'filter;search,limit,sort',
-            'fields'                  => array('approved DESC', 'date_created DESC'),
+            'fields'                  => array('approved DESC', 'tstamp DESC'),
             'flag'                    => 1, // Changed from 12 to 1 (Sort by initial letter/value ascending)
             
         ),
         'label' => array
         (
-            'fields'                  => array('approved', 'date_created', 'country', 'state', 'first_name', 'last_name'),
+            'fields'                  => array('approved', 'tstamp', 'country', 'state', 'first_name', 'last_name'),
             'format'                  => '<span class="%s"><span style="font-weight: bold;">Date Created: </span>%s <span style="font-weight: bold;">Country: </span>%s <span style="font-weight: bold;">State: </span>%s <span style="font-weight: bold;">Name: </span>%s %s</span>'
         ),
         'global_operations' => array
