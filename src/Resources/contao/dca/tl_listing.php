@@ -148,6 +148,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['approved'],
             'inputType'                 => 'select',
+            'filter'                    => true,
             'options'                   => array('approved' => 'Approved', 'unapproved' => 'Unapproved'),
             'eval'                      => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''"
