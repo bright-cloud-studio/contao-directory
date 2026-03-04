@@ -43,7 +43,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             
             'mode'                    => 1, // Records are grouped by the first field in 'fields'
             'panelLayout'             => 'filter;search,limit,sort',
-            'fields'                  => array('approved DESC', 'tstamp DESC'),
+            'fields'                  => array('approved ASC', 'tstamp DESC'),
             'flag'                    => 1, // Changed from 12 to 1 (Sort by initial letter/value ascending)
             
         ),
