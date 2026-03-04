@@ -22,6 +22,22 @@ use Bcs\Model\Listing;
 
 class ListingsBackend extends Backend
 {
+    public function addListingLabel($row, $label, \DataContainer $dc, $args)
+    {
+        // Convert the timestamp to mm/dd/yy
+        $formattedDate = date('m/d/y', $row['tstamp']);
+        
+        // Return the formatted string using the data from the $row
+        return sprintf(
+            '<span class="%s"><span style="font-weight: bold;">Date Created: </span>%s <span style="font-weight: bold;">Country: </span>%s <span style="font-weight: bold;">State: </span>%s <span style="font-weight: bold;">Name: </span>%s %s</span>',
+            ($row['approved'] == 'approved' ? 'is_approved' : 'not_approved'), // Optional class logic
+            $formattedDate,
+            $row['country'],
+            $row['state'],
+            $row['first_name'],
+            $row['last_name']
+        );
+    }
 
 	public function getItemTemplates()
 	{
