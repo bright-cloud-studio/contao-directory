@@ -50,7 +50,8 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
         'label' => array
         (
             'fields'                  => array('approved', 'tstamp', 'country', 'state', 'first_name', 'last_name'),
-            'format'                  => '<span class="%s"><span style="font-weight: bold;">Date Created: </span>%s <span style="font-weight: bold;">Country: </span>%s <span style="font-weight: bold;">State: </span>%s <span style="font-weight: bold;">Name: </span>%s %s</span>'
+            'showColumns'             => true, // Optional: set to true if using table mode
+            'label_callback'          => array('Bcs\Backend\ListingsBackend', 'addListingLabel')
         ),
         'global_operations' => array
         (
